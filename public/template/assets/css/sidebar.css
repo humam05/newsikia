@@ -1,0 +1,10 @@
+.nav-second-level,
+.nav-third-level {
+    display: none;
+    padding-left: 20px;
+}
+
+.nav-second-level.show,
+.nav-third-level.show {
+    display: block;
+}
