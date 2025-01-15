@@ -54,7 +54,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                2017 - 2020 &copy; Simple theme by <a href="">Coderthemes</a>
+                                2017 - 2020 &copy; Simple theme by <a href="">Alvia</a>
                             </div>
                         </div>
                     </div>

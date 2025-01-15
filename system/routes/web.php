@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FasyankesController;
+use App\Http\Controllers\Admin\BidanController;
 use Illuminate\Support\Facades\Route;
 
 // Route untuk halaman welcome
@@ -25,14 +26,20 @@ Route::prefix('admin')->group(function () {
             Route::get('/show/{fasyankes}', 'show'); // Menampilkan detail Fasyankes
             Route::get('/edit/{fasyankes}', 'edit'); // Menampilkan form edit data
             Route::post('/update/{fasyankes}', 'update'); // Proses update data
-            Route::delete('/delete/{fasyankes}', 'delete'); // Proses hapus data
+            Route::get('/delete/{fasyankes}', 'delete'); // Proses hapus data
         });
     });
 
     // Prefix untuk Bidan
     Route::prefix('bidan')->group(function () {
-        Route::controller(DashboardController::class)->group(function () {
+        Route::controller(BidanController::class)->group(function () {
             Route::get('/', 'index');
+            Route::get('/create', 'create');
+            Route::post('/store', 'store');
+            Route::get('/show/{bidan}', 'show');
+            Route::get('/edit/{bidan}', 'edit');
+            Route::post('/update/{bidan}', 'update');
+            Route::get('/delete/{bidan}', 'delete');
         });
     });
 });

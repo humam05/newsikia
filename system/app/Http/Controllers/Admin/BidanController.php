@@ -23,14 +23,49 @@ class BidanController extends Controller
     function store()
     {
         $bidan = new Bidan;
-        $bidan->nama = request('nama');
-        $bidan->kecamatan = request('kecamatan');
-        $bidan->kelurahan = request('kelurahan');
-        $bidan->desa = request('desa');
-        $bidan->rt_rw = request('rt_rw');
+        $bidan->nama_bidan = request('nama_bidan');
+        $bidan->nik = request('nik');
+        $bidan->no_telpon = request('no_telpon');
+        $bidan->email = request('email');
+        $bidan->fasyankes_id = request('fasyankes_id');
         $bidan->save();
         return redirect('admin/bidan');
     }
 
+    function show(Bidan $bidan)
+    {
+        $data['detail'] = $bidan;
+        return view('admin.bidan.show', compact('bidan'));
+    }
 
+    function edit(Bidan $bidan)
+    {
+        $data['detail'] = $bidan;
+        return view('admin.bidan.edit', $data);
+    }
+
+    function update(Bidan $bidan)
+    {
+
+
+        $bidan->nama_bidan = request('nama_bidan');
+        $bidan->nik = request('nik');
+        $bidan->no_telpon = request('no_telpon');
+        $bidan->email = request('email');
+        $bidan->fasyankes_id = request('fasyankes_id');
+        $update = $bidan->update();
+        if ($update) {
+            return redirect('admin/bidan');
+        } else {
+            return back()->with('error', 'Woy gagal cor !');
+        }
+    }
+
+    function delete(Bidan $bidan)
+    {
+
+        $bidan->delete();
+        return back();
+        return redirect()->route('bidan.index')->with('success', 'Data berhasil dihapus.');
+    }
 }

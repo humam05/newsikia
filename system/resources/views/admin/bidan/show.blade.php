@@ -1,11 +1,12 @@
 @extends('layouts.base')
 @section('content')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Data Fasyankes</title>
+    <title>Detail Data Bidan</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
@@ -67,30 +68,30 @@
 <div class="container mt-5">
     <div class="card">
         <div class="card-header">
-            Detail Fasyankes
+            Detail Bidan
         </div>
         <div class="card-body">
             <div class="row detail-item">
-                <div class="col-md-4">Nama Fasyankes:</div>
-                <div class="col-md-8">{{ $fasyankes->nama }}</div>
+                <div class="col-md-4">Nama bidan:</div>
+                <div class="col-md-8">{{ $bidan->nama_bidan }}</div>
             </div>
             <div class="row detail-item">
-                <div class="col-md-4">Kecamatan:</div>
-                <div class="col-md-8">{{ $fasyankes->kecamatan }}</div>
+                <div class="col-md-4">Nik:</div>
+                <div class="col-md-8">{{ $bidan->nik }}</div>
             </div>
             <div class="row detail-item">
-                <div class="col-md-4">Kelurahan:</div>
-                <div class="col-md-8">{{ $fasyankes->kelurahan }}</div>
+                <div class="col-md-4">No Telpon:</div>
+                <div class="col-md-8">{{ $bidan->no_telpon }}</div>
             </div>
             <div class="row detail-item">
-                <div class="col-md-4">Desa:</div>
-                <div class="col-md-8">{{ $fasyankes->desa }}</div>
+                <div class="col-md-4">Email:</div>
+                <div class="col-md-8">{{ $bidan->email }}</div>
             </div>
             <div class="row detail-item">
-                <div class="col-md-4">RT/RW:</div>
-                <div class="col-md-8">{{ $fasyankes->rt_rw }}</div>
+                <div class="col-md-4">Fasyankes ID:</div>
+                <div class="col-md-8">{{ $bidan->fasyankes_id }}</div>
             </div>
-            <a href="{{ url('admin/fasyankes') }}" class="btn btn-primary">
+            <a href="{{ url('admin/bidan') }}" class="btn btn-primary">
                 <i class="fas fa-arrow-left"></i> Kembali
             </a>
         </div>

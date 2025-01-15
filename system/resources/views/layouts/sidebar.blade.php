@@ -3,7 +3,7 @@
 
     <div class="user-box">
         <div class="float-left">
-            <img src="assets/images/users/avatar-1.jpg" alt="" class="avatar-md rounded-circle">
+            <img src="{{url('public')}}/template/assets/images/users/avatar-1.jpg" alt="" class="avatar-md rounded-circle">
         </div>
         <div class="user-info">
             <a href="#">Alvia </a>
@@ -20,24 +20,22 @@
 
             <li>
                 <a href="{{ url('admin/dashboard') }}">
-                    <i class="ti-home"></i>
+                    <i class="fas fa-home"></i>
                     <span> Dashboard </span>
                 </a>
             </li>
             <li>
                 <a href="{{ url('admin/bidan') }}">
-                    <i class="ti-home"></i>
+                    <i class="fas fa-user-nurse"></i>
                     <span> Data Bidan </span>
                 </a>
             </li>
             <li>
                 <a href="{{ url('admin/fasyankes') }}">
-                    <i class="ti-home"></i>
+                    <i class="fas fa-clinic-medical"></i>
                     <span> Data Fasyankes </span>
                 </a>
             </li>
-
-
         </ul>
 
     </div>

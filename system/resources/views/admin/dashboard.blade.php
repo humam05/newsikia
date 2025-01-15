@@ -19,7 +19,7 @@
                                 <h2 class="mt-2"><i class="text-primary mdi mdi-access-point-network mr-2"></i>
                                     <b>8954</b>
                                 </h2>
-                                <p class="text-muted mb-0">Lifetime total sales</p>
+                                <p class="text-muted mb-0">Total Bidan</p>
                             </div>
                         </div>
 
@@ -28,7 +28,7 @@
                                 <h2 class="mt-2"><i class="text-teal mdi mdi-airplay mr-2"></i>
                                     <b>7841</b>
                                 </h2>
-                                <p class="text-muted mb-0">Income amounts</p>
+                                <p class="text-muted mb-0">Total Fasyankes</p>
                             </div>
                         </div>
 
@@ -125,7 +125,7 @@
                                         <label for="checkbox2"></label>
                                     </div>
 
-                                    <img src="assets/images/users/avatar-2.jpg" alt="contact-img" title="contact-img"
+                                    <img src="{{url('public')}}/template/assets/images/users/avatar-2.jpg" alt="contact-img" title="contact-img"
                                         class="rounded-circle avatar-sm" />
                                 </td>
 
@@ -155,7 +155,7 @@
                                         <label for="checkbox1"></label>
                                     </div>
 
-                                    <img src="assets/images/users/avatar-1.jpg" alt="contact-img" title="contact-img"
+                                    <img src="{{url('public')}}/template/assets/images/users/avatar-1.jpg" alt="contact-img" title="contact-img"
                                         class="rounded-circle avatar-sm" />
                                 </td>
 
@@ -185,7 +185,7 @@
                                         <label for="checkbox3"></label>
                                     </div>
 
-                                    <img src="assets/images/users/avatar-3.jpg" alt="contact-img" title="contact-img"
+                                    <img src="{{url('public')}}/template/assets/images/users/avatar-3.jpg" alt="contact-img" title="contact-img"
                                         class="rounded-circle avatar-sm" />
                                 </td>
 
@@ -214,7 +214,7 @@
                                         <label for="checkbox4"></label>
                                     </div>
 
-                                    <img src="assets/images/users/avatar-4.jpg" alt="contact-img" title="contact-img"
+                                    <img src="{{url('public')}}/template/assets/images/users/avatar-4.jpg" alt="contact-img" title="contact-img"
                                         class="rounded-circle avatar-sm" />
                                 </td>
 
@@ -244,7 +244,7 @@
                                         <label for="checkbox5"></label>
                                     </div>
 
-                                    <img src="assets/images/users/avatar-5.jpg" alt="contact-img" title="contact-img"
+                                    <img src="{{url('public')}}/template/assets/images/users/avatar-5.jpg" alt="contact-img" title="contact-img"
                                         class="rounded-circle avatar-sm" />
                                 </td>
 
@@ -274,7 +274,7 @@
                                         <label for="checkbox6"></label>
                                     </div>
 
-                                    <img src="assets/images/users/avatar-6.jpg" alt="contact-img" title="contact-img"
+                                    <img src="{{url('public')}}/template/assets/images/users/avatar-6.jpg" alt="contact-img" title="contact-img"
                                         class="rounded-circle avatar-sm" />
                                 </td>
 
