@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FasyankesController;
 use App\Http\Controllers\Admin\BidanController;
+use App\Http\Controllers\Admin\BayiController;
+use App\Http\Controllers\Admin\OrtuController;
 use Illuminate\Support\Facades\Route;
 
 // Route untuk halaman welcome
@@ -12,10 +14,11 @@ Route::get('/admin/dashboard', function () {
 
 // Prefix untuk route admin
 Route::prefix('admin')->group(function () {
-    // Route untuk Dashboard
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/dashboard', 'index');
     });
+
+
 
     // Prefix untuk Fasyankes
     Route::prefix('fasyankes')->group(function () {
@@ -30,6 +33,7 @@ Route::prefix('admin')->group(function () {
         });
     });
 
+
     // Prefix untuk Bidan
     Route::prefix('bidan')->group(function () {
         Route::controller(BidanController::class)->group(function () {
@@ -42,4 +46,25 @@ Route::prefix('admin')->group(function () {
             Route::get('/delete/{bidan}', 'delete');
         });
     });
+
+    Route::prefix('bayi')->group(function () {
+        Route::controller(BayiController::class)->group(function () {
+            Route::get('/', 'index'); // Menampilkan daftar Fasyankes
+            Route::get('/create', 'create');
+            Route::post('/store', 'store');
+
+        });
+    });
+    Route::prefix('ortu')->group(function () {
+        Route::controller(OrtuController::class)->group(function () {
+            Route::get('/', 'index'); // Menampilkan daftar Fasyankes
+            Route::get('/create', 'create');
+            Route::post('/store', 'store');
+
+        });
+    });
 });
+
+
+
+

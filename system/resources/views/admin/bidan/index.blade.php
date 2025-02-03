@@ -22,8 +22,7 @@
                     <a href="{{ url('/admin/bidan/create') }}" class="btn btn-primary">
                         Tambah Data
                     </a>
-                </div>
-                <h5 class="mt-0 font-14 mb-3">Contacts</h5>
+                </div><br>
                 <div class="table-responsive">
                     <table class="table table-hover mails m-0 table table-actions-bar table-centered">
                         <thead>

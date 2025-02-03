@@ -36,6 +36,19 @@
                     <span> Data Fasyankes </span>
                 </a>
             </li>
+            <li>
+                <a href="{{ url('admin/bayi') }}">
+                    <i class="fas fa-baby"></i>
+                    <span> Data Bayi </span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('admin/ortu') }}">
+                    <i class="fas fa-user-friends"></i> 
+                    <span> Data Orang Tua </span>
+                </a>
+            </li>
+
         </ul>
 
     </div>
