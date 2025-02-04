@@ -52,6 +52,10 @@ Route::prefix('admin')->group(function () {
             Route::get('/', 'index'); // Menampilkan daftar Fasyankes
             Route::get('/create', 'create');
             Route::post('/store', 'store');
+            Route::get('/show/{bayi}', 'show');
+            Route::get('/edit/{bayi}', 'edit');
+            Route::post('/update/{bayi}', 'update');
+            Route::get('/delete/{bayi}', 'delete');
 
         });
     });
@@ -60,6 +64,10 @@ Route::prefix('admin')->group(function () {
             Route::get('/', 'index'); // Menampilkan daftar Fasyankes
             Route::get('/create', 'create');
             Route::post('/store', 'store');
+            Route::get('/show/{ortu}', 'show');
+            Route::get('/edit/{ortu}', 'edit');
+            Route::post('/update/{ortu}', 'update');
+            Route::get('/delete/{ortu}', 'delete');
 
         });
     });

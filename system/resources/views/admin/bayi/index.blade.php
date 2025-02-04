@@ -47,13 +47,12 @@
                                 <td>{{ $item->tgl_lahir_bayi }}</td>
                                 <td>{{ $item->ortu_id }}</td>
                                 <td>
-                                    <a href="{{ url('bayi/bayi/show', $item->id) }}"
+                                    <a href="{{ url('admin/bayi/show', $item->id) }}"
                                         class="btn btn-dark btn-sm">Show</a>
-                                    <a href="{{ url('bayi/bayi/edit', $item->id) }}"
+                                    <a href="{{ url('admin/bayi/edit', $item->id) }}"
                                         class="btn btn-warning btn-sm">Edit</a>
-                                    <a href="{{ url('bayi/bayi/delete', $item->id) }}"
+                                    <a href="{{ url('admin/bayi/delete', $item->id) }}"
                                         class="btn btn-danger btn-sm"
-
                                         onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
                                 </td>
                             </tr>

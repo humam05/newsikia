@@ -14,7 +14,8 @@ class BayiController extends Controller
         return view('admin.bayi.index', $data);
     }
 
-    function create(){
+    function create()
+    {
         return view('admin.bayi.create');
     }
 
@@ -28,5 +29,41 @@ class BayiController extends Controller
         $bayi->ortu_id = request('ortu_id');
         $bayi->save();
         return redirect('admin/bayi');
+    }
+
+    function show(Bayi $bayi)
+    {
+        $data['detail'] = $bayi;
+        return view('admin.bayi.show', compact('bayi'));
+    }
+
+    function edit(Bayi $bayi)
+    {
+        $data['detail'] = $bayi;
+        return view('admin.bayi.edit', $data);
+    }
+
+    function update(Bayi $bayi)
+    {
+
+
+        $bayi->ortu_id = request('ortu_id');
+        $bayi->nama_lengkap = request('nama_lengkap');
+        $bayi->jk_bayi = request('jk_bayi');
+        $bayi->tmp_lahir_bayi = request('tmp_lahir_bayi');
+        $bayi->tgl_lahir_bayi = request('tgl_lahir_bayi');
+        $update = $bayi->update();
+        if ($update) {
+            return redirect('admin/bayi');
+        } else {
+            return back()->with('error', 'Woy gagal cor !');
+        }
+    }
+    function delete(Bayi $bayi)
+    {
+
+        $bayi->delete();
+        return back();
+        return redirect()->route('bayi.index')->with('success', 'Data berhasil dihapus.');
     }
 }
