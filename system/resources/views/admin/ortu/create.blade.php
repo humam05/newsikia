@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('admin.layouts.base')
 @section('content')
 <form action="{{ url('/admin/ortu/store') }}" method="POST">
     @csrf <!-- Token keamanan Laravel -->

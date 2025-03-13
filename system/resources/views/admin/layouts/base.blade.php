@@ -27,9 +27,9 @@
 
         <!-- Topbar Start -->
 
-        @include('layouts.navbar')
+        @include('admin.layouts.navbar')
         <!-- end Topbar --> <!-- ========== Left Sidebar Start ========== -->
-        @include('layouts.sidebar')
+        @include('admin.layouts.sidebar')
         <!-- Left Sidebar End -->
 
         <!-- ============================================================== -->

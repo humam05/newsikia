@@ -44,7 +44,7 @@
             </li>
             <li>
                 <a href="{{ url('admin/ortu') }}">
-                    <i class="fas fa-user-friends"></i> 
+                    <i class="fas fa-user-friends"></i>
                     <span> Data Orang Tua </span>
                 </a>
             </li>

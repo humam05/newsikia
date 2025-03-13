@@ -33,7 +33,6 @@ Route::prefix('admin')->group(function () {
         });
     });
 
-
     // Prefix untuk Bidan
     Route::prefix('bidan')->group(function () {
         Route::controller(BidanController::class)->group(function () {

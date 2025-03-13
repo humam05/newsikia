@@ -1,11 +1,34 @@
-@extends('layouts.base')
+@extends('admin.layouts.base')
 @section('content')
-    <style>
-        .button-container {
-            display: flex;
-            justify-content: flex-end;
-        }
-    </style>
+<style>
+    .button-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    /* Mengatur lebar kolom agar tetap konsisten */
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .table th, .table td {
+        white-space: nowrap; /* Mencegah teks untuk wrap ke baris baru */
+    }
+
+    /* Mengatur lebar kolom "Action" */
+    .table th:nth-child(8), .table td:nth-child(8) {
+        width: 150px; /* Sesuaikan lebar sesuai kebutuhan */
+        min-width: 150px; /* Memastikan lebar minimum */
+        max-width: 150px; /* Memastikan lebar maksimum */
+        text-align: center; /* Pusatkan tombol aksi */
+    }
+
+    /* Mengatur tombol aksi agar tetap pada ukuran yang konsisten */
+    .btn-sm {
+        min-width: 60px; /* Sesuaikan lebar minimum tombol */
+        margin: 2px; /* Jarak antara tombol */
+    }
+</style>
     <div class="row">
         <div class="col-12">
             <div>
@@ -29,6 +52,7 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
+                                <th>ID</th>
                                 <th>Nama</th>
                                 <th>Kecamatan</th>
                                 <th>Kelurahan</th>
@@ -41,6 +65,7 @@
                             @foreach ($fasyankes as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->id }}</td>
                                     <td>{{ $item->nama }}</td>
                                     <td>{{ $item->kecamatan }}</td>
                                     <td>{{ $item->kelurahan }}</td>
