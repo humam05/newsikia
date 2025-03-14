@@ -45,8 +45,14 @@
             </li>
             <li>
                 <a href="{{ url('nakes/bayi') }}">
-                    <i class="fas fa-calendar-alt"></i>
+                    <i class="fas fa-hourglass-half"></i>
                     <span> Kalender Kehamilan </span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('nakes/posyandu') }}">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span> Jadwal Posyandu </span>
                 </a>
             </li>
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\BayiController;
 use App\Http\Controllers\Admin\OrtuController;
 use App\Http\Controllers\Nakes\DashboardnController;
 use App\Http\Controllers\Bumil\DashboardbController;
+use App\Http\Controllers\Puskesmas\DashboardpController;
 use Illuminate\Support\Facades\Route;
 
 // // Route untuk halaman welcome
@@ -90,6 +91,14 @@ Route::prefix('nakes')->group(function () {
 // PREFIX ROUTE BUMIL
 Route::prefix('bumil')->group(function () {
     Route::controller(DashboardbController::class)->group(function () {
+        Route::get('/dashboard', 'index');
+    });
+
+});
+
+// PREFIX ROUTE PUSKESMAS
+Route::prefix('puskesmas')->group(function () {
+    Route::controller(DashboardpController::class)->group(function () {
         Route::get('/dashboard', 'index');
     });
 

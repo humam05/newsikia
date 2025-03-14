@@ -9,6 +9,6 @@ class DashboardbController extends Controller
 {
     function index()
     {
-return view('bumil.dashboard');
+        return view('bumil.dashboard');
     }
 }

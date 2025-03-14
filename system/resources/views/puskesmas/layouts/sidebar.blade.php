@@ -21,7 +21,7 @@
             </li>
             <li>
                 <a href="{{ url('nakes/akun') }}">
-                    <i class="fas fa-female"></i>
+                    <i class="fas fa-calendar-alt"></i>
                     <span> Jadwal Posyandu </span>
                 </a>
             </li>
