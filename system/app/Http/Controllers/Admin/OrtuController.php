@@ -22,6 +22,7 @@ class OrtuController extends Controller
     {
         $ortu = new Ortu;
         $ortu->nama = request('nama');
+        $ortu->nik = request('nik');
         $ortu->jk_ortu = request('jk_ortu');
         $ortu->tmp_lahir_ortu = request('tmp_lahir_ortu');
         $ortu->tgl_lahir_ortu = request('tgl_lahir_ortu');
@@ -48,6 +49,7 @@ class OrtuController extends Controller
 
 
         $ortu->nama = request('nama');
+        $ortu->nik = request('nik');
         $ortu->jk_ortu = request('jk_ortu');
         $ortu->tmp_lahir_ortu = request('tmp_lahir_ortu');
         $ortu->tgl_lahir_ortu = request('tgl_lahir_ortu');

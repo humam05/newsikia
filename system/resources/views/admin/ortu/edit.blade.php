@@ -58,6 +58,12 @@
                         required>
                 </div>
                 <div class="mb-4">
+                    <label for="nik" class="form-label"><i class="fas fa-graduation-cap"></i> Nik
+                        </label>
+                    <input type="text" class="form-control" id="nik" name="nik" maxlength="16" minlength="16" value="{{ $detail->nik }}"
+                        required>
+                </div>
+                <div class="mb-4">
                     <label for="jk_ortu" class="form-label"><i class="fas fa-code-branch"></i> Jenis Kelamin</label>
                     <input type="text" class="form-control" id="jk_ortu" name="jk_ortu"
                         value="{{ $detail->jk_ortu }}" required>

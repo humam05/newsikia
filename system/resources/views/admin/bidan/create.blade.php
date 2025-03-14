@@ -10,7 +10,7 @@
 
         <div class="mb-3">
             <label for="nik" class="form-label">Nik</label>
-            <input type="text" name="nik" id="nik" class="form-control" placeholder="Masukkan Nik" required>
+            <input type="text" name="nik" id="nik" class="form-control" placeholder="Masukkan Nik" maxlength="16" minlength="16" required>
         </div>
 
         <div class="mb-3">

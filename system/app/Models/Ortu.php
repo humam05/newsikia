@@ -12,6 +12,7 @@ class Ortu extends Model
     protected $table = 'tb_ortu';
     protected $fillable = [
         'nama',
+        'nik',
         'jk_ortu',
         'tmp_lahir_ortu',
         'tgl_lahir_ortu',
@@ -21,6 +22,7 @@ class Ortu extends Model
 
     static $rules = [
         'nama' => 'required',
+        'nik' => 'required',
         'jk_ortu' => 'required',
         'tmp_lahir_ortu' => 'required',
         'tgl_lahir_ortu' => 'required',
@@ -29,6 +31,7 @@ class Ortu extends Model
     ];
     static $message = [
         'nama.required' => 'Inputan tidak boleh kosong',
+        'nik.required' => 'Inputan tidak boleh kosong',
         'jk_ortu.required' => 'Inputan tidak boleh kosong',
         'tmp_lahir_ortu.required' => 'Inputan tidak boleh kosong',
         'tgl_lahir_ortu.required' => 'Inputan tidak boleh kosong',

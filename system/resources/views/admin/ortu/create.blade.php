@@ -7,7 +7,10 @@
         <label for="nama" class="form-label">Nama Lengkap</label>
         <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukkan Nama" required>
     </div>
-
+    <div class="mb-3">
+        <label for="nik" class="form-label">Nik</label>
+        <input type="text" name="nik" id="nik" class="form-control" placeholder="Masukkan Nik" maxlength="16" minlength="16" required>
+    </div>
     <div class="mb-3">
         <label for="jk_ortu" class="form-label">Jenis Kelamin</label>
         <select name="jk_ortu" id="jk_ortu" class="form-control" required>

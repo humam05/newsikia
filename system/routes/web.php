@@ -1,24 +1,31 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FasyankesController;
 use App\Http\Controllers\Admin\BidanController;
 use App\Http\Controllers\Admin\BayiController;
 use App\Http\Controllers\Admin\OrtuController;
+use App\Http\Controllers\Nakes\DashboardnController;
+use App\Http\Controllers\Bumil\DashboardbController;
 use Illuminate\Support\Facades\Route;
 
-// Route untuk halaman welcome
-Route::get('/admin/dashboard', function () {
-    return view('welcome');
-});
+// // Route untuk halaman welcome
+// Route::get('/admin/dashboard', function () {
+//     return view('welcome');
+// });
 
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/', 'halamanLogin');
+    Route::get('login', 'halamanLogin');
+    Route::post('login', 'prosesLogin');
+    Route::post('logout', 'logout');
+});
 // Prefix untuk route admin
 Route::prefix('admin')->group(function () {
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/dashboard', 'index');
     });
-
-
 
     // Prefix untuk Fasyankes
     Route::prefix('fasyankes')->group(function () {
@@ -72,6 +79,21 @@ Route::prefix('admin')->group(function () {
     });
 });
 
+// PREFIX ROUTE NAKES
+Route::prefix('nakes')->group(function () {
+    Route::controller(DashboardnController::class)->group(function () {
+        Route::get('/dashboard', 'index');
+    });
+
+});
+
+// PREFIX ROUTE BUMIL
+Route::prefix('bumil')->group(function () {
+    Route::controller(DashboardbController::class)->group(function () {
+        Route::get('/dashboard', 'index');
+    });
+
+});
 
 
 

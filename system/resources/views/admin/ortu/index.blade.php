@@ -41,6 +41,7 @@
                             <tr>
                                 <th>No.</th>
                                 <th>Nama</th>
+                                <th>Nik</th>
                                 <th>Jenis Kelamin</th>
                                 <th>No Telpon</th>
                                 <th>Alamat</th>
@@ -52,6 +53,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->nama }}</td>
+                                    <td>{{ $item->nik }}</td>
                                     <td>{{ $item->jk_ortu }}</td>
                                     <td>{{ $item->tlp }}</td>
                                     <td class="alamat" title="{{ $item->alamat }}">{{ $item->alamat }}</td>

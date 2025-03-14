@@ -75,6 +75,10 @@
                 <div class="col-md-8">{{ $ortu->nama }}</div>
             </div>
             <div class="row detail-item">
+                <div class="col-md-4">Nik :</div>
+                <div class="col-md-8">{{ $ortu->nik }}</div>
+            </div>
+            <div class="row detail-item">
                 <div class="col-md-4">Jenis Kelamin:</div>
                 <div class="col-md-8">{{ $ortu->jk_ortu }}</div>
             </div>

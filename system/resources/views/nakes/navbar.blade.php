@@ -1,5 +1,9 @@
 <div class="navbar-custom">
     <ul class="list-unstyled topnav-menu float-right mb-0">
+
+
+
+
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button"
                 aria-haspopup="false" aria-expanded="false">
@@ -66,5 +70,20 @@
                 <i class="mdi mdi-menu"></i>
             </button>
         </li>
+
+        {{-- <li class="d-none d-sm-block">
+            <form class="app-search">
+                <div class="app-search-box">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search...">
+                        <div class="input-group-append">
+                            <button class="btn" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </li> --}}
     </ul>
 </div>
