@@ -27,9 +27,9 @@
 
         <!-- Topbar Start -->
 
-        @include('bumil.layouts.navbar')
+        @include('ibu_hamil.layouts.navbar')
         <!-- end Topbar --> <!-- ========== Left Sidebar Start ========== -->
-        @include('bumil.layouts.sidebar')
+        @include('ibu_hamil.layouts.sidebar')
         <!-- Left Sidebar End -->
 
         <!-- ============================================================== -->

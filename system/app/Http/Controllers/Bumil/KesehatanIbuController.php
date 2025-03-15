@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Bumil;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DashboardbController extends Controller
+class KesehatanIbuController extends Controller
 {
     function index()
     {
-        return view('ibu_hamil.dashboard');
+        return view('ibu_hamil.kesehatan_ibu.index');
     }
 }

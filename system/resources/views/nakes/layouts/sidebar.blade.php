@@ -1,29 +1,77 @@
 <style>
- .dropdown {
-    position: relative;
+    .left-side-menu {
+    background-color: #234c5c; /* Warna utama sidebar */
+    padding: 15px;
+    border-radius: 10px;
 }
 
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    background-color: #652e2e;
-    list-style: none;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+
+.user-box .user-info a {
+    color: #fff; /* Warna teks */
+    font-weight: bold;
 }
 
-.dropdown:hover .dropdown-menu {
+
+
+#sidebar-menu ul li a {
+    color: white;
     display: block;
-}
-
-/* Rotasi ikon panah saat dropdown aktif */
-.dropdown:hover i.fa-chevron-down {
-    transform: rotate(180deg);
+    padding: 10px 15px;
+    border-radius: 5px;
     transition: 0.3s;
 }
 
+#sidebar-menu ul li a:hover {
+    background: rgba(255, 255, 255, 0.5);
+    color: #003455; /* Warna saat hover */
+}
 
+.dropdown-menu {
+    background-color: #337682; /* Warna dropdown */
+    border: none;
+    border-radius: 5px;
+    color: #5eb2cc;
+}
+
+.dropdown-item {
+    color: black;
+}
+
+.dropdown-item:hover {
+    color: white;
+}
+
+.dropdown-menu {
+    background-color: #337682; /* Warna dropdown */
+    border: none;
+    border-radius: 5px;
+    color: #5eb2cc;
+    padding: 10px 0;
+}
+
+.dropdown-item {
+    color: black;
+    padding: 10px 20px;
+    display: block;
+}
+
+.dropdown-item:hover {
+    background-color: #2b5d6a;
+    color: white;
+}
+
+/* Tambahkan margin antar item */
+.dropdown-menu a {
+    margin-bottom: 5px; /* Jarak antar submenu */
+}
+
+/* Untuk pemisah antar submenu */
+.dropdown-divider {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin: 5px 0;
+}
 
 </style>
 <div class="left-side-menu">
@@ -46,7 +94,7 @@
             <li class="menu-title">Navigation</li>
 
             <li>
-                <a href="{{ url('nakes/dashboardn') }}">
+                <a href="{{ url('nakes/dashboard') }}">
                     <i class="fas fa-home"></i>
                     <span> Dashboard </span>
                 </a>
@@ -66,13 +114,15 @@
                     <i class="fas fa-chevron-down transition ml-2"></i> <!-- Ikon panah -->
                 </a>
                 <div class="dropdown-menu border-0 shadow-sm rounded" aria-labelledby="ibuHamilDropdown">
-                    <a class="dropdown-item" href="{{ url('nakes/') }}">
+                    <a class="dropdown-item" href="{{ url('nakes/ibu_hamil') }}">
                         <i class="fas fa-female mr-2"></i> Data Ibu Hamil
                     </a>
-                    <a class="dropdown-item" href="{{ url('nakes/hpl') }}">
+                    <div class="dropdown-divider"></div> <!-- Pemisah -->
+                    <a class="dropdown-item" href="{{ url('nakes/ibu_hamil/hpl') }}">
                         <i class="fas fa-calendar-alt mr-2"></i> HPL
                     </a>
                 </div>
+
 
             </li>
             <li class="nav-item dropdown">
@@ -85,7 +135,8 @@
                     <a class="dropdown-item" href="{{ url('nakes/bayi') }}">
                         <i class="fas fa-baby mr-2"></i> Data Bayi Balita
                     </a>
-                    <a class="dropdown-item" href="{{ url('nakes/kms') }}">
+                    <div class="dropdown-divider"></div> <!-- Pemisah -->
+                    <a class="dropdown-item" href="{{ url('nakes/bayi/kms') }}">
                         <i class="fas fa-chart-line mr-2"></i> KMS
                     </a>
                 </div>

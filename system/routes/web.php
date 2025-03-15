@@ -7,8 +7,17 @@ use App\Http\Controllers\Admin\BidanController;
 use App\Http\Controllers\Admin\BayiController;
 use App\Http\Controllers\Admin\OrtuController;
 use App\Http\Controllers\Nakes\DashboardnController;
+use App\Http\Controllers\Nakes\AkunController;
+use App\Http\Controllers\Nakes\BumilController;
+use App\Http\Controllers\Nakes\BayinController;
 use App\Http\Controllers\Bumil\DashboardbController;
+use App\Http\Controllers\Bumil\DataDiriController;
+use App\Http\Controllers\Bumil\KesehatanIbuController;
+use App\Http\Controllers\Bumil\KesehatanBayiController;
+use App\Http\Controllers\Bumil\KalenderKehamilanController;
+use App\Http\Controllers\Bumil\JadwalPosyanduController;
 use App\Http\Controllers\Puskesmas\DashboardpController;
+use App\Http\Controllers\Puskesmas\JadwalPosyanduPuskesmasController;
 use Illuminate\Support\Facades\Route;
 
 // // Route untuk halaman welcome
@@ -85,13 +94,63 @@ Route::prefix('nakes')->group(function () {
     Route::controller(DashboardnController::class)->group(function () {
         Route::get('/dashboard', 'index');
     });
+    Route::prefix('akun')->group(function () {
+        Route::controller(AkunController::class)->group(function () {
+            Route::get('/', 'index');
+
+        });
+    });
+    Route::prefix('ibu_hamil')->group(function () {
+        Route::controller(BumilController::class)->group(function () {
+            Route::get('/', 'index');
+            Route::get('/hpl', 'hpl');
+
+        });
+    });
+    Route::prefix('bayi')->group(function () {
+        Route::controller(BayinController::class)->group(function () {
+            Route::get('/', 'index');
+            Route::get('kms', 'kms');
+
+        });
+    });
 
 });
 
 // PREFIX ROUTE BUMIL
-Route::prefix('bumil')->group(function () {
+Route::prefix('ibu_hamil')->group(function () {
     Route::controller(DashboardbController::class)->group(function () {
         Route::get('/dashboard', 'index');
+    });
+    Route::prefix('data_diri')->group(function () {
+        Route::controller(DataDiriController::class)->group(function () {
+            Route::get('/', 'index');
+
+        });
+    });
+    Route::prefix('kesehatan_ibu')->group(function () {
+        Route::controller(KesehatanIbuController::class)->group(function () {
+            Route::get('/', 'index');
+
+        });
+    });
+    Route::prefix('kesehatan_bayi')->group(function () {
+        Route::controller(KesehatanBayiController::class)->group(function () {
+            Route::get('/', 'index');
+
+        });
+    });
+    Route::prefix('kalender_kehamilan')->group(function () {
+        Route::controller(KalenderKehamilanController::class)->group(function () {
+            Route::get('/', 'index');
+
+        });
+    });
+    Route::prefix('jadwal_posyandu')->group(function () {
+        Route::controller(JadwalPosyanduController::class)->group(function () {
+            Route::get('/', 'index');
+
+        });
     });
 
 });
@@ -100,6 +159,12 @@ Route::prefix('bumil')->group(function () {
 Route::prefix('puskesmas')->group(function () {
     Route::controller(DashboardpController::class)->group(function () {
         Route::get('/dashboard', 'index');
+    });
+    Route::prefix('jadwal_posyandu_puskesmas')->group(function () {
+        Route::controller(JadwalPosyanduPuskesmasController::class)->group(function () {
+            Route::get('/', 'index');
+
+        });
     });
 
 });

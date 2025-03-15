@@ -1,3 +1,3 @@
-@extends('bumil.layouts.base')
+@extends('nakes.layouts.base')
 @section('content')
 @endsection
