@@ -18,6 +18,7 @@ use App\Http\Controllers\Bumil\KalenderKehamilanController;
 use App\Http\Controllers\Bumil\JadwalPosyanduController;
 use App\Http\Controllers\Puskesmas\DashboardpController;
 use App\Http\Controllers\Puskesmas\JadwalPosyanduPuskesmasController;
+use App\Http\Controllers\Dinkes\DashboarddController;
 use Illuminate\Support\Facades\Route;
 
 // // Route untuk halaman welcome
@@ -167,6 +168,13 @@ Route::prefix('puskesmas')->group(function () {
         });
     });
 
+});
+
+// PREFIX ROUTE DINKES
+Route::prefix('dinkes')->group(function () {
+    Route::controller(DashboarddController::class)->group(function () {
+        Route::get('/dashboard', 'index');
+    });
 });
 
 
