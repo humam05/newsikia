@@ -16,7 +16,7 @@
                         <div class="col-md-12">
                             <div class="input-group mb-2">
                                 <input name="cari" type="search" class="form-control" id="inlineFormInputGroup"
-                                    placeholder="Cari Pasien Berdasarkan NO.KK / NIK" value="{{ request('cari') }}">
+                                    placeholder="Cari Pasien Berdasarkan NO.KK / NIK" maxlength="16" minlength="16" value="{{ request('cari') }}">
                                 <div class="input-group-prepend ml-1">
                                     <button type="submit" class="btn btn-info btn-icon-split">
                                         <span class="icon text-white">
@@ -52,7 +52,7 @@
                                     <i class="fas fa-users text-danger mr-2"></i>
                                     <b>325</b>
                                 </h2>
-                                <p class="text-muted mb-0">Total Orang Tua</p>
+                                <p class="text-muted mb-0">Total Ibu Hamil</p>
                             </div>
                         </div>
                     </div>
@@ -85,35 +85,35 @@
                                 <td>01/11/2003</td>
                             </tr>
                             <tr>
-                                <td>2</td> 
+                                <td>2</td>
                                 <td>Chadengle</td>
                                 <td><a href="#" class="text-muted">chadengle@dummy.com</a></td>
                                 <td><b><a href="" class="text-dark"><b>568</b></a></b></td>
                                 <td>01/11/2003</td>
                             </tr>
                             <tr>
-                                <td>3</td> 
+                                <td>3</td>
                                 <td>Stillnotdavid</td>
                                 <td><a href="#" class="text-muted">stillnotdavid@dummy.com</a></td>
                                 <td><b><a href="" class="text-dark"><b>201</b></a></b></td>
                                 <td>12/11/2003</td>
                             </tr>
                             <tr>
-                                <td>4</td> 
+                                <td>4</td>
                                 <td>Kurafire</td>
                                 <td><a href="#" class="text-muted">kurafire@dummy.com</a></td>
                                 <td><b><a href="" class="text-dark"><b>56</b></a></b></td>
                                 <td>14/11/2003</td>
                             </tr>
                             <tr>
-                                <td>5</td> 
+                                <td>5</td>
                                 <td>Shahedk</td>
                                 <td><a href="#" class="text-muted">shahedk@dummy.com</a></td>
                                 <td><b><a href="" class="text-dark"><b>356</b></a></b></td>
                                 <td>20/11/2003</td>
                             </tr>
                             <tr>
-                                <td>6</td> 
+                                <td>6</td>
                                 <td>Adhamdannaway</td>
                                 <td><a href="#" class="text-muted">adhamdannaway@dummy.com</a></td>
                                 <td><b><a href="" class="text-dark"><b>956</b></a></b></td>

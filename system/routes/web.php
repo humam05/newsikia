@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\FasyankesController;
 use App\Http\Controllers\Admin\BidanController;
 use App\Http\Controllers\Admin\BayiController;
 use App\Http\Controllers\Admin\OrtuController;
+use App\Http\Controllers\Admin\AdminAkunController;
+use App\Http\Controllers\Admin\AdminPosyanduController;
 use App\Http\Controllers\Nakes\DashboardnController;
 use App\Http\Controllers\Nakes\AkunController;
 use App\Http\Controllers\Nakes\BumilController;
@@ -36,6 +38,7 @@ Route::controller(AuthController::class)->group(function () {
 Route::prefix('admin')->group(function () {
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/dashboard', 'index');
+
     });
 
     // Prefix untuk Fasyankes
@@ -85,6 +88,21 @@ Route::prefix('admin')->group(function () {
             Route::get('/edit/{ortu}', 'edit');
             Route::post('/update/{ortu}', 'update');
             Route::get('/delete/{ortu}', 'delete');
+
+        });
+    });
+    Route::prefix('akun')->group(function () {
+        Route::controller(AdminAkunController::class)->group(function () {
+            Route::get('/dinas', 'dinasIndex');
+            Route::get('/nakes', 'nakesIndex');
+            Route::get('/puskesmas', 'puskesmasIndex');
+            Route::get('/ibu_hamil', 'bumilIndex');
+
+        });
+    });
+    Route::prefix('posyandu')->group(function () {
+        Route::controller(AdminPosyanduController::class)->group(function () {
+            Route::get('/', 'index');
 
         });
     });

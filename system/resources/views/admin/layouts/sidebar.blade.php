@@ -122,6 +122,36 @@
                     <span> Data Orang Tua </span>
                 </a>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="akunDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-baby"></i>
+                    <span> Akun </span>
+                    <i class="fas fa-chevron-down ml-1"></i> <!-- Panah dropdown -->
+                </a>
+                <div class="dropdown-menu border-0 shadow-sm rounded" aria-labelledby="akunDropdown">
+                    <a class="dropdown-item" href="{{ url('admin/akun/dinas') }}">
+                        <i class="fas fa-baby mr-2"></i> Dinas
+                    </a>
+                    <div class="dropdown-divider"></div> <!-- Pemisah -->
+                    <a class="dropdown-item" href="{{ url('admin/akun/nakes') }}">
+                        <i class="fas fa-chart-line mr-2"></i> Nakes
+                    </a>
+                    <div class="dropdown-divider"></div> <!-- Pemisah -->
+                    <a class="dropdown-item" href="{{ url('admin/akun/puskesmas') }}">
+                        <i class="fas fa-chart-line mr-2"></i> Puskesmas
+                    </a>
+                    <div class="dropdown-divider"></div> <!-- Pemisah -->
+                    <a class="dropdown-item" href="{{ url('admin/akun/ibu_hamil') }}">
+                        <i class="fas fa-chart-line mr-2"></i> Ibu Hamil
+                    </a>
+                </div>
+            </li>
+            <li>
+                <a href="{{ url('admin/posyandu') }}">
+                    <i class="fas fa-user-friends"></i>
+                    <span> Posyandu </span>
+                </a>
+            </li>
 
         </ul>
 

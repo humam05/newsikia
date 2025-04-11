@@ -108,7 +108,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle d-flex align-items-center justify-content-between" href="#" id="ibuHamilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div>
-                        <i class="fas fa-heartbeat"></i>
+                        <i class="fas fa-heart"></i>
                         <span class="ml-2"> Ibu Hamil </span>
                     </div>
                     <i class="fas fa-chevron-down transition ml-2"></i> <!-- Ikon panah -->
