@@ -11,4 +11,9 @@ class AkunController extends Controller
     {
         return view('nakes.akun.index');
     }
+
+    function create()
+    {
+        return view('nakes.akun.create');
+    }
 }

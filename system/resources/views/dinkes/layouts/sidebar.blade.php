@@ -80,32 +80,32 @@
         <ul class="metismenu" id="side-menu">
             <li class="menu-title">Navigation</li>
             <li>
-                <a href="{{ url('admin/dashboard') }}">
+                <a href="{{ url('dinkes/dashboard') }}">
                     <i class="fas fa-home"></i>
                     <span> Dashboard </span>
                 </a>
             </li>
             <li>
-                <a href="{{ url('admin/bidan') }}">
+                <a href="{{ url('dinkes/bidan') }}">
                     <i class="fas fa-user-nurse"></i>
                     <span> Bidan </span>
                 </a>
             </li>
             <li>
-                <a href="{{ url('admin/fasyankes') }}">
+                <a href="{{ url('dinkes/fasyankes') }}">
                     <i class="fas fa-clinic-medical"></i>
                     <span> Fasyankes </span>
                 </a>
             </li>
             <li>
-                <a href="{{ url('admin/bayi') }}">
+                <a href="{{ url('dinkes/bayi') }}">
                     <i class="fas fa-baby"></i>
                     <span> Bayi </span>
                 </a>
             </li>
             <li>
-                <a href="{{ url('admin/ortu') }}">
-                    <i class="fas fa-user-friends"></i>
+                <a href="{{ url('dinkes/ibu_hamil') }}">
+                    <i class="fas fa-heart"></i>
                     <span> Ibu Hamil </span>
                 </a>
             </li>

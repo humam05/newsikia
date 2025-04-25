@@ -23,4 +23,24 @@ class AdminAkunController extends Controller
     {
         return view('admin.akun.ibu_hamil.index');
     }
+
+    function dinasCreate()
+    {
+        return view('admin.akun.dinas.create');
+    }
+
+    function nakesCreate()
+    {
+        return view('admin.akun.nakes.create');
+    }
+
+    function puskesmasCreate()
+    {
+        return view('admin.akun.puskesmas.create');
+    }
+
+    function bumilCreate()
+    {
+        return view('admin.akun.ibu_hamil.create');
+    }
 }

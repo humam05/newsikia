@@ -11,4 +11,9 @@ class AdminPosyanduController extends Controller
     {
         return view('admin.posyandu.index');
     }
+
+    function create()
+    {
+        return view('admin.posyandu.create');
+    }
 }
