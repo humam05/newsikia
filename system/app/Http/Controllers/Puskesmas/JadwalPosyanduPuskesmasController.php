@@ -12,7 +12,6 @@ class JadwalPosyanduPuskesmasController extends Controller
         return view('puskesmas.jadwal_posyandu_puskesmas.index');
     }
 
-
     function create()
     {
         return view('puskesmas.jadwal_posyandu_puskesmas.create');

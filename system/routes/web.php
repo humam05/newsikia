@@ -113,6 +113,7 @@ Route::prefix('admin')->group(function () {
         Route::controller(AdminPosyanduController::class)->group(function () {
             Route::get('/', 'index');
             Route::get('/create', 'create');
+            Route::post('/store', 'store');
 
         });
     });
