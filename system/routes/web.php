@@ -114,6 +114,9 @@ Route::prefix('admin')->group(function () {
             Route::get('/', 'index');
             Route::get('/create', 'create');
             Route::post('/store', 'store');
+            Route::get('/edit/{posyandu}', 'edit');
+            Route::put('/update/{posyandu}', 'update');
+            Route::get('/delete/{posyandu}', 'delete');
 
         });
     });
@@ -195,6 +198,10 @@ Route::prefix('puskesmas')->group(function () {
         Route::controller(JadwalPosyanduPuskesmasController::class)->group(function () {
             Route::get('/', 'index');
             Route::get('/create', 'create');
+            Route::post('/store', 'store');
+            Route::get('/edit/{posyandu}', 'edit');
+            Route::put('/update/{posyandu}', 'update');
+            Route::get('/delete/{posyandu}', 'delete');
         });
     });
 

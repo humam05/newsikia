@@ -16,13 +16,13 @@
             border-radius: 8px;
             overflow: hidden;
             background-color: #fff;
-            box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card-item:hover {
             transform: translateY(-4px);
-            box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
         }
 
         .card-image {
@@ -83,23 +83,25 @@
     <div class="card-container">
         @foreach ($posyandu as $item)
             <div class="card-item">
-                @if($item->foto)
-                    <img src="{{ asset('storage/posyandu/' . $item->foto) }}" alt="Foto Posyandu" class="card-image">
+                @if ($item->foto)
+                    <img src="{{ asset('system/storage/app/public/posyandu/' . $item->foto) }}" alt="Foto Posyandu" class="card-image">
                 @else
                     <img src="https://via.placeholder.com/300x150?text=No+Image" alt="No Image" class="card-image">
                 @endif
+
                 <div class="card-body">
                     <div>
                         <div class="card-title">{{ $item->nama_posyandu }}</div>
-                        <div class="card-text"><strong>Tanggal:</strong> {{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</div>
+                        <div class="card-text"><strong>Tanggal:</strong>
+                            {{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</div>
                         <div class="card-text"><strong>Waktu:</strong> {{ $item->waktu }}</div>
                         <div class="card-text"><strong>Lokasi:</strong> {{ $item->lokasi }}</div>
                         <div class="card-text"><strong>Fasyankes:</strong> {{ $item->nama_fasyankes }}</div>
                     </div>
                     <div class="card-actions">
-                        <a href="{{ url('admin/posyandu/show', $item->id) }}" class="btn btn-dark btn-sm">Show</a>
                         <a href="{{ url('admin/posyandu/edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="{{ url('admin/posyandu/delete', $item->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
+                        <a href="{{ url('admin/posyandu/delete', $item->id) }}" class="btn btn-danger btn-sm"
+                            onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
                     </div>
                 </div>
             </div>
