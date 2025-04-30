@@ -13,7 +13,7 @@ use App\Http\Controllers\Nakes\AkunController;
 use App\Http\Controllers\Nakes\BumilController;
 use App\Http\Controllers\Nakes\BayinController;
 use App\Http\Controllers\Bumil\DashboardbController;
-use App\Http\Controllers\Bumil\DataDiriController;
+use App\Http\Controllers\Bumil\IdentitasController;
 use App\Http\Controllers\Bumil\KesehatanIbuController;
 use App\Http\Controllers\Bumil\KesehatanBayiController;
 use App\Http\Controllers\Bumil\KalenderKehamilanController;
@@ -156,9 +156,11 @@ Route::prefix('ibu_hamil')->group(function () {
     Route::controller(DashboardbController::class)->group(function () {
         Route::get('/dashboard', 'index');
     });
-    Route::prefix('data_diri')->group(function () {
-        Route::controller(DataDiriController::class)->group(function () {
+    Route::prefix('identitas')->group(function () {
+        Route::controller(IdentitasController::class)->group(function () {
             Route::get('/', 'index');
+            Route::get('/create', 'create');
+            Route::post('/store', 'store');
 
         });
     });

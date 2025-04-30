@@ -76,7 +76,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ url('ibu_hamil/data_diri') }}">
+                <a href="{{ url('ibu_hamil/identitas') }}">
                     <i class="fas fa-id-card"></i>
                     <span> Data Diri </span>
                 </a>

@@ -84,7 +84,8 @@
         @foreach ($posyandu as $item)
             <div class="card-item">
                 @if ($item->foto)
-                    <img src="{{ asset('system/storage/app/public/posyandu/' . $item->foto) }}" alt="Foto Posyandu" class="card-image">
+                    <img src="{{ asset('system/storage/app/public/posyandu/' . $item->foto) }}" alt="Foto Posyandu"
+                        class="card-image">
                 @else
                     <img src="https://via.placeholder.com/300x150?text=No+Image" alt="No Image" class="card-image">
                 @endif

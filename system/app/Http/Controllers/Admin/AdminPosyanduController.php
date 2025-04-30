@@ -43,7 +43,7 @@ class AdminPosyanduController extends Controller
         if ($request->hasFile('foto')) {
             // Cek apakah file berhasil diupload
             if ($request->foto->isValid()) {
-                $fotoPath = $request->foto->store('posyandu', 'public'); // Menyimpan foto ke folder 'posyandu'
+                $fotoPath = $request->foto->store('posyantdu', 'public'); // Menyimpan foto ke folder 'posyandu'
                 $posyandu->foto = basename($fotoPath); // Simpan nama file foto ke database
             } else {
                 // Jika upload gagal, berikan pesan error
