@@ -23,9 +23,11 @@
     color: #003455; /* Warna saat hover */
 }
 
-
-
-
+#sidebar-menu ul li.active > a {
+    background-color: #f6f6f6;
+    color: #003455;
+    font-weight: bold;
+}
 .dropdown-item {
     color: black;
     padding: 10px 20px;
@@ -69,42 +71,43 @@
 
             <li class="menu-title">Navigation</li>
 
-            <li>
+            <li class="{{ Request::is('ibu_hamil/dashboard*') ? 'active' : '' }}">
                 <a href="{{ url('ibu_hamil/dashboard') }}">
                     <i class="fas fa-home"></i>
                     <span> Dashboard </span>
                 </a>
             </li>
-            <li>
+            <li class="{{ Request::is('ibu_hamil/identitas*') ? 'active' : '' }}">
                 <a href="{{ url('ibu_hamil/identitas') }}">
                     <i class="fas fa-id-card"></i>
                     <span> Data Diri </span>
                 </a>
             </li>
-            <li>
+            <li class="{{ Request::is('ibu_hamil/kesehatan_ibu*') ? 'active' : '' }}">
                 <a href="{{ url('ibu_hamil/kesehatan_ibu') }}">
                     <i class="fas fa-hand-holding-heart"></i>
                     <span> Kesehatan Ibu </span>
                 </a>
             </li>
-            <li>
+            <li class="{{ Request::is('ibu_hamil/kesehatan_bayi*') ? 'active' : '' }}">
                 <a href="{{ url('ibu_hamil/kesehatan_bayi') }}">
                     <i class="fas fa-baby"></i>
                     <span> Kesehatan Bayi </span>
                 </a>
             </li>
-            <li>
+            <li class="{{ Request::is('ibu_hamil/kalender_kehamilan*') ? 'active' : '' }}">
                 <a href="{{ url('ibu_hamil/kalender_kehamilan') }}">
                     <i class="fas fa-hourglass-half"></i>
                     <span> Kalender Kehamilan </span>
                 </a>
             </li>
-            <li>
+            <li class="{{ Request::is('ibu_hamil/jadwal_posyandu*') ? 'active' : '' }}">
                 <a href="{{ url('ibu_hamil/jadwal_posyandu') }}">
                     <i class="fas fa-calendar-alt"></i>
                     <span> Jadwal Posyandu </span>
                 </a>
             </li>
+
 
         </ul>
 

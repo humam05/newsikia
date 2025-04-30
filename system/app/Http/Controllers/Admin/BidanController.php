@@ -57,7 +57,7 @@ class BidanController extends Controller
         if ($update) {
             return redirect('admin/bidan');
         } else {
-            return back()->with('error', 'Woy gagal cor !');
+            return back()->with('error', 'gagal !');
         }
     }
 

@@ -161,6 +161,10 @@ Route::prefix('ibu_hamil')->group(function () {
             Route::get('/', 'index');
             Route::get('/create', 'create');
             Route::post('/store', 'store');
+            Route::get('/show/{identitas}', 'show');
+            Route::get('/edit/{identitas}', 'edit');
+            Route::post('/update/{identitas}', 'update');
+            Route::get('/delete/{identitas}', 'delete');
 
         });
     });

@@ -1,5 +1,4 @@
 @extends('ibu_hamil.layouts.base')
-
 @section('content')
     <style>
         body {
@@ -92,7 +91,7 @@
             }
         }
     </style>
-        <form action="{{ url('/ibu_hamil/data_diri/store') }}" method="POST">
+        <form action="{{ url('/ibu_hamil/identitas/store') }}" method="POST">
             @csrf <!-- Token keamanan Laravel -->
 
             <h2>Identitas Ibu</h2>
@@ -103,7 +102,7 @@
                 </div>
                 <div class="form-col">
                     <label>NIK</label>
-                    <input type="text" name="ibu_nik">
+                    <input type="text" name="ibu_nik" maxlength="16" minlength="16" required>
                 </div>
             </div>
 
@@ -180,7 +179,7 @@
                 </div>
                 <div class="form-col">
                     <label>NIK</label>
-                    <input type="text" name="suami_nik">
+                    <input type="text" name="suami_nik" maxlength="16" minlength="16" required>
                 </div>
             </div>
 
@@ -257,7 +256,7 @@
                 </div>
                 <div class="form-col">
                     <label>NIK</label>
-                    <input type="text" name="anak_nik">
+                    <input type="text" name="anak_nik" maxlength="16" minlength="16" required>
                 </div>
             </div>
 
