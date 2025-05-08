@@ -85,21 +85,38 @@
             <li class="{{ Request::is('admin/bidan*') ? 'active' : '' }}">
                 <a href="{{ url('admin/bidan') }}">
                     <i class="fas fa-user-nurse"></i>
-                    <span> Data Bidan </span>
+                    <span> Nakes </span>
                 </a>
             </li>
 
             <li class="{{ Request::is('admin/fasyankes*') ? 'active' : '' }}">
                 <a href="{{ url('admin/fasyankes') }}">
                     <i class="fas fa-clinic-medical"></i>
-                    <span> Data Fasyankes </span>
+                    <span> Fasyankes </span>
                 </a>
             </li>
+            <li class="nav-item dropdown {{ Request::is('admin/ibu_hamil/*') ? 'active' : '' }}">
+                <a class="nav-link dropdown-toggle" href="#" id="akunDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-baby"></i>
+                    <span> Ibu Hamil </span>
+                    <i class="fas fa-chevron-down ml-1"></i>
+                </a>
+                <div class="dropdown-menu border-0 shadow-sm rounded" aria-labelledby="akunDropdown">
+                    <a class="dropdown-item {{ Request::is('admin/ibu_hamil/identitas') ? 'active' : '' }}" href="{{ url('admin/ibu_hamil/identitas') }}">
+                        <i class="fas fa-baby mr-2"></i> Identitas
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item {{ Request::is('admin/ibu_hamil/hpl') ? 'active' : '' }}" href="{{ url('admin/ibu_hamil/hpl') }}">
+                        <i class="fas fa-chart-line mr-2"></i> HPL
+                    </a>
+                </div>
+            </li>
+
 
             <li class="{{ Request::is('admin/bayi*') ? 'active' : '' }}">
                 <a href="{{ url('admin/bayi') }}">
                     <i class="fas fa-baby"></i>
-                    <span> Data Bayi </span>
+                    <span> Bayi </span>
                 </a>
             </li>
 

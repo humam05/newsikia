@@ -73,6 +73,12 @@
     margin: 5px 0;
 }
 
+#sidebar-menu ul li.active > a {
+        background-color: #ffffff;
+        color: #003455;
+        font-weight: bold;
+    }
+
 </style>
 <div class="left-side-menu">
     <div class="user-box">
@@ -93,13 +99,13 @@
 
             <li class="menu-title">Navigation</li>
 
-            <li>
+            <li  class="{{ Request::is('nakes/dashboard*') ? 'active' : '' }}">
                 <a href="{{ url('nakes/dashboard') }}">
                     <i class="fas fa-home"></i>
                     <span> Dashboard </span>
                 </a>
             </li>
-            <li>
+            <li  class="{{ Request::is('nakes/akun*') ? 'active' : '' }}">
                 <a href="{{ url('nakes/akun') }}">
                     <i class="fas fa-female"></i>
                     <span> Akun Ibu Hamil </span>
@@ -114,7 +120,7 @@
                     <i class="fas fa-chevron-down transition ml-2"></i> <!-- Ikon panah -->
                 </a>
                 <div class="dropdown-menu border-0 shadow-sm rounded" aria-labelledby="ibuHamilDropdown">
-                    <a class="dropdown-item" href="{{ url('nakes/ibu_hamil') }}">
+                    <a class="dropdown-item" href="{{ url('nakes/ibu_hamil') }}" >
                         <i class="fas fa-female mr-2"></i> Data Ibu Hamil
                     </a>
                     <div class="dropdown-divider"></div> <!-- Pemisah -->
@@ -122,10 +128,8 @@
                         <i class="fas fa-calendar-alt mr-2"></i> HPL
                     </a>
                 </div>
-
-
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown"  class="{{ Request::is('nakes/dashboard*') ? 'active' : '' }}">
                 <a class="nav-link dropdown-toggle" href="#" id="bayiBalitaDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-baby"></i>
                     <span> Bayi Balita </span>

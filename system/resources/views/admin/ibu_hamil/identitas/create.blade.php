@@ -1,4 +1,4 @@
-@extends('ibu_hamil.layouts.base')
+@extends('admin.layouts.base')
 @section('content')
     <style>
         body {
@@ -6,7 +6,6 @@
             background-color: #f7f9fb;
             color: #333;
         }
-
         form {
             background: #ffffff;
             padding: 25px;
@@ -17,7 +16,6 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
             font-size: 14px;
         }
-
         h2,
         h3 {
             margin-bottom: 15px;
@@ -26,13 +24,11 @@
             border-bottom: 2px solid #e0e0e0;
             padding-bottom: 5px;
         }
-
         .form-row {
             display: flex;
             gap: 20px;
             margin-bottom: 15px;
         }
-
         .form-col {
             flex: 1;
         }
@@ -92,12 +88,10 @@
             }
         }
     </style>
-        <form action="{{ url('/ibu_hamil/identitas/store') }}" method="POST">
+        <form action="{{ url('/admin/ibu_hamil/identitas/store') }}" method="POST">
+
             @csrf <!-- Token keamanan Laravel -->
-
             <h2>Identitas Ibu</h2>
-
-
             <div class="form-row">
                 <div class="form-col">
                     <label>Nama</label>
@@ -348,6 +342,5 @@
 
 
         <button type="submit">Simpan Data</button>
-
     </form>
 @endsection

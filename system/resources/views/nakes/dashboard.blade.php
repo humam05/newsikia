@@ -15,7 +15,7 @@
                     <form action="{{ url('nakes/dashboard') }}" method="GET" class="form-horizontal form-label-left mb-4">
                         <div class="col-md-12">
                             <div class="input-group mb-2">
-                                <input name="cari" type="search" class="form-control" id="inlineFormInputGroup"
+                                <input name="cari" type="search" value="{{ request('cari')}}" class="form-control" id="inlineFormInputGroup"
                                     placeholder="Cari Pasien Berdasarkan NO.KK / NIK" maxlength="16" minlength="16" value="{{ request('cari') }}">
                                 <div class="input-group-prepend ml-1">
                                     <button type="submit" class="btn btn-info btn-icon-split">

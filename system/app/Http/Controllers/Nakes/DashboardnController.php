@@ -9,16 +9,22 @@ use App\Models\Ortu; // Pastikan model Ortu sudah digunakan
 class DashboardnController extends Controller
 {
     function index(Request $request)
-    {
-        $query = Ortu::query();
+{
+    $query = Ortu::query();
 
-        // Jika ada input pencarian
-        if ($request->has('cari')) {
-            $query->where('nik', 'like', "%{$request->cari}%")
-                  ->orWhere('no_kk', 'like', "%{$request->cari}%");
-        }
+    // Jika ada input pencarian
+    if ($request->filled('cari')) {
+        $search = $request->cari;
 
-        $data['ortu'] = $query->get();
-        return view('nakes.dashboard', $data);
+        $query->where(function($q) use ($search) {
+            $q->where('nik', 'like', "%{$search}%")
+              ->orWhere('no_kk', 'like', "%{$search}%");
+        });
     }
+
+    $data['ortu'] = $query->get();
+
+    return view('nakes.dashboard', $data);
+}
+
 }

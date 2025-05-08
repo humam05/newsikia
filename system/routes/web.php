@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\BayiController;
 use App\Http\Controllers\Admin\OrtuController;
 use App\Http\Controllers\Admin\AdminAkunController;
 use App\Http\Controllers\Admin\AdminPosyanduController;
+use App\Http\Controllers\Admin\AdminIbuHamilController;
 use App\Http\Controllers\Nakes\DashboardnController;
 use App\Http\Controllers\Nakes\AkunController;
 use App\Http\Controllers\Nakes\BumilController;
@@ -24,7 +25,6 @@ use App\Http\Controllers\Dinkes\DashboarddController;
 use App\Http\Controllers\Dinkes\BidanDinkesController;
 use App\Http\Controllers\Dinkes\FasyankesDinkesController;
 use App\Http\Controllers\Dinkes\BayiDinkesController;
-use App\Http\Controllers\Dinkes\IbuHamilController;
 use App\Http\Controllers\Dinkes\IbuHamilDinkesController;
 use Illuminate\Support\Facades\Route;
 
@@ -69,6 +69,19 @@ Route::prefix('admin')->group(function () {
             Route::get('/edit/{bidan}', 'edit');
             Route::post('/update/{bidan}', 'update');
             Route::get('/delete/{bidan}', 'delete');
+        });
+    });
+    Route::prefix('ibu_hamil')->group(function () {
+        Route::controller(AdminIbuHamilController::class)->group(function () {
+            Route::get('/identitas', 'identitasIndex');
+            Route::get('/identitas/create', 'identitasCreate');
+            Route::post('/identitas/store', 'identitasStore');
+            // Route::get('/create', 'create');
+            // Route::post('/store', 'store');
+            // Route::get('/show/{bidan}', 'show');
+            // Route::get('/edit/{bidan}', 'edit');
+            // Route::post('/update/{bidan}', 'update');
+            // Route::get('/delete/{bidan}', 'delete');
         });
     });
 

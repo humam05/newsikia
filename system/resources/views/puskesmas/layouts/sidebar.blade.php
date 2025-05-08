@@ -73,6 +73,12 @@
     margin: 5px 0;
 }
 
+#sidebar-menu ul li.active > a {
+        background-color: #ffffff;
+        color: #003455;
+        font-weight: bold;
+    }
+
 </style>
 <div class="left-side-menu">
     <div class="user-box">
@@ -88,19 +94,20 @@
     <!--- Sidemenu -->
     <div id="sidebar-menu">
         <ul class="metismenu" id="side-menu">
-            <li class="menu-title">Navigation</li>
-            <li>
+            <li class="{{ Request::is('puskesmas/dashboard*') ? 'active' : '' }}">
                 <a href="{{ url('puskesmas/dashboard') }}">
                     <i class="fas fa-home"></i>
                     <span> Dashboard </span>
                 </a>
             </li>
-            <li>
+
+            <li class="{{ Request::is('puskesmas/jadwal_posyandu_puskesmas*') ? 'active' : '' }}">
                 <a href="{{ url('puskesmas/jadwal_posyandu_puskesmas') }}">
                     <i class="fas fa-calendar-alt"></i>
                     <span> Jadwal Posyandu </span>
                 </a>
             </li>
+
         </ul>
     </div>
     <!-- End Sidebar -->
