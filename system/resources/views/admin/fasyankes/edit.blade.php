@@ -1,13 +1,7 @@
+@extends('admin.layouts.base')
 
-<!doctype html>
-<html lang="en">
-
+@section('content')
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Edit fasyankes</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
             background-color: #f4f6f9;
@@ -15,7 +9,7 @@
         }
 
         .container {
-            max-width: 600px;
+            width: 100%;
             margin-top: 5%;
         }
 
@@ -23,6 +17,8 @@
             padding: 2rem;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             border: none;
+            border-radius: 10px;
+            background-color: #ffffff;
         }
 
         .form-label {
@@ -30,9 +26,14 @@
         }
 
         .btn-success {
-            background: #28a745;
+            background-color: #28a745;
+            border-color: #218838;
             font-weight: bold;
             padding: 10px 20px;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
         }
 
         .btn-secondary {
@@ -43,52 +44,51 @@
         .btn i {
             margin-right: 5px;
         }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .d-flex {
+            display: flex;
+            justify-content: space-between;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <div class="card">
-            <h1 class="text-center mb-4">Edit fasyankes</h1>
+            <h1>Edit Fasyankes</h1>
             <form action="{{ url('admin/fasyankes/update', $detail->id) }}" method="POST">
                 @csrf
                 <div class="mb-4">
-                    <label for="nama" class="form-label"><i class="fas fa-graduation-cap"></i> Nama
-                        fasyankes</label>
-                    <input type="text" class="form-control" id="nama" name="nama" value="{{ $detail->nama }}"
-                        required>
+                    <label for="nama" class="form-label"><i class="fas fa-clinic-medical"></i> Nama Fasyankes</label>
+                    <input type="text" class="form-control" id="nama" name="nama" value="{{ $detail->nama }}" required>
                 </div>
                 <div class="mb-4">
-                    <label for="kecamatan" class="form-label"><i class="fas fa-code-branch"></i> kecamatan</label>
-                    <input type="text" class="form-control" id="kecamatan" name="kecamatan"
-                        value="{{ $detail->kecamatan }}" required>
+                    <label for="kecamatan" class="form-label"><i class="fas fa-map-marker-alt"></i> Kecamatan</label>
+                    <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="{{ $detail->kecamatan }}" required>
                 </div>
                 <div class="mb-4">
-                    <label for="kelurahan" class="form-label"><i class="fas fa-user-tie"></i> Jenis Kelamin</label>
-                    <input type="text" class="form-control" id="kelurahan" name="kelurahan"
-                        value="{{ $detail->kelurahan }}" required>
+                    <label for="kelurahan" class="form-label"><i class="fas fa-map-marker-alt"></i> Kelurahan</label>
+                    <input type="text" class="form-control" id="kelurahan" name="kelurahan" value="{{ $detail->kelurahan }}" required>
                 </div>
                 <div class="mb-4">
-                    <label for="desa" class="form-label"><i class="fas fa-user-tie"></i> ID Jurusan</label>
-                    <input type="text" class="form-control" id="desa" name="desa" value="{{ $detail->desa }}"
-                        required>
+                    <label for="desa" class="form-label"><i class="fas fa-map-marker-alt"></i> Desa</label>
+                    <input type="text" class="form-control" id="desa" name="desa" value="{{ $detail->desa }}" required>
                 </div>
                 <div class="mb-4">
-                    <label for="rt_rw" class="form-label"><i class="fas fa-user-tie"></i> rt_rw</label>
-                    <input type="text" class="form-control" id="rt_rw" name="rt_rw"
-                        value="{{ $detail->rt_rw }}" required>
+                    <label for="rt_rw" class="form-label"><i class="fas fa-map-marked-alt"></i> RT/RW</label>
+                    <input type="text" class="form-control" id="rt_rw" name="rt_rw" value="{{ $detail->rt_rw }}" required>
                 </div>
-                <div class="d-flex justify-content-between">
+                <div class="d-flex mt-3">
                     <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Simpan</button>
-                    <a href="{{ url('admin/fasyankes') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i>
-                        Batal</a>
+                    <a href="{{ url('admin/fasyankes') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Batal</a>
                 </div>
             </form>
         </div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
-</html>
+@endsection

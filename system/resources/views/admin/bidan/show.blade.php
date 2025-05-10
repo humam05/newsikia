@@ -1,106 +1,113 @@
 @extends('admin.layouts.base')
-@section('content')
 
-<!DOCTYPE html>
-<html lang="en">
+@section('content')
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Data Bidan</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
             background-color: #f4f6f9;
             font-family: Arial, sans-serif;
         }
+
+        .container {
+            width: 100%;
+            padding: 2rem;
+        }
+
         .card {
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            border: none;
+            border-radius: 10px;
             background-color: #ffffff;
         }
-        .card-header {
-            background: linear-gradient(90deg, #28a745, #218838);
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            text-align: center;
-            border-bottom: 2px solid #28a745;
+
+        .form-label {
+            font-weight: 600;
         }
-        .card-body {
-            font-size: 18px;
-            padding: 2rem;
-            background-color: #f8f9fa;
-        }
+
         .detail-item {
             margin-bottom: 1.5rem;
-            background-color: #ffffff;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
         }
-        .detail-item:hover {
-            background-color: #e9ecef;
-        }
-        .detail-item i {
-            color: #28a745;
-            margin-right: 10px;
-        }
-        .btn-primary {
-            font-size: 16px;
+
+        .detail-label {
             font-weight: 600;
-            background-color: #28a745;
-            border-color: #218838;
+            margin-bottom: 0.5rem;
+            color: #333;
         }
-        .row .col-md-4 {
+
+        .detail-value {
+            padding: 0.75rem 1rem;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-success {
+            background: #28a745;
             font-weight: bold;
+            padding: 10px 20px;
+            border: none;
         }
-        .row .col-md-8 {
-            font-weight: normal;
+
+        .btn-secondary {
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            background-color: #6c757d;
+            color: white;
         }
-        .btn-primary:hover {
-            background-color: #218838;
-            border-color: #1c7430;
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .btn i {
+            margin-right: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .d-flex {
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
         }
     </style>
 </head>
-<body>
 
-<div class="container mt-5">
-    <div class="card">
-        <div class="card-header">
-            Detail Bidan
-        </div>
-        <div class="card-body">
-            <div class="row detail-item">
-                <div class="col-md-4">Nama bidan:</div>
-                <div class="col-md-8">{{ $bidan->nama_bidan }}</div>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Detail Bidan</h1>
+            <div class="detail-item">
+                <label class="detail-label"><i class="fas fa-graduation-cap"></i> Nama Bidan</label>
+                <div class="detail-value">{{ $bidan->nama_bidan }}</div>
             </div>
-            <div class="row detail-item">
-                <div class="col-md-4">Nik:</div>
-                <div class="col-md-8">{{ $bidan->nik }}</div>
+            <div class="detail-item">
+                <label class="detail-label"><i class="fas fa-code-branch"></i> NIK</label>
+                <div class="detail-value">{{ $bidan->nik }}</div>
             </div>
-            <div class="row detail-item">
-                <div class="col-md-4">No Telpon:</div>
-                <div class="col-md-8">{{ $bidan->no_telpon }}</div>
+            <div class="detail-item">
+                <label class="detail-label"><i class="fas fa-user-tie"></i> No. Telepon</label>
+                <div class="detail-value">{{ $bidan->no_telpon }}</div>
             </div>
-            <div class="row detail-item">
-                <div class="col-md-4">Email:</div>
-                <div class="col-md-8">{{ $bidan->email }}</div>
+            <div class="detail-item">
+                <label class="detail-label"><i class="fas fa-envelope"></i> Email</label>
+                <div class="detail-value">{{ $bidan->email }}</div>
             </div>
-            <div class="row detail-item">
-                <div class="col-md-4">Fasyankes ID:</div>
-                <div class="col-md-8">{{ $bidan->fasyankes_id }}</div>
+            <div class="detail-item">
+                <label class="detail-label"><i class="fas fa-hospital"></i> Fasyankes ID</label>
+                <div class="detail-value">{{ $bidan->fasyankes_id }}</div>
             </div>
-            <a href="{{ url('admin/bidan') }}" class="btn btn-primary">
-                <i class="fas fa-arrow-left"></i> Kembali
-            </a>
+            <div class="d-flex mt-3">
+                <a href="{{ url('admin/bidan') }}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Batal
+                </a>
+            </div>
         </div>
     </div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 </body>
-</html>
 @endsection
