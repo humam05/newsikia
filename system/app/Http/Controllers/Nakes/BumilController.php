@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class BumilController extends Controller
 {
-   function index()
+   function identitas()
    {
-    return view('nakes.ibu_hamil.index');
+    return view('nakes.ibu_hamil.identitas.index');
    }
 
    function hpl()
