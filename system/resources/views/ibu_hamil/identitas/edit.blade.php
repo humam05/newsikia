@@ -2,41 +2,70 @@
 @section('content')
 <head>
     <style>
-        body {
-            background-color: #f4f6f9;
-            font-family: Arial, sans-serif;
-        }
+    body {
+        background-color: #f4f6f9;
+        font-family: Arial, sans-serif;
+    }
 
-        .container {
-            max-width: 600px;
-            margin-top: 5%;
-        }
+    .container {
+        width: 100%;
+        padding: 2rem;
+    }
 
-        .card {
-            padding: 2rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            border: none;
-        }
+    .card {
+        padding: 2rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        border: none;
+        border-radius: 10px;
+        background-color: #ffffff;
+    }
 
-        .form-label {
-            font-weight: 600;
-        }
+    .detail-item {
+        margin-bottom: 1.5rem;
+    }
 
-        .btn-success {
-            background: #28a745;
-            font-weight: bold;
-            padding: 10px 20px;
-        }
+    .detail-label {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
 
-        .btn-secondary {
-            font-weight: bold;
-            padding: 10px 20px;
-        }
+    .detail-value {
+        padding: 0.75rem 1rem;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
 
-        .btn i {
-            margin-right: 5px;
-        }
-    </style>
+    .btn-secondary {
+        font-weight: bold;
+        padding: 10px 20px;
+        border: none;
+        background-color: #6c757d;
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+
+    .btn i {
+        margin-right: 5px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 24px;
+
+    }
+
+    .d-flex {
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+</style>
 </head>
 
 <body>

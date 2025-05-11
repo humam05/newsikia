@@ -121,11 +121,15 @@
                 </a>
                 <div class="dropdown-menu border-0 shadow-sm rounded" aria-labelledby="ibuHamilDropdown">
                     <a class="dropdown-item" href="{{ url('nakes/ibu_hamil') }}" >
-                        <i class="fas fa-female mr-2"></i> Data Ibu Hamil
+                        <i class="fas fa-female mr-2"></i> Identitas Ibu Hamil
                     </a>
                     <div class="dropdown-divider"></div> <!-- Pemisah -->
                     <a class="dropdown-item" href="{{ url('nakes/ibu_hamil/hpl') }}">
                         <i class="fas fa-calendar-alt mr-2"></i> HPL
+                    </a>
+                    <div class="dropdown-divider"></div> <!-- Pemisah -->
+                    <a class="dropdown-item" href="{{ url('nakes/ibu_hamil/periksa') }}">
+                        <i class="fas fa-stethoscope"></i> Periksa
                     </a>
                 </div>
             </li>

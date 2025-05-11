@@ -16,4 +16,9 @@ class BumilController extends Controller
    {
     return view('nakes.ibu_hamil.hpl');
    }
+
+   function periksa()
+   {
+    return view('nakes.ibu_hamil.periksa.index');
+   }
 }

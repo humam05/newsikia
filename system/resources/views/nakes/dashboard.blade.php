@@ -12,11 +12,13 @@
         <div class="col-12">
             <section class="card">
                 <header class="card-header text-uppercase" style="height: 70px;">
-                    <form action="{{ url('nakes/dashboard') }}" method="GET" class="form-horizontal form-label-left mb-4">
+                    <form action="{{ url('admin/ibu_hamil/identitas') }}" method="GET"
+                        class="form-horizontal form-label-left mb-4">
                         <div class="col-md-12">
                             <div class="input-group mb-2">
-                                <input name="cari" type="search" value="{{ request('cari')}}" class="form-control" id="inlineFormInputGroup"
-                                    placeholder="Cari Pasien Berdasarkan NO.KK / NIK" maxlength="16" minlength="16" value="{{ request('cari') }}">
+                                <input name="search" type="text" class="form-control" value="{{ request('search') }}"
+                                    placeholder="Cari Pasien Berdasarkan NO.KK / NIK"  maxlength="16" minlength="16"
+                                    required>
                                 <div class="input-group-prepend ml-1">
                                     <button type="submit" class="btn btn-info btn-icon-split">
                                         <span class="icon text-white">
@@ -25,6 +27,17 @@
                                         <span class="text">Cari Akun</span>
                                     </button>
                                 </div>
+                                @if (request('search'))
+                                    <div class="input-group-prepend ml-1">
+                                        <a href="{{ url('nakes/dashboard') }}"
+                                            class="btn btn-secondary btn-icon-split">
+                                            <span class="icon text-white">
+                                                <i class="fas fa-times"></i>
+                                            </span>
+                                            <span class="text">Reset</span>
+                                        </a>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </form>
@@ -32,6 +45,7 @@
             </section>
         </div>
     </div>
+
     <div class="row row justify-content-center">
         <div class="col-8">
             <div>
@@ -60,6 +74,7 @@
             </div>
         </div>
     </div>
+    </div>
     <!--end row -->
     <div class="row">
         <div class="col-sm-12">
@@ -69,63 +84,39 @@
                     <table class="table table-hover mails m-0 table table-actions-bar table-centered">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Nama</th>
-                                <th>Nik</th>
-                                <th>Fasyankes</th>
-                                <th>Start Date</th>
+                                <th>No.</th>
+                                <th>Nama Ibu</th>
+                                <th>Nik Ibu</th>
+                                <th>No. JKN</th>
+                                <th>Nama Suami</th>
+                                <th>Nama Anak</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Tomaslau</td>
-                                <td><a href="#" class="text-muted">tomaslau@dummy.com</a></td>
-                                <td><b><a href="" class="text-dark"><b>356</b></a></b></td>
-                                <td>01/11/2003</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Chadengle</td>
-                                <td><a href="#" class="text-muted">chadengle@dummy.com</a></td>
-                                <td><b><a href="" class="text-dark"><b>568</b></a></b></td>
-                                <td>01/11/2003</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Stillnotdavid</td>
-                                <td><a href="#" class="text-muted">stillnotdavid@dummy.com</a></td>
-                                <td><b><a href="" class="text-dark"><b>201</b></a></b></td>
-                                <td>12/11/2003</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Kurafire</td>
-                                <td><a href="#" class="text-muted">kurafire@dummy.com</a></td>
-                                <td><b><a href="" class="text-dark"><b>56</b></a></b></td>
-                                <td>14/11/2003</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Shahedk</td>
-                                <td><a href="#" class="text-muted">shahedk@dummy.com</a></td>
-                                <td><b><a href="" class="text-dark"><b>356</b></a></b></td>
-                                <td>20/11/2003</td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Adhamdannaway</td>
-                                <td><a href="#" class="text-muted">adhamdannaway@dummy.com</a></td>
-                                <td><b><a href="" class="text-dark"><b>956</b></a></b></td>
-                                <td>24/11/2003</td>
-                            </tr>
-                        </tbody>
+                         <tbody>
+                @foreach ($identitas as $item)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $item->ibu_nama }}</td>
+                        <td>{{ $item->ibu_nik }}</td>
+                        <td>{{ $item->ibu_jkn }}</td>
+                        <td>{{ $item->suami_nama }}</td>
+                        <td>{{ $item->anak_nama }}</td>
+                        <td>
+                            <a href="{{ url('ibu_hamil/identitas/show', $item->id) }}" class="btn btn-dark btn-sm">Show</a>
+                            <a href="{{ url('ibu_hamil/identitas/edit', $item->id) }}"
+                                class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{{ url('ibu_hamil/identitas/delete', $item->id) }}" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
+                            <a href="{{ url('nakes/ibu_hamil/periksa') }}" class="btn btn-success btn-sm">Periksa</a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
     <!-- end row -->
-
-
 @endsection

@@ -151,6 +151,7 @@ Route::prefix('nakes')->group(function () {
         Route::controller(BumilController::class)->group(function () {
             Route::get('/', 'index');
             Route::get('/hpl', 'hpl');
+            Route::get('/periksa', 'periksa' );
 
         });
     });

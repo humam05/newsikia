@@ -5,14 +5,20 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Posyandu;
-
 class AdminPosyanduController extends Controller
 {
-    function index()
+    function index(Request $request)
     {
-        $data['posyandu'] = Posyandu::all();
+      $query = Posyandu::query();
+
+        if ($request->has('search')) {
+            $query->where('nama_posyandu', 'like', '%' . $request->search . '%');
+        }
+
+        $data['posyandu'] = $query->get();
         return view('admin.posyandu.index', $data);
     }
+
 
     function create()
     {

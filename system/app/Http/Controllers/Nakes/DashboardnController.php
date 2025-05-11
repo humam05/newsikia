@@ -4,27 +4,19 @@ namespace App\Http\Controllers\Nakes;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Ortu; // Pastikan model Ortu sudah digunakan
+use App\Models\Identitas; // Ubah dari Ortu ke Identitas
 
 class DashboardnController extends Controller
 {
     function index(Request $request)
-{
-    $query = Ortu::query();
+    {
+        $query = Identitas::query();
 
-    // Jika ada input pencarian
-    if ($request->filled('cari')) {
-        $search = $request->cari;
+        if ($request->has('search')) {
+            $query->where('nik_ibu', 'like', '%' . $request->search . '%');
+        }
 
-        $query->where(function($q) use ($search) {
-            $q->where('nik', 'like', "%{$search}%")
-              ->orWhere('no_kk', 'like', "%{$search}%");
-        });
+        $data['identitas'] = $query->get();
+        return view('nakes.dashboard', $data);
     }
-
-    $data['ortu'] = $query->get();
-
-    return view('nakes.dashboard', $data);
-}
-
 }
