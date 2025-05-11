@@ -149,7 +149,9 @@ Route::prefix('nakes')->group(function () {
     });
     Route::prefix('ibu_hamil')->group(function () {
         Route::controller(BumilController::class)->group(function () {
-            Route::get('/identitas', 'identitas');
+            Route::get('/identitas', 'identitasIndex');
+            Route::get('/identitas/create', 'identitasCreate');
+            Route::post('identitas/store', 'identitasStore');
             Route::get('/hpl', 'hpl');
             Route::get('/periksa', 'periksa' );
 

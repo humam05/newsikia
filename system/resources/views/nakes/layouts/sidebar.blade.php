@@ -116,7 +116,7 @@
                     <span> Akun Ibu Hamil </span>
                 </a>
             </li>
-            <li class="nav-item dropdown">
+            <li  class="nav-item dropdown" class="{{ Request::is('nakes/ibuu_hamil*') ? 'active' : '' }}">
                 <a class="nav-link dropdown-toggle d-flex align-items-center justify-content-between" href="#"
                     id="ibuHamilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
@@ -140,7 +140,7 @@
                     </a>
                 </div>
             </li>
-            <li class="nav-item dropdown" class="{{ Request::is('nakes/dashboard*') ? 'active' : '' }}">
+            <li class="nav-item dropdown" class="{{ Request::is('nakes/bayi*') ? 'active' : '' }}">
                 <a class="nav-link dropdown-toggle" href="#" id="bayiBalitaDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-baby"></i>
@@ -155,9 +155,13 @@
                     <a class="dropdown-item" href="{{ url('nakes/bayi/kms') }}">
                         <i class="fas fa-chart-line mr-2"></i> KMS
                     </a>
+                    <div class="dropdown-divider"></div> <!-- Pemisah -->
+                    <a class="dropdown-item" href="{{ url('nakes/bayi/periksa') }}">
+                        <i class="fas fa-stethoscope"></i> Periksa
+                    </a>
                 </div>
-            <li class="{{ Request::is('nakes/akun*') ? 'active' : '' }}">
-                <a href="{{ url('nakes/akun') }}">
+            <li class="{{ Request::is('nakes/broadcast*') ? 'active' : '' }}">
+                <a href="{{ url('nakes/broadcast') }}">
                     <i class="fas fa-bullhorn"></i>7
                     <span> Pesan Broadcast </span>
                 </a>
