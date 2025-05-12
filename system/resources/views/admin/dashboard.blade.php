@@ -34,9 +34,9 @@
                             <div class="text-center p-3">
                                 <h2 class="mt-2">
                                     <i class="mdi mdi-baby text-info mr-2"></i>
-                                    <b>{{ $totalPosyandu }}</b>
+                                    <b>{{ $totalBayi }}</b>
                                 </h2>
-                                <p class="text-muted mb-0">Total Posyandu</p>
+                                <p class="text-muted mb-0">Total Bayi</p>
                             </div>
                         </div>
                         <div class="col-xl-2 col-sm-6 widget-inline-box">

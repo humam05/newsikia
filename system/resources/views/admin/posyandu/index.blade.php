@@ -70,17 +70,15 @@
             font-weight: bold;
         }
     </style>
- <div class="row">
+    <div class="row">
         <div class="col-12">
             <section class="card">
                 <header class="card-header text-uppercase" style="height: 70px;">
-                    <form action="{{ url('admin/posyandu') }}" method="GET"
-                        class="form-horizontal form-label-left mb-4">
+                    <form action="{{ url('admin/posyandu') }}" method="GET" class="form-horizontal form-label-left mb-4">
                         <div class="col-md-12">
                             <div class="input-group mb-2">
                                 <input name="search" type="text" class="form-control" value="{{ request('search') }}"
-                                    placeholder="Cari Posyandu"
-                                    required>
+                                    placeholder="Cari Nama Posyandu / Nama Fasyankes" required>
                                 <div class="input-group-prepend ml-1">
                                     <button type="submit" class="btn btn-info btn-icon-split">
                                         <span class="icon text-white">
@@ -91,8 +89,7 @@
                                 </div>
                                 @if (request('search'))
                                     <div class="input-group-prepend ml-1">
-                                        <a href="{{ url('admin/posyandu') }}"
-                                            class="btn btn-secondary btn-icon-split">
+                                        <a href="{{ url('admin/posyandu') }}" class="btn btn-secondary btn-icon-split">
                                             <span class="icon text-white">
                                                 <i class="fas fa-times"></i>
                                             </span>

@@ -8,9 +8,19 @@ use App\Models\Posyandu;
 
 class JadwalPosyanduPuskesmasController extends Controller
 {
-    function index()
+    function index(Request $request)
     {
-        $data['posyandu'] = Posyandu::all();
+        $query = Posyandu::query();
+
+        if ($request->has('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('nama_posyandu', 'like', '%' . $search . '%')
+                    ->orWhere('nama_fasyankes', 'like', '%' . $search . '%');
+            });
+        }
+
+        $data['posyandu'] = $query->get();
         return view('puskesmas.jadwal_posyandu_puskesmas.index', $data);
     }
 
@@ -105,6 +115,4 @@ class JadwalPosyanduPuskesmasController extends Controller
         $posyandu->delete();
         return back()->with('success', 'Data Posyandu Berhasil dihapus');
     }
-
-
 }

@@ -10,6 +10,7 @@ class DashboardnController extends Controller
 {
     function index(Request $request)
     {
+        $totalIbuHamil = Identitas::count();
         $query = Identitas::query();
 
         if ($request->has('search')) {
@@ -17,6 +18,6 @@ class DashboardnController extends Controller
         }
 
         $data['identitas'] = $query->get();
-        return view('nakes.dashboard', $data);
+        return view('nakes.dashboard', $data, compact('totalIbuHamil'));
     }
 }
