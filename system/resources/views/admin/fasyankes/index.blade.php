@@ -56,8 +56,6 @@
                                 <th>Nama</th>
                                 <th>Kecamatan</th>
                                 <th>Kelurahan</th>
-                                <th>Desa</th>
-                                <th>Rt/Rw</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -69,8 +67,6 @@
                                     <td>{{ $item->nama }}</td>
                                     <td>{{ $item->kecamatan }}</td>
                                     <td>{{ $item->kelurahan }}</td>
-                                    <td>{{ $item->desa }}</td>
-                                    <td>{{ $item->rt_rw }}</td>
                                     <td>
                                         <a href="{{ url('admin/fasyankes/show', $item->id) }}"
                                             class="btn btn-dark btn-sm">Show</a>

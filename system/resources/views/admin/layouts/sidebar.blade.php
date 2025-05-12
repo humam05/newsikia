@@ -109,6 +109,10 @@
                     <a class="dropdown-item {{ Request::is('admin/ibu_hamil/hpl') ? 'active' : '' }}" href="{{ url('admin/ibu_hamil/hpl') }}">
                         <i class="fas fa-chart-line mr-2"></i> HPL
                     </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item {{ Request::is('admin/ibu_hamil/periksa') ? 'active' : '' }}" href="{{ url('admin/ibu_hamil/periksa') }}">
+                        <i class="fas fa-chart-line mr-2"></i> Periksa
+                    </a>
                 </div>
             </li>
 

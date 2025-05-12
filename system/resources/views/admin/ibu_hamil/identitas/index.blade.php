@@ -83,14 +83,14 @@
                                     <td>{{ $item->suami_nama }}</td>
                                     <td>{{ $item->anak_nama }}</td>
                                     <td>
-                                        <a href="{{ url('ibu_hamil/identitas/show', $item->id) }}"
+                                        <a href="{{ url('admin/ibu_hamil/identitas/show', $item->id) }}"
                                             class="btn btn-dark btn-sm">Show</a>
-                                        <a href="{{ url('ibu_hamil/identitas/edit', $item->id) }}"
+                                        <a href="{{ url('admin/ibu_hamil/identitas/edit', $item->id) }}"
                                             class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="{{ url('ibu_hamil/identitas/delete', $item->id) }}"
+                                        <a href="{{ url('admin/ibu_hamil/identitas/delete', $item->id) }}"
                                             class="btn btn-danger btn-sm"
                                             onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
-                                        <a href="{{ url('admin/bidan')}}"
+                                        <a href="{{ url('admin/ibu_hamil/periksa/create?id=' . $item->id) }}"
                                             class="btn btn-success btn-sm">Periksa</a>
                                     </td>
                                 </tr>
