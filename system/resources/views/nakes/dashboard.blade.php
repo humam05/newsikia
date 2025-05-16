@@ -12,7 +12,7 @@
         <div class="col-12">
             <section class="card">
                 <header class="card-header text-uppercase" style="height: 70px;">
-                    <form action="{{ url('admin/ibu_hamil/identitas') }}" method="GET"
+                    <form action="{{ url('nakes/ibu_hamil/identitas') }}" method="GET"
                         class="form-horizontal form-label-left mb-4">
                         <div class="col-md-12">
                             <div class="input-group mb-2">

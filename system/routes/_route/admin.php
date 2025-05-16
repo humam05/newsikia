@@ -87,10 +87,14 @@ Route::prefix('admin')->group(function () {
     Route::prefix('akun')->group(function () {
         Route::controller(AdminAkunController::class)->group(function () {
             Route::get('/dinas', 'dinasIndex');
+            Route::get('dinas/create', 'dinasCreate');
+            Route::post('dinas/store', 'dinasStore');
+            Route::get('/dinas/show/{dinkes}', 'showDinkes');
+            Route::get('/dinas/adit/{dinkes}', 'editDinkes');
+            Route::put('/dinas/update/{dinkes}', 'updateDinas');
             Route::get('/nakes', 'nakesIndex');
             Route::get('/puskesmas', 'puskesmasIndex');
             Route::get('/ibu_hamil', 'bumilIndex');
-            Route::get('dinas/create', 'dinasCreate');
             Route::get('nakes/create', 'nakesCreate');
             Route::get('puskesmas/create', 'puskesmasCreate');
             Route::get('ibu_hamil/create', 'bumilCreate');

@@ -8,10 +8,17 @@ use App\Models\Identitas;
 class BumilController extends Controller
 {
 
-    function identitasIndex()
+   function identitasindex(Request $request)
     {
-        $data['identitas'] = Identitas::all();
-        return view('nakes.ibu_hamil.identitas.index', $data);
+        $totalIbuHamil = Identitas::count();
+        $query = Identitas::query();
+
+        if ($request->has('search')) {
+            $query->where('ibu_nik', 'like', '%' . $request->search . '%');
+        }
+
+        $data['identitas'] = $query->get();
+        return view('nakes.dashboard', $data, compact('totalIbuHamil'));
     }
 
    function identitasCreate()
