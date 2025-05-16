@@ -1,5 +1,4 @@
 @extends('admin.layouts.base')
-
 @section('content')
 <head>
     <style>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,8 +17,9 @@
         <div class="right-section">
             <h1 class="title">SIKIA</h1>
             <h2>Log In</h2>
-            <form action="#" method="POST" class="login-form">
-                <input type="text" name="user_id" placeholder="User ID" required>
+            <form action="{{ route('login') }}" method="POST" class="login-form">
+                @csrf
+                <input type="text" name="email" placeholder="email" required>
                 <input type="password" name="password" placeholder="Password" required>
                 <div class="remember-me">
                     <input type="checkbox" id="remember-me">

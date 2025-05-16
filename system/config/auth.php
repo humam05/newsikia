@@ -35,12 +35,28 @@ return [
     |
     */
 
-    'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
+   'guards' => [
+    'admin' => [
+        'driver' => 'session',
+        'provider' => 'admins',
     ],
+    'nakes' => [
+        'driver' => 'session',
+        'provider' => 'nakes',
+    ],
+    'ibuhamil' => [
+        'driver' => 'session',
+        'provider' => 'ibuhamils',
+    ],
+    'puskesmas' => [
+        'driver' => 'session',
+        'provider' => 'puskesmas',
+    ],
+    'dinkes' => [
+        'driver' => 'session',
+        'provider' => 'dinkes',
+    ],
+],
 
     /*
     |--------------------------------------------------------------------------
@@ -59,17 +75,28 @@ return [
     |
     */
 
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
-        ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+   'providers' => [
+    'admins' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Admin::class,
     ],
+    'nakes' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Nakes::class,
+    ],
+    'ibuhamils' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\IbuHamil::class,
+    ],
+    'puskesmas' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Puskesmas::class,
+    ],
+    'dinkes' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Dinkes::class,
+    ],
+],
 
     /*
     |--------------------------------------------------------------------------

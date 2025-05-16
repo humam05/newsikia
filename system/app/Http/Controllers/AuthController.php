@@ -4,38 +4,68 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
-
-    public function halamanLogin()
+    public function showLogin()
     {
         return view('login');
     }
 
-    public function prosesLogin(Request $request)
+    public function loginProcess(Request $request): RedirectResponse
     {
-
+        // Validate the credentials
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
+        // Logout from all guards to reset the session
+        $this->logoutFromAllGuards();
 
-        if (Auth::attempt($credentials)) {
+        // Try to authenticate with different guards
+        if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
-
-            return redirect()->intended('mahasiswa');
+            return redirect()->intended('admin/dashboard');
+        } elseif (Auth::guard('nakes')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('nakes/dashboard');
+        } elseif (Auth::guard('ibuhamil')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('ibu_hamil/dashboard');
+        } elseif (Auth::guard('puskesmas')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('puskesmas/dashboard');
+        } elseif (Auth::guard('dinkes')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('dinkes/dashboard');
+        } else {
+            return back()->withErrors([
+                'error' => 'Login gagal',
+            ])->withInput(request(['email']));
         }
-
-        return back()->withErrors([
-            'email' => 'Email atau password yang Anda masukkan salah.',
-        ])->onlyInput('email');
     }
 
-    function logout()
+    public function logout(): RedirectResponse
     {
-        Auth::logout();
-        return view('login');
+        $this->logoutFromAllGuards();
+        return redirect('login');
+    }
+
+    private function logoutFromAllGuards(): void
+    {
+
+        $guards = ['admin', 'nakes', 'ibuhamil', 'puskesmas', 'dinkes'];
+
+        foreach ($guards as $guard) {
+            if (Auth::guard($guard)->check()) {
+                Auth::guard($guard)->logout();
+            }
+        }
+
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
     }
 }
