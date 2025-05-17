@@ -1,6 +1,6 @@
 @extends('admin.layouts.base')
 @section('content')
-    <form action="{{ url('admin/akun/puskesmas/store') }}" method="POST">
+    <form action="{{ url('admin/akun/admin/store') }}" method="POST">
         @csrf
         <div class="row">
             <div class="mb-3 col-6">

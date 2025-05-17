@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-12">
             <div>
-                <h4 class="header-title mb-3">Akun Tenaga Kesehatan</h4>
+                <h4 class="header-title mb-3">Akun Dinas Kesehatan</h4>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
         <div class="col-sm-12">
             <div class="card-box">
                 <div class="button-container">
-                    <a href="{{ url('/admin/akun/nakes/create') }}" class="btn btn-primary">
+                    <a href="{{ url('/admin/akun/admin/create') }}" class="btn btn-primary">
                         Tambah Akun
                     </a>
                 </div><br>
@@ -35,14 +35,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($nakes as $item)
+                            @foreach ($admin as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }}</td>
                                     <td>
-                                        <a href="{{ url('admin/akun/nakes/edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="{{ url('admin/akun/nakes/delete', $item->id) }}" class="btn btn-danger btn-sm"
+                                        <a href="{{ url('admin/akun/admin/edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="{{ url('admin/akun/admin/delete', $item->id) }}" class="btn btn-danger btn-sm"
                                             onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
                                     </td>
                                 </tr>

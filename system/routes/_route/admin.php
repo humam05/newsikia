@@ -86,18 +86,41 @@ Route::prefix('admin')->group(function () {
     });
     Route::prefix('akun')->group(function () {
         Route::controller(AdminAkunController::class)->group(function () {
+            //ROUTE UNTUK DINAS
             Route::get('/dinas', 'dinasIndex');
             Route::get('dinas/create', 'dinasCreate');
             Route::post('dinas/store', 'dinasStore');
-            Route::get('/dinas/show/{dinkes}', 'showDinkes');
-            Route::get('/dinas/adit/{dinkes}', 'editDinkes');
-            Route::put('/dinas/update/{dinkes}', 'updateDinas');
+            Route::get('/dinas/edit/{dinkes}', 'dinasEdit');
+            Route::post('/dinas/update/{dinkes}', 'dinasUpdate');
+            Route::get('/dinas/delete/{dinkes}', 'dinasDelete');
+            //ROUTE UNTUK NAKES
             Route::get('/nakes', 'nakesIndex');
+            Route::get('/nakes/create', 'nakesCreate');
+            Route::post('/nakes/store', 'nakesStore');
+            Route::get('/nakes/edit/{nakes}', 'nakesEdit');
+            Route::post('/nakes/update/{nakes}', 'nakesUpdate');
+            Route::get('/nakes/delete/{nakes}', 'nakesDelete');
+            //ROUTE UNTUK PUSKESMAS
             Route::get('/puskesmas', 'puskesmasIndex');
-            Route::get('/ibu_hamil', 'bumilIndex');
-            Route::get('nakes/create', 'nakesCreate');
-            Route::get('puskesmas/create', 'puskesmasCreate');
-            Route::get('ibu_hamil/create', 'bumilCreate');
+            Route::get('/puskesmas/create', 'puskesmasCreate');
+            Route::post('/puskesmas/store', 'puskesmasStore');
+            Route::get('/puskesmas/edit/{puskesmas}', 'puskesmasEdit');
+            Route::post('/puskesmas/update/{puskesmas}', 'puskesmasUpdate');
+            Route::get('/puskesmas/delete/{puskesmas}', 'puskesmasDelete');
+            //ROUTE UNTUK IBU HAMIL
+            Route::get('/ibu_hamil', 'IbuHamilIndex');
+            Route::get('/ibu_hamil/create', 'IbuHamilCreate');
+            Route::post('/ibu_hamil/store', 'IbuHamilStore');
+            Route::get('/ibu_hamil/edit/{IbuHamil}', 'IbuHamilEdit');
+            Route::post('/ibu_hamil/update/{IbuHamil}', 'IbuHamilUpdate');
+            Route::get('/ibu_hamil/delete/{IbuHamil}', 'IbuHamilDelete');
+            //ROUTE UNTUK ADMIN
+            Route::get('/admin', 'adminIndex');
+            Route::get('/admin/create', 'adminCreate');
+            Route::post('/admin/store', 'adminStore');
+            Route::get('/admin/edit/{admin}', 'adminEdit');
+            Route::post('/admin/update/{admin}', 'adminUpdate');
+            Route::get('/admin/delete/{admin}', 'adminDelete');
         });
     });
     Route::prefix('posyandu')->group(function () {

@@ -43,7 +43,7 @@
     <div class="container">
         <div class="card">
             <h1 class="text-center mb-4">Edit Akun</h1>
-            <form action="{{ url('admin/akun/dinas/update', $detail->id) }}" method="POST">
+            <form action="{{ url('admin/akun/nakes/update', $detail->id) }}" method="POST">
                 @csrf
                 <div class="mb-4">
                     <label for="name" class="form-label">
@@ -63,7 +63,7 @@
                     <button type="submit" class="btn btn-success">
                         <i class="fas fa-save"></i> Simpan
                     </button>
-                    <a href="{{ url('admin/akun/dinas') }}" class="btn btn-secondary">
+                    <a href="{{ url('admin/akun/nakes') }}" class="btn btn-secondary">
                         <i class="fas fa-arrow-left"></i> Batal
                     </a>
                 </div>

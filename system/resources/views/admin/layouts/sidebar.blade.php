@@ -142,6 +142,10 @@
                         <i class="fas fa-baby mr-2"></i> Dinas
                     </a>
                     <div class="dropdown-divider"></div>
+                    <a class="dropdown-item {{ Request::is('admin/akun/admin') ? 'active' : '' }}" href="{{ url('admin/akun/admin') }}">
+                        <i class="fas fa-baby mr-2"></i> Admin
+                    </a>
+                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item {{ Request::is('admin/akun/nakes') ? 'active' : '' }}" href="{{ url('admin/akun/nakes') }}">
                         <i class="fas fa-chart-line mr-2"></i> Nakes
                     </a>
