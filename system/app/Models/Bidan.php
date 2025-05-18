@@ -16,7 +16,14 @@ class Bidan extends Model
         'nik',
         'no_telpon',
         'email',
-        'fasyankes_id'
+        'nama_fasyankes',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'alamat_lengkap',
+        'provinsi',
+        'kabupaten',
+        'kecamatan',
+        'desa',
     ];
 
     static $rules = [
@@ -24,18 +31,34 @@ class Bidan extends Model
         'nik' => 'required',
         'no_telpon' => 'required',
         'email' => 'required',
-        'fasyankes_id' => 'required',
+        'nama_fasyankes' => 'required',
+        'tempat_lahir' => 'required',
+        'tanggal_lahir' => 'required|date',
+        'alamat_lengkap' => 'required',
+        'provinsi' => 'required',
+        'kabupaten' => 'required',
+        'kecamatan' => 'required',
+        'desa' => 'required',
     ];
+
     static $message = [
         'nama_bidan.required' => 'Inputan tidak boleh kosong',
         'nik.required' => 'Inputan tidak boleh kosong',
         'no_telpon.required' => 'Inputan tidak boleh kosong',
         'email.required' => 'Inputan tidak boleh kosong',
-        'fasyankes_id.required' => 'Inputan tidak boleh kosong',
+        'nama_fasyankes.required' => 'Inputan tidak boleh kosong',
+        'tempat_lahir.required' => 'Inputan tidak boleh kosong',
+        'tanggal_lahir.required' => 'Inputan tidak boleh kosong',
+        'tanggal_lahir.date' => 'Format tanggal lahir tidak valid',
+        'alamat_lengkap.required' => 'Inputan tidak boleh kosong',
+        'provinsi.required' => 'Inputan tidak boleh kosong',
+        'kabupaten.required' => 'Inputan tidak boleh kosong',
+        'kecamatan.required' => 'Inputan tidak boleh kosong',
+        'desa.required' => 'Inputan tidak boleh kosong',
     ];
 
-    function bidan()
+    function fasyankes()
     {
-        $this->belongsTo(Fasyankes::class);
+        return $this->belongsTo(Fasyankes::class, 'nama_fasyankes', 'nama');
     }
 }

@@ -4,12 +4,8 @@
         @csrf <!-- Token keamanan Laravel -->
 
         <div class="row">
-            <div class="mb-3 col-6">
-                <label for="id" class="form-label">ID</label>
-                <input type="text" name="id" id="id" class="form-control" placeholder="Masukkan ID" required>
-            </div>
 
-            <div class="mb-3 col-6">
+            <div class="mb-3 col-12">
                 <label for="nama" class="form-label">Nama</label>
                 <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukkan Nama"
                     required>

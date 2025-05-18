@@ -10,7 +10,7 @@ class BidanController extends Controller
 {
     function index()
     {
-        $data['bidan'] = Bidan::all();
+        $data['bidan'] = Bidan::paginate(10);
         return view('admin.bidan.index', $data);
     }
 

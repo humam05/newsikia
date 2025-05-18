@@ -1,34 +1,41 @@
 @extends('admin.layouts.base')
+
 @section('content')
-<style>
-    .button-container {
-        display: flex;
-        justify-content: flex-end;
-    }
+    <style>
+        .button-container {
+            display: flex;
+            justify-content: flex-end;
+        }
 
-    /* Mengatur lebar kolom agar tetap konsisten */
-    .table-responsive {
-        overflow-x: auto;
-    }
+        .table-responsive {
+            overflow-x: auto;
+        }
 
-    .table th, .table td {
-        white-space: nowrap; /* Mencegah teks untuk wrap ke baris baru */
-    }
+        .table th,
+        .table td {
+            white-space: nowrap;
+        }
 
-    /* Mengatur lebar kolom "Action" */
-    .table th:nth-child(8), .table td:nth-child(8) {
-        width: 150px; /* Sesuaikan lebar sesuai kebutuhan */
-        min-width: 150px; /* Memastikan lebar minimum */
-        max-width: 150px; /* Memastikan lebar maksimum */
-        text-align: center; /* Pusatkan tombol aksi */
-    }
+        .table th:nth-child(5),
+        .table td:nth-child(5) {
+            width: 150px;
+            min-width: 150px;
+            max-width: 150px;
+            text-align: center;
+        }
 
-    /* Mengatur tombol aksi agar tetap pada ukuran yang konsisten */
-    .btn-sm {
-        min-width: 60px; /* Sesuaikan lebar minimum tombol */
-        margin: 2px; /* Jarak antara tombol */
-    }
-</style>
+        .btn-sm {
+            min-width: 60px;
+            margin: 2px;
+        }
+
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    </style>
+
     <div class="row">
         <div class="col-12">
             <div>
@@ -36,10 +43,8 @@
             </div>
         </div>
     </div>
-    <!-- end row -->
 
     <div class="row">
-
         <div class="col-sm-12">
             <div class="card-box">
                 <div class="button-container">
@@ -47,12 +52,12 @@
                         Tambah Data
                     </a>
                 </div><br>
+
                 <div class="table-responsive">
                     <table class="table table-hover mails m-0 table table-actions-bar table-centered">
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>ID</th>
                                 <th>Nama</th>
                                 <th>Kecamatan</th>
                                 <th>Kelurahan</th>
@@ -60,10 +65,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($fasyankes as $item)
+                            @foreach ($fasyankes as $index => $item)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->id }}</td>
+                                    <td>{{ ($fasyankes->currentPage() - 1) * $fasyankes->perPage() + $index + 1 }}</td>
                                     <td>{{ $item->nama }}</td>
                                     <td>{{ $item->kecamatan }}</td>
                                     <td>{{ $item->kelurahan }}</td>
@@ -76,15 +80,18 @@
                                             class="btn btn-danger btn-sm"
                                             onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
                                     </td>
-
-
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
+
+                {{-- Pagination --}}
+                <div class="pagination-container">
+                    {{ $fasyankes->links() }}
+                </div>
+
             </div>
         </div>
     </div>
-    <!-- end row -->
 @endsection

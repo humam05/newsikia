@@ -37,9 +37,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($bidan as $item)
+                            @foreach ($bidan as $index => $item)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ ($bidan->currentPage() - 1) * $bidan->perPage() + $index + 1 }}</td>
                                     <td>{{ $item->nama_bidan }}</td>
                                     <td>{{ $item->nik }}</td>
                                     <td>{{ $item->no_telpon }}</td>
@@ -59,6 +59,10 @@
                             @endforeach
                         </tbody>
                     </table>
+                </div>
+                {{-- Pagination --}}
+                <div class="pagination-container">
+                    {{ $bidan->links() }}
                 </div>
             </div>
         </div>

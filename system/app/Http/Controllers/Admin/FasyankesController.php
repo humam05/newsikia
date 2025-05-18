@@ -8,11 +8,12 @@ use App\Models\Fasyankes;
 
 class FasyankesController extends Controller
 {
-    function index()
+    public function index()
     {
-        $data['fasyankes'] = Fasyankes::all();
+        $data['fasyankes'] = Fasyankes::paginate(10); // Menampilkan 10 data per halaman
         return view('admin.fasyankes.index', $data);
     }
+
 
     function create()
     {

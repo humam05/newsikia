@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
+// use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Fasyankes extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
     protected $table = 'tb_fasyankes';
     protected $fillable = [
         'nama',
@@ -35,6 +35,6 @@ class Fasyankes extends Model
 
     function bidan()
     {
-        $this->hasMany(Bidan::class);
+        return $this->hasMany(Bidan::class, 'nama_fasyankes', 'nama');
     }
 }
