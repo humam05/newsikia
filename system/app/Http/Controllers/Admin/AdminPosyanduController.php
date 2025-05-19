@@ -5,29 +5,32 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Posyandu;
+use App\Models\Fasyankes;
 
 class AdminPosyanduController extends Controller
 {
     function index(Request $request)
     {
-        $query = Posyandu::query();
+        $search = $request->input('search');
 
-        if ($request->has('search')) {
-            $search = $request->search;
-            $query->where(function ($q) use ($search) {
-                $q->where('nama_posyandu', 'like', '%' . $search . '%')
-                    ->orWhere('nama_fasyankes', 'like', '%' . $search . '%');
-            });
-        }
+        $posyandu = Posyandu::with('fasyankes')
+            ->when($search, function ($query, $search) {
+                $query->where('nama_posyandu', 'like', "%$search%")
+                    ->orWhereHas('fasyankes', function ($q) use ($search) {
+                        $q->where('nama', 'like', "%$search%");
+                    });
+            })
+            ->get();
 
-        $data['posyandu'] = $query->get();
-        return view('admin.posyandu.index', $data);
+        return view('admin.posyandu.index', compact('posyandu'));
     }
+
 
 
     function create()
     {
-        return view('admin.posyandu.create');
+        $fasyankesList = Fasyankes::all();
+        return view('admin.posyandu.create', compact('fasyankesList'));
     }
 
     public function store(Request $request)
@@ -38,7 +41,7 @@ class AdminPosyanduController extends Controller
             'tanggal' => 'required',
             'waktu' => 'required',
             'lokasi' => 'required',
-            'nama_fasyankes' => 'required',
+            'fasyankes_id' => 'required',
             'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi gambar
         ]);
 
@@ -48,13 +51,13 @@ class AdminPosyanduController extends Controller
         $posyandu->tanggal = $request->tanggal;
         $posyandu->waktu = $request->waktu;
         $posyandu->lokasi = $request->lokasi;
-        $posyandu->nama_fasyankes = $request->nama_fasyankes;
+        $posyandu->fasyankes_id = $request->fasyankes_id;
 
         // Proses upload foto
         if ($request->hasFile('foto')) {
             // Cek apakah file berhasil diupload
             if ($request->foto->isValid()) {
-                $fotoPath = $request->foto->store('posyantdu', 'public'); // Menyimpan foto ke folder 'posyandu'
+                $fotoPath = $request->foto->store('posyandu', 'public'); // Menyimpan foto ke folder 'posyandu'
                 $posyandu->foto = basename($fotoPath); // Simpan nama file foto ke database
             } else {
                 // Jika upload gagal, berikan pesan error
@@ -68,10 +71,12 @@ class AdminPosyanduController extends Controller
         return redirect('admin/posyandu');
     }
 
-    function edit(Posyandu $posyandu)
+    function edit($id)
     {
-        $data['detail'] = $posyandu;
-        return view('admin.posyandu.edit', $data);
+        $detail = Posyandu::findOrFail($id);
+        $fasyankes = Fasyankes::all(); // ambil semua fasyankes
+
+        return view('admin.posyandu.edit', compact('detail', 'fasyankes'));
     }
 
     function update(Request $request, Posyandu $posyandu)
@@ -82,7 +87,7 @@ class AdminPosyanduController extends Controller
             'tanggal' => 'required',
             'waktu' => 'required',
             'lokasi' => 'required',
-            'nama_fasyankes' => 'required',
+            'fasyankes_id' => 'required',
             'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi gambar
         ]);
 
@@ -91,7 +96,7 @@ class AdminPosyanduController extends Controller
         $posyandu->tanggal = $request->tanggal;
         $posyandu->waktu = $request->waktu;
         $posyandu->lokasi = $request->lokasi;
-        $posyandu->nama_fasyankes = $request->nama_fasyankes;
+        $posyandu->fasyankes_id = $request->fasyankes_id;
 
         // Proses upload foto jika ada
         if ($request->hasFile('foto')) {

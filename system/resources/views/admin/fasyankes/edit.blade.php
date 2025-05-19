@@ -27,7 +27,6 @@
 
         .btn-success {
             background-color: #28a745;
-            border-color: #218838;
             font-weight: bold;
             padding: 10px 20px;
         }

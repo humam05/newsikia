@@ -59,6 +59,7 @@
                             <tr>
                                 <th>No.</th>
                                 <th>Nama</th>
+                                <th>Fasyankes ID</th>
                                 <th>Kecamatan</th>
                                 <th>Kelurahan</th>
                                 <th>Action</th>
@@ -69,6 +70,7 @@
                                 <tr>
                                     <td>{{ ($fasyankes->currentPage() - 1) * $fasyankes->perPage() + $index + 1 }}</td>
                                     <td>{{ $item->nama }}</td>
+                                    <td>{{ $item->id }}</td>
                                     <td>{{ $item->kecamatan }}</td>
                                     <td>{{ $item->kelurahan }}</td>
                                     <td>

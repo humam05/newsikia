@@ -54,7 +54,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                2017 - 2020 &copy; Simple theme by <a href="">Alvia</a>
+                                2025 &copy; Tugas Akhir <a href="">Alvia</a>
                             </div>
                         </div>
                     </div>
@@ -140,6 +140,7 @@
     <!-- App js -->
     <script src="{{ url('public') }}/template/assets/js/app.min.js"></script>
 
+    @yield('scripts')
 </body>
 
 </html>

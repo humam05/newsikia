@@ -6,8 +6,8 @@
         <div class="row">
 
             <div class="mb-3 col-12">
-                <label for="nama" class="form-label">Nama</label>
-                <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukkan Nama"
+                <label for="nama" class="form-label">Nama Fasyankes</label>
+                <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukkan Nama Fasyankes"
                     required>
             </div>
         </div>

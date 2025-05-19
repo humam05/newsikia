@@ -34,8 +34,8 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::controller(AuthController::class)->group(function () {
-    Route::get('/', 'ShowLogin');
-    Route::get('login', 'halamanLogin');
+    Route::get('/login', 'ShowLogin');
+    // Route::get('login', 'halamanLogin');
     Route::post('login', 'loginProcess')->name('login');
     Route::post('logout', 'logout');
 });

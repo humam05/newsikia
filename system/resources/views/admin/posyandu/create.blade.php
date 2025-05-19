@@ -33,9 +33,13 @@
         </div>
 
         <div class="mb-3">
-            <label for="nama_fasyankes" class="form-label">Nama Fasyankes</label>
-            <input type="text" name="nama_fasyankes" id="nama_fasyankes" class="form-control"
-                placeholder="Masukkan Nama Fasyankes" required>
+            <label for="fasyankes_id" class="form-label">Pilih Fasyankes</label>
+            <select name="fasyankes_id" id="fasyankes_id" class="form-control select2" required>
+                <option value="" disabled selected>Pilih Fasyankes</option>
+                @foreach ($fasyankesList as $fasyankes)
+                    <option value="{{ $fasyankes->id }}">{{ $fasyankes->nama }}</option>
+                @endforeach
+            </select>
         </div>
 
         <div class="mb-3">
@@ -47,3 +51,12 @@
         <button type="submit" class="btn btn-primary">Simpan</button>
     </form>
 @endsection
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2({
+                width: '100%'
+            });
+        });
+    </script>
+@endpush

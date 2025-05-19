@@ -16,7 +16,7 @@ class Bidan extends Model
         'nik',
         'no_telpon',
         'email',
-        'nama_fasyankes',
+        'fasyankes_id',
         'tempat_lahir',
         'tanggal_lahir',
         'alamat_lengkap',
@@ -31,7 +31,7 @@ class Bidan extends Model
         'nik' => 'required',
         'no_telpon' => 'required',
         'email' => 'required',
-        'nama_fasyankes' => 'required',
+        'fasyankes_id' => 'required',
         'tempat_lahir' => 'required',
         'tanggal_lahir' => 'required|date',
         'alamat_lengkap' => 'required',
@@ -57,8 +57,10 @@ class Bidan extends Model
         'desa.required' => 'Inputan tidak boleh kosong',
     ];
 
+
+
     function fasyankes()
     {
-        return $this->belongsTo(Fasyankes::class, 'nama_fasyankes', 'nama');
+        return $this->belongsTo(Fasyankes::class);
     }
 }

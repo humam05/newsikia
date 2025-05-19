@@ -5,12 +5,12 @@
         <div class="row">
             <div class="mb-3 col-6">
                 <label for="name" class="form-label">Nama</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Masukkan Nama Posyandu"
+                <input type="text" name="name" id="name" class="form-control" placeholder="Masukkan Nama Pengguna"
                     required>
             </div>
             <div class="mb-3 col-6">
                 <label for="email" class="form-label">Email</label>
-                <input type="text" name="email" id="email" class="form-control" placeholder="Masukkan Tanggal"
+                <input type="text" name="email" id="email" class="form-control" placeholder="Masukkan Email"
                     required>
             </div>
         </div>
@@ -18,7 +18,7 @@
             <div class="mb-3 col-6">
                 <label for="password" class="form-label">Password</label>
                 <input type="text" name="password" id="password" class="form-control"
-                    placeholder="Masukkan Waktu Posyandu" required>
+                    placeholder="Masukkan Password" required>
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>

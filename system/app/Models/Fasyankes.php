@@ -4,18 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Fasyankes extends Model
 {
     use HasFactory;
+
     protected $table = 'tb_fasyankes';
+
     protected $fillable = [
         'nama',
         'kecamatan',
         'kelurahan',
         'desa',
-        'rt_rw'
+        'rt_rw',
     ];
 
     static $rules = [
@@ -25,6 +26,7 @@ class Fasyankes extends Model
         'desa' => 'required',
         'rt_rw' => 'required',
     ];
+
     static $message = [
         'nama.required' => 'Inputan tidak boleh kosong',
         'kecamatan.required' => 'Inputan tidak boleh kosong',
@@ -33,8 +35,19 @@ class Fasyankes extends Model
         'rt_rw.required' => 'Inputan tidak boleh kosong',
     ];
 
-    function bidan()
+    /**
+     * Relasi: 1 Fasyankes memiliki banyak Bidan
+     */
+    public function bidan()
     {
-        return $this->hasMany(Bidan::class, 'nama_fasyankes', 'nama');
+        return $this->hasMany(Bidan::class, 'fasyankes_id');
+    }
+
+    /**
+     * Relasi: 1 Fasyankes memiliki banyak Posyandu
+     */
+    public function posyandu()
+    {
+        return $this->hasMany(Posyandu::class, 'fasyankes_id');
     }
 }

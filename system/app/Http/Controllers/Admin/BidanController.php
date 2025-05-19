@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Bidan;
+use App\Models\Fasyankes;
 
 class BidanController extends Controller
 {
@@ -16,18 +17,26 @@ class BidanController extends Controller
 
     function create()
     {
-        return view('admin.bidan.create');
+        $fasyankesList = Fasyankes::all(); // Atau pakai where/limit kalau banyak
+        return view('admin.bidan.create', compact('fasyankesList'));
     }
 
 
     function store()
     {
         $bidan = new Bidan;
+        $bidan->fasyankes_id = request('fasyankes_id');
         $bidan->nama_bidan = request('nama_bidan');
         $bidan->nik = request('nik');
         $bidan->no_telpon = request('no_telpon');
         $bidan->email = request('email');
-        $bidan->fasyankes_id = request('fasyankes_id');
+        $bidan->tempat_lahir = request('tempat_lahir');
+        $bidan->tanggal_lahir = request('tanggal_lahir');
+        $bidan->alamat_lengkap = request('alamat_lengkap');
+        $bidan->provinsi = request('provinsi');
+        $bidan->kabupaten = request('kabupaten');
+        $bidan->kecamatan = request('kecamatan');
+        $bidan->desa = request('desa');
         $bidan->save();
         return redirect('admin/bidan');
     }
@@ -41,25 +50,34 @@ class BidanController extends Controller
     function edit(Bidan $bidan)
     {
         $data['detail'] = $bidan;
+         $data['fasyankes'] = Fasyankes::all();
         return view('admin.bidan.edit', $data);
     }
 
     function update(Bidan $bidan)
     {
-
-
+        $bidan->fasyankes_id = request('fasyankes_id');
         $bidan->nama_bidan = request('nama_bidan');
         $bidan->nik = request('nik');
         $bidan->no_telpon = request('no_telpon');
         $bidan->email = request('email');
-        $bidan->fasyankes_id = request('fasyankes_id');
+        $bidan->tempat_lahir = request('tempat_lahir');
+        $bidan->tanggal_lahir = request('tanggal_lahir');
+        $bidan->alamat_lengkap = request('alamat_lengkap');
+        $bidan->provinsi = request('provinsi');
+        $bidan->kabupaten = request('kabupaten');
+        $bidan->kecamatan = request('kecamatan');
+        $bidan->desa = request('desa');
+
         $update = $bidan->update();
+
         if ($update) {
             return redirect('admin/bidan');
         } else {
-            return back()->with('error', 'gagal !');
+            return back()->with('error', 'Gagal memperbarui data!');
         }
     }
+
 
     function delete(Bidan $bidan)
     {

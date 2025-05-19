@@ -9,8 +9,8 @@
         }
 
         .container {
-            width: 100%;
-            padding: 2rem;
+            max-width: 100%;
+            margin-top: 5%;
         }
 
         .card {
@@ -23,10 +23,6 @@
 
         .form-label {
             font-weight: 600;
-        }
-
-        .detail-item {
-            margin-bottom: 1.5rem;
         }
 
         .detail-label {
@@ -70,10 +66,8 @@
             margin-bottom: 2rem;
         }
 
-        .d-flex {
-            display: flex;
-            justify-content: flex-start;
-            gap: 10px;
+        .detail-group {
+            margin-bottom: 1.5rem;
         }
     </style>
 </head>
@@ -82,29 +76,76 @@
     <div class="container">
         <div class="card">
             <h1>Detail Bidan</h1>
-            <div class="detail-item">
-                <label class="detail-label"><i class="fas fa-graduation-cap"></i> Nama Bidan</label>
-                <div class="detail-value">{{ $bidan->nama_bidan }}</div>
+
+            <div class="row">
+                <div class="col-6 detail-group">
+                    <label class="detail-label"><i class="fas fa-user-nurse"></i> Nama Bidan</label>
+                    <div class="detail-value">{{ $bidan->nama_bidan }}</div>
+                </div>
+                <div class="col-6 detail-group">
+                    <label class="detail-label"><i class="fas fa-id-card"></i> NIK</label>
+                    <div class="detail-value">{{ $bidan->nik }}</div>
+                </div>
             </div>
-            <div class="detail-item">
-                <label class="detail-label"><i class="fas fa-code-branch"></i> NIK</label>
-                <div class="detail-value">{{ $bidan->nik }}</div>
+
+            <div class="row">
+                <div class="col-6 detail-group">
+                    <label class="detail-label"><i class="fas fa-phone"></i> No. Telepon</label>
+                    <div class="detail-value">{{ $bidan->no_telpon }}</div>
+                </div>
+                <div class="col-6 detail-group">
+                    <label class="detail-label"><i class="fas fa-envelope"></i> Email</label>
+                    <div class="detail-value">{{ $bidan->email }}</div>
+                </div>
             </div>
-            <div class="detail-item">
-                <label class="detail-label"><i class="fas fa-user-tie"></i> No. Telepon</label>
-                <div class="detail-value">{{ $bidan->no_telpon }}</div>
+
+            <div class="row">
+                <div class="col-6 detail-group">
+                    <label class="detail-label"><i class="fas fa-hospital"></i> Nama Fasyankes</label>
+                    <div class="detail-value">{{ $bidan->nama_fasyankes }}</div>
+                </div>
+                <div class="col-6 detail-group">
+                    <label class="detail-label"><i class="fas fa-map-marker-alt"></i> Tempat Lahir</label>
+                    <div class="detail-value">{{ $bidan->tempat_lahir }}</div>
+                </div>
             </div>
-            <div class="detail-item">
-                <label class="detail-label"><i class="fas fa-envelope"></i> Email</label>
-                <div class="detail-value">{{ $bidan->email }}</div>
+
+            <div class="row">
+                <div class="col-6 detail-group">
+                    <label class="detail-label"><i class="fas fa-calendar-alt"></i> Tanggal Lahir</label>
+                    <div class="detail-value">{{ $bidan->tanggal_lahir }}</div>
+                </div>
+                <div class="col-6 detail-group">
+                    <label class="detail-label"><i class="fas fa-map"></i> Alamat Lengkap</label>
+                    <div class="detail-value">{{ $bidan->alamat_lengkap }}</div>
+                </div>
             </div>
-            <div class="detail-item">
-                <label class="detail-label"><i class="fas fa-hospital"></i> Fasyankes ID</label>
-                <div class="detail-value">{{ $bidan->fasyankes_id }}</div>
+
+            <div class="row">
+                <div class="col-6 detail-group">
+                    <label class="detail-label"><i class="fas fa-globe-asia"></i> Provinsi</label>
+                    <div class="detail-value">{{ $bidan->provinsi }}</div>
+                </div>
+                <div class="col-6 detail-group">
+                    <label class="detail-label"><i class="fas fa-city"></i> Kabupaten</label>
+                    <div class="detail-value">{{ $bidan->kabupaten }}</div>
+                </div>
             </div>
+
+            <div class="row">
+                <div class="col-6 detail-group">
+                    <label class="detail-label"><i class="fas fa-map-signs"></i> Kecamatan</label>
+                    <div class="detail-value">{{ $bidan->kecamatan }}</div>
+                </div>
+                <div class="col-6 detail-group">
+                    <label class="detail-label"><i class="fas fa-home"></i> Desa</label>
+                    <div class="detail-value">{{ $bidan->desa }}</div>
+                </div>
+            </div>
+
             <div class="d-flex mt-3">
                 <a href="{{ url('admin/bidan') }}" class="btn btn-secondary">
-                    <i class="fas fa-arrow-left"></i> Batal
+                    <i class="fas fa-arrow-left"></i> Kembali
                 </a>
             </div>
         </div>

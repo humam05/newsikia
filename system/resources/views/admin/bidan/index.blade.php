@@ -1,4 +1,5 @@
 @extends('admin.layouts.base')
+
 @section('content')
     <style>
         .button-container {
@@ -32,7 +33,7 @@
                                 <th>Nik</th>
                                 <th>No Telpon</th>
                                 <th>Email</th>
-                                <th>Fasyankes</th>
+                                <th>Nama Fasyankes</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -44,16 +45,11 @@
                                     <td>{{ $item->nik }}</td>
                                     <td>{{ $item->no_telpon }}</td>
                                     <td>{{ $item->email }}</td>
-                                    <td>{{ $item->fasyankes_id }}</td>
+                                    <td>{{ $item->fasyankes->nama ?? '-' }}</td> <!-- Nama Fasyankes dari relasi -->
                                     <td>
-                                        <a href="{{ url('admin/bidan/show', $item->id) }}"
-                                            class="btn btn-dark btn-sm">Show</a>
-                                        <a href="{{ url('admin/bidan/edit', $item->id) }}"
-                                            class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="{{ url('admin/bidan/delete', $item->id) }}"
-                                            class="btn btn-danger btn-sm"
-
-                                            onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
+                                        <a href="{{ url('admin/bidan/show', $item->id) }}" class="btn btn-dark btn-sm">Show</a>
+                                        <a href="{{ url('admin/bidan/edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="{{ url('admin/bidan/delete', $item->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

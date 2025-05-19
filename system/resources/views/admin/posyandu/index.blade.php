@@ -130,7 +130,8 @@
                             {{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</div>
                         <div class="card-text"><strong>Waktu:</strong> {{ $item->waktu }}</div>
                         <div class="card-text"><strong>Lokasi:</strong> {{ $item->lokasi }}</div>
-                        <div class="card-text"><strong>Fasyankes:</strong> {{ $item->nama_fasyankes }}</div>
+                        <div class="card-text"><strong>Fasyankes:</strong> {{ $item->fasyankes->nama ?? '-' }}</div>
+
                     </div>
                     <div class="card-actions">
                         <a href="{{ url('admin/posyandu/edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>

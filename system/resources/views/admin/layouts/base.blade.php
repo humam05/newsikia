@@ -4,19 +4,21 @@
 <head>
     <meta charset="utf-8" />
     <title>SIKIA-KAB.KETAPANG</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta content="Responsive bootstrap 4 admin template" name="description" />
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ url('public') }}/template/assets/images/favicon.ico">
-    <!-- App css -->
-    <link href="{{ url('public') }}/template/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"
-        id="bootstrap-stylesheet" />
-    <link href="{{ url('public') }}/template/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="{{ url('public') }}/template/assets/css/app.min.css" rel="stylesheet" type="text/css"
-        id="app-stylesheet" />
 
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ url('public') }}/template/assets/images/favicon.ico" />
+
+    <!-- App css -->
+    <link href="{{ url('public') }}/template/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
+    <link href="{{ url('public') }}/template/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ url('public') }}/template/assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet" />
+
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -24,11 +26,11 @@
     <!-- Begin page -->
     <div id="wrapper">
 
-
         <!-- Topbar Start -->
-
         @include('admin.layouts.navbar')
-        <!-- end Topbar --> <!-- ========== Left Sidebar Start ========== -->
+        <!-- end Topbar -->
+
+        <!-- ========== Left Sidebar Start ========== -->
         @include('admin.layouts.sidebar')
         <!-- Left Sidebar End -->
 
@@ -41,13 +43,9 @@
 
                 <!-- Start container-fluid -->
                 <div class="container-fluid">
-
                     @yield('content')
-
                 </div>
                 <!-- end container-fluid -->
-
-
 
                 <!-- Footer Start -->
                 <footer class="footer">
@@ -70,7 +68,6 @@
     </div>
     <!-- END wrapper -->
 
-
     <!-- Right Sidebar -->
     <div class="right-bar">
         <div class="rightbar-title">
@@ -86,8 +83,7 @@
                     <strong>Customize </strong> the overall color scheme, layout, etc.
                 </div>
                 <div class="mb-2">
-                    <img src="{{ url('public') }}/template/assets/images/plugins/light.png"
-                        class="img-fluid img-thumbnail" alt="">
+                    <img src="{{ url('public') }}/template/assets/images/plugins/light.png" class="img-fluid img-thumbnail" alt="" />
                 </div>
                 <div class="custom-control custom-switch mb-3">
                     <input type="checkbox" class="custom-control-input theme-choice" id="light-mode-switch" checked />
@@ -95,8 +91,7 @@
                 </div>
 
                 <div class="mb-2">
-                    <img src="{{ url('public') }}/template/assets/images/plugins/dark.png"
-                        class="img-fluid img-thumbnail" alt="">
+                    <img src="{{ url('public') }}/template/assets/images/plugins/dark.png" class="img-fluid img-thumbnail" alt="" />
                 </div>
                 <div class="custom-control custom-switch mb-3">
                     <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch"
@@ -106,8 +101,7 @@
                 </div>
 
                 <div class="mb-2">
-                    <img src="{{ url('public') }}/template/assets/images/plugins/rtl.png"
-                        class="img-fluid img-thumbnail" alt="">
+                    <img src="{{ url('public') }}/template/assets/images/plugins/rtl.png" class="img-fluid img-thumbnail" alt="" />
                 </div>
                 <div class="custom-control custom-switch mb-5">
                     <input type="checkbox" class="custom-control-input theme-choice" id="rtl-mode-switch"
@@ -115,8 +109,7 @@
                     <label class="custom-control-label" for="rtl-mode-switch">RTL Mode</label>
                 </div>
 
-                <a href="https://1.envato.market/EK71X" class="btn btn-danger btn-block mt-3" target="_blank"><i
-                        class="mdi mdi-download mr-1"></i> Download Now</a>
+                <a href="https://1.envato.market/EK71X" class="btn btn-danger btn-block mt-3" target="_blank"><i class="mdi mdi-download mr-1"></i> Download Now</a>
             </div>
         </div> <!-- end slimscroll-menu-->
     </div>
@@ -132,6 +125,12 @@
     <!-- Vendor js -->
     <script src="{{ url('public') }}/template/assets/js/vendor.min.js"></script>
 
+    <!-- Jika vendor.min.js belum termasuk jQuery, tambahkan ini -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     <script src="{{ url('public') }}/template/assets/libs/morris-js/morris.min.js"></script>
     <script src="{{ url('public') }}/template/assets/libs/raphael/raphael.min.js"></script>
 
@@ -139,6 +138,9 @@
 
     <!-- App js -->
     <script src="{{ url('public') }}/template/assets/js/app.min.js"></script>
+
+    <!-- Tempat untuk script tambahan dari child view -->
+    @stack('scripts')
 
 </body>
 
