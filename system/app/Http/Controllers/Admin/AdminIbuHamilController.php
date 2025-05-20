@@ -212,11 +212,15 @@ class AdminIbuHamilController extends Controller
         return view('admin.ibu_hamil.periksa.create', compact('dataIdentitas'));
     }
 
-    
 
 
-    function periksaIndex()
+
+    function periksaRutinIndex()
     {
-        return view('admin.ibu_hamil.periksa.index');
+        return view('admin.ibu_hamil.periksa_rutin.index');
+    }
+    function periksaTrimesterIndex()
+    {
+        return view('admin.ibu_hamil.periksa_trimester.index');
     }
 }

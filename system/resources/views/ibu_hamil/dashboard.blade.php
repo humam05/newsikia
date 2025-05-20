@@ -56,9 +56,8 @@
         <img src="">
         <div class="profile-title">Data Keluarga</div>
         <div class="button-container">
-            <a href="{{ url('/ibu_hamil/identitas/create') }}" class="btn btn-primary">
-                Lengkapi Data
-            </a>
+            <a href="{{ route('ibu_hamil.identitas.lengkapi') }}" class="btn btn-primary">Lengkapi Data</a>
+
         </div><br>
     </div>
 

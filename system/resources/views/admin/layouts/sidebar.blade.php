@@ -110,8 +110,12 @@
                         <i class="fas fa-chart-line mr-2"></i> HPL
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item {{ Request::is('admin/ibu_hamil/periksa') ? 'active' : '' }}" href="{{ url('admin/ibu_hamil/periksa') }}">
-                        <i class="fas fa-chart-line mr-2"></i> Periksa
+                    <a class="dropdown-item {{ Request::is('admin/ibu_hamil/periksa_rutin') ? 'active' : '' }}" href="{{ url('admin/ibu_hamil/periksa_rutin') }}">
+                        <i class="fas fa-chart-line mr-2"></i> Periksa Rutin
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item {{ Request::is('admin/ibu_hamil/periksa_trimester') ? 'active' : '' }}" href="{{ url('admin/ibu_hamil/periksa_trimester') }}">
+                        <i class="fas fa-chart-line mr-2"></i> Periksa Trimester
                     </a>
                 </div>
             </li>

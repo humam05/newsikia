@@ -167,4 +167,14 @@ class Identitas extends Model
         // 'kohort_balita.required' => 'Nomor reg. Kohort balita tidak boleh kosong',
         // 'medik_rs.required' => 'Nomor catatan medik RS tidak boleh kosong',
     ];
+    public function ibuHamil()
+    {
+        return $this->belongsTo(IbuHamil::class, 'ibu_hamil_id');
+    }
+
+    public function identitas()
+{
+    return $this->hasOne(Identitas::class, 'ibu_hamil_id');
+}
+
 }

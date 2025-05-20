@@ -6,13 +6,50 @@ use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Identitas;
+use Illuminate\Support\Facades\Auth;
 
 class IdentitasController extends Controller
 {
-    function index()
+    // function index()
+    // {
+    //     $data['identitas'] = Identitas::all();
+    //     return view('ibu_hamil.identitas.index', $data);
+    // }
+
+    // Redirect ke create atau edit sesuai data user
+    function lengkapiData()
     {
-        $data['identitas'] = Identitas::all();
-        return view('ibu_hamil.identitas.index', $data);
+        $user = Auth::guard('ibuhamil')->user();
+        if (!$user) {
+            return redirect('/login'); // atau route login ibuhamil kamu
+        }
+
+        $identitas = Identitas::where('ibu_hamil_id', $user->id)->first();
+
+        if ($identitas) {
+            // Kalau sudah ada data, redirect ke halaman edit
+            return redirect()->route('identitas.edit', $identitas->id);
+        } else {
+            // Kalau belum ada data, redirect ke halaman create
+            return redirect()->route('ibu_hamil.identitas.create');
+        }
+    }
+
+
+    function index(Request $request)
+    {
+        $user = Auth::guard('ibuhamil')->user(); // ambil user yang login
+
+        $query = Identitas::where('ibu_hamil_id', $user->id);
+        $totalIbuHamil = $query->count();
+
+        if ($request->has('search')) {
+            $query->where('ibu_nik', 'like', '%' . $request->search . '%');
+        }
+
+        $identitas = $query->get();
+
+        return view('ibu_hamil.identitas.index', compact('identitas', 'totalIbuHamil'));
     }
 
     function create()
@@ -20,66 +57,70 @@ class IdentitasController extends Controller
         return view('ibu_hamil.identitas.create');
     }
 
-   public function store(Request $request)
-{
-    $request->validate([
-        // Data Ibu (wajib hanya nama & nik)
-        'ibu_nama' => 'required|string|max:255',
-        'ibu_nik' => 'required|numeric|digits:16',
-        'ibu_jkn' => 'nullable|string|max:255',
-        'ibu_faskes_tk1' => 'nullable|string|max:255',
-        'ibu_faskes_rujukan' => 'nullable|string|max:255',
-        'ibu_ttl' => 'nullable|string|max:255',
-        'ibu_pendidikan' => 'nullable|string|max:255',
-        'ibu_pekerjaan' => 'nullable|string|max:255',
-        'ibu_gol_darah' => 'nullable|string|max:3',
-        'ibu_telepon' => 'nullable|string|max:15',
-        'ibu_alamat' => 'nullable|string|max:500',
-        'ibu_asuransi_lain' => 'nullable|string|max:255',
-        'ibu_asuransi_nomor' => 'nullable|string|max:255',
-        'ibu_asuransi_berlaku' => 'nullable|date',
+    function store(Request $request)
+    {
+        $request->validate([
+            // Data Ibu (wajib hanya nama & nik)
+            'ibu_nama' => 'required|string|max:255',
+            'ibu_nik' => 'required|numeric|digits:16',
+            'ibu_jkn' => 'nullable|string|max:255',
+            'ibu_faskes_tk1' => 'nullable|string|max:255',
+            'ibu_faskes_rujukan' => 'nullable|string|max:255',
+            'ibu_ttl' => 'nullable|string|max:255',
+            'ibu_pendidikan' => 'nullable|string|max:255',
+            'ibu_pekerjaan' => 'nullable|string|max:255',
+            'ibu_gol_darah' => 'nullable|string|max:3',
+            'ibu_telepon' => 'nullable|string|max:15',
+            'ibu_alamat' => 'nullable|string|max:500',
+            'ibu_asuransi_lain' => 'nullable|string|max:255',
+            'ibu_asuransi_nomor' => 'nullable|string|max:255',
+            'ibu_asuransi_berlaku' => 'nullable|date',
 
-        // Data Suami (wajib hanya nama & nik)
-        'suami_nama' => 'required|string|max:255',
-        'suami_nik' => 'required|numeric|digits:16',
-        'suami_jkn' => 'nullable|string|max:255',
-        'suami_faskes_tk1' => 'nullable|string|max:255',
-        'suami_faskes_rujukan' => 'nullable|string|max:255',
-        'suami_ttl' => 'nullable|string|max:255',
-        'suami_pendidikan' => 'nullable|string|max:255',
-        'suami_pekerjaan' => 'nullable|string|max:255',
-        'suami_gol_darah' => 'nullable|string|max:3',
-        'suami_telepon' => 'nullable|string|max:15',
-        'suami_alamat' => 'nullable|string|max:500',
-        'suami_asuransi_lain' => 'nullable|string|max:255',
-        'suami_asuransi_nomor' => 'nullable|string|max:255',
-        'suami_asuransi_berlaku' => 'nullable|date',
+            // Data Suami (wajib hanya nama & nik)
+            'suami_nama' => 'required|string|max:255',
+            'suami_nik' => 'required|numeric|digits:16',
+            'suami_jkn' => 'nullable|string|max:255',
+            'suami_faskes_tk1' => 'nullable|string|max:255',
+            'suami_faskes_rujukan' => 'nullable|string|max:255',
+            'suami_ttl' => 'nullable|string|max:255',
+            'suami_pendidikan' => 'nullable|string|max:255',
+            'suami_pekerjaan' => 'nullable|string|max:255',
+            'suami_gol_darah' => 'nullable|string|max:3',
+            'suami_telepon' => 'nullable|string|max:15',
+            'suami_alamat' => 'nullable|string|max:500',
+            'suami_asuransi_lain' => 'nullable|string|max:255',
+            'suami_asuransi_nomor' => 'nullable|string|max:255',
+            'suami_asuransi_berlaku' => 'nullable|date',
 
-        // Data Anak (opsional semua)
-        'anak_nama' => 'nullable|string|max:255',
-        'anak_nik' => 'nullable|numeric|digits:16',
-        'anak_jkn' => 'nullable|string|max:255',
-        'anak_faskes_tk1' => 'nullable|string|max:255',
-        'anak_faskes_rujukan' => 'nullable|string|max:255',
-        'anak_tempat_lahir' => 'nullable|string|max:255',
-        'anak_tanggal_lahir' => 'nullable|date',
-        'anak_alamat' => 'nullable|string|max:500',
-        'anak_ke' => 'nullable|numeric',
-        'anak_akta_kelahiran' => 'nullable|string|max:255',
-        'anak_gol_darah' => 'nullable|string|max:3',
+            // Data Anak (opsional semua)
+            'anak_nama' => 'nullable|string|max:255',
+            'anak_nik' => 'nullable|numeric|digits:16',
+            'anak_jkn' => 'nullable|string|max:255',
+            'anak_faskes_tk1' => 'nullable|string|max:255',
+            'anak_faskes_rujukan' => 'nullable|string|max:255',
+            'anak_tempat_lahir' => 'nullable|string|max:255',
+            'anak_tanggal_lahir' => 'nullable|date',
+            'anak_alamat' => 'nullable|string|max:500',
+            'anak_ke' => 'nullable|numeric',
+            'anak_akta_kelahiran' => 'nullable|string|max:255',
+            'anak_gol_darah' => 'nullable|string|max:3',
 
-        // Fasilitas Kesehatan (opsional semua)
-        'puskesmas' => 'nullable|string|max:255',
-        'kohort_ibu' => 'nullable|string|max:255',
-        'kohort_bayi' => 'nullable|string|max:255',
-        'kohort_balita' => 'nullable|string|max:255',
-        'medik_rs' => 'nullable|string|max:255',
-    ]);
+            // Fasilitas Kesehatan (opsional semua)
+            'puskesmas' => 'nullable|string|max:255',
+            'kohort_ibu' => 'nullable|string|max:255',
+            'kohort_bayi' => 'nullable|string|max:255',
+            'kohort_balita' => 'nullable|string|max:255',
+            'medik_rs' => 'nullable|string|max:255',
+        ]);
 
-    Identitas::create($request->all());
+        // Ambil data dari form dan tambahkan ID ibu hamil yang sedang login
+        $data = $request->all();
+        $data['ibu_hamil_id'] = Auth::guard('ibuhamil')->id();
 
-    return redirect('ibu_hamil/identitas')->with('success', 'Data berhasil disimpan.');
-}
+        Identitas::create($data);
+
+        return redirect('ibu_hamil/identitas')->with('success', 'Data berhasil disimpan.');
+    }
 
 
     function show(Identitas $identitas)
@@ -96,60 +137,67 @@ class IdentitasController extends Controller
 
     function update(Request $request, Identitas $identitas)
     {
+        $request->validate([
+            // Data Ibu
+            'ibu_nama' => 'required|string|max:255',
+            'ibu_nik' => 'required|numeric|digits:16',
+            'ibu_jkn' => 'nullable|string|max:255',
+            'ibu_faskes_tk1' => 'nullable|string|max:255',
+            'ibu_faskes_rujukan' => 'nullable|string|max:255',
+            'ibu_ttl' => 'nullable|string|max:255',
+            'ibu_pendidikan' => 'nullable|string|max:255',
+            'ibu_pekerjaan' => 'nullable|string|max:255',
+            'ibu_gol_darah' => 'nullable|string|max:3',
+            'ibu_telepon' => 'nullable|string|max:15',
+            'ibu_alamat' => 'nullable|string|max:500',
+            'ibu_asuransi_lain' => 'nullable|string|max:255',
+            'ibu_asuransi_nomor' => 'nullable|string|max:255',
+            'ibu_asuransi_berlaku' => 'nullable|date',
 
+            // Data Suami
+            'suami_nama' => 'required|string|max:255',
+            'suami_nik' => 'required|numeric|digits:16',
+            'suami_jkn' => 'nullable|string|max:255',
+            'suami_faskes_tk1' => 'nullable|string|max:255',
+            'suami_faskes_rujukan' => 'nullable|string|max:255',
+            'suami_ttl' => 'nullable|string|max:255',
+            'suami_pendidikan' => 'nullable|string|max:255',
+            'suami_pekerjaan' => 'nullable|string|max:255',
+            'suami_gol_darah' => 'nullable|string|max:3',
+            'suami_telepon' => 'nullable|string|max:15',
+            'suami_alamat' => 'nullable|string|max:500',
+            'suami_asuransi_lain' => 'nullable|string|max:255',
+            'suami_asuransi_nomor' => 'nullable|string|max:255',
+            'suami_asuransi_berlaku' => 'nullable|date',
 
+            // Data Anak
+            'anak_nama' => 'nullable|string|max:255',
+            'anak_nik' => 'nullable|numeric|digits:16',
+            'anak_jkn' => 'nullable|string|max:255',
+            'anak_faskes_tk1' => 'nullable|string|max:255',
+            'anak_faskes_rujukan' => 'nullable|string|max:255',
+            'anak_tempat_lahir' => 'nullable|string|max:255',
+            'anak_tanggal_lahir' => 'nullable|date',
+            'anak_alamat' => 'nullable|string|max:500',
+            'anak_ke' => 'nullable|numeric',
+            'anak_akta_kelahiran' => 'nullable|string|max:255',
+            'anak_gol_darah' => 'nullable|string|max:3',
 
-        $identitas->ibu_nama = request('ibu_nama');
-        $identitas->ibu_nik = request('ibu_nik');
-        $identitas->ibu_jkn = request('ibu_jkn');
-        $identitas->ibu_faskes_tk1 = request('ibu_faskes_tk1');
-        $identitas->ibu_faskes_rujukan = request('ibu_faskes_rujukan');
-        $identitas->ibu_ttl = request('ibu_ttl');
-        $identitas->ibu_pendidikan = request('ibu_pendidikan');
-        $identitas->ibu_pekerjaan = request('ibu_pekerjaan');
-        $identitas->ibu_gol_darah = request('ibu_gol_darah');
-        $identitas->ibu_telepon = request('ibu_telepon');
-        $identitas->ibu_alamat = request('ibu_alamat');
-        $identitas->ibu_asuransi_lain = request('ibu_asuransi_lain');
-        $identitas->ibu_asuransi_nomor = request('ibu_asuransi_nomor');
-        $identitas->ibu_asuransi_berlaku = request('ibu_asuransi_berlaku');
-        $identitas->suami_nama = request('suami_nama');
-        $identitas->suami_nik = request('suami_nik');
-        $identitas->suami_jkn = request('suami_jkn');
-        $identitas->suami_faskes_tk1 = request('suami_faskes_tk1');
-        $identitas->suami_faskes_rujukan = request('suami_faskes_rujukan');
-        $identitas->suami_ttl = request('suami_ttl');
-        $identitas->suami_pendidikan = request('suami_pendidikan');
-        $identitas->suami_pekerjaan = request('suami_pekerjaan');
-        $identitas->suami_gol_darah = request('suami_gol_darah');
-        $identitas->suami_telepon = request('suami_telepon');
-        $identitas->suami_alamat = request('suami_alamat');
-        $identitas->suami_asuransi_lain = request('suami_asuransi_lain');
-        $identitas->suami_asuransi_nomor = request('suami_asuransi_nomor');
-        $identitas->suami_asuransi_berlaku = request('suami_asuransi_berlaku');
-        $identitas->anak_nama = request('anak_nama');
-        $identitas->anak_nik = request('anak_nik');
-        $identitas->anak_jkn = request('anak_jkn');
-        $identitas->anak_faskes_tk1 = request('anak_faskes_tk1');
-        $identitas->anak_faskes_rujukan = request('anak_faskes_rujukan');
-        $identitas->anak_tempat_lahir = request('anak_tempat_lahir');
-        $identitas->anak_tanggal_lahir = request('anak_tanggal_lahir');
-        $identitas->anak_alamat = request('anak_alamat');
-        $identitas->anak_ke = request('anak_ke');
-        $identitas->anak_akta_kelahiran = request('anak_akta_kelahiran');
-        $identitas->anak_gol_darah = request('anak_gol_darah');
-        $identitas->puskesmas = request('puskesmas');
-        $identitas->kohort_ibu = request('kohort_ibu');
-        $identitas->kohort_bayi = request('kohort_bayi');
-        $identitas->kohort_balita = request('kohort_balita');
-        $identitas->medik_rs = request('medik_rs');
-        $update = $identitas->update();
-        if ($update) {
-            return redirect('ibu_hamil/identitas');
-        } else {
-            return back()->with('error', 'gagal !');
-        }
+            // Fasilitas Kesehatan
+            'puskesmas' => 'nullable|string|max:255',
+            'kohort_ibu' => 'nullable|string|max:255',
+            'kohort_bayi' => 'nullable|string|max:255',
+            'kohort_balita' => 'nullable|string|max:255',
+            'medik_rs' => 'nullable|string|max:255',
+        ]);
+
+        $data = $request->except(['ibu_hamil_id']); // agar tidak bisa ubah ID user
+
+        $identitas->update($data);
+
+        return redirect('ibu_hamil/identitas')->with('success', 'Data berhasil diperbarui.');
     }
+
 
     function delete(Identitas $identitas)
     {

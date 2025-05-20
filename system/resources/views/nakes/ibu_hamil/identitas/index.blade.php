@@ -46,15 +46,17 @@
                                     <td>{{ $item->suami_nama }}</td>
                                     <td>{{ $item->anak_nama }}</td>
                                     <td>
-                                        <a href="{{ url('ibu_hamil/identitas/show', $item->id) }}"
+                                        <a href="{{ url('nakes/ibu_hamil/identitas/show', $item->id) }}"
                                             class="btn btn-dark btn-sm">Show</a>
-                                        <a href="{{ url('ibu_hamil/identitas/edit', $item->id) }}"
+                                        <a href="{{ url('nakes/ibu_hamil/identitas/edit', $item->id) }}"
                                             class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="{{ url('ibu_hamil/identitas/delete', $item->id) }}"
+                                        <a href="{{ url('nakes/ibu_hamil/identitas/delete', $item->id) }}"
                                             class="btn btn-danger btn-sm"
                                             onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
-                                             <a href="{{ url('nakes/ibu_hamil/periksa')}}"
-                                            class="btn btn-success btn-sm">Periksa</a>
+                                             <a href="{{ url('nakes/ibu_hamil/periksa_rutin')}}"
+                                            class="btn btn-success btn-sm">Periksa Rutin</a>
+                                             <a href="{{ url('nakes/ibu_hamil/periksa_trimester')}}"
+                                            class="btn btn-info btn-sm">Periksa Trimester</a>
                                     </td>
                                 </tr>
                             @endforeach

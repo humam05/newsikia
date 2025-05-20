@@ -140,6 +140,7 @@
     <!-- App js -->
     <script src="{{ url('public') }}/template/assets/js/app.min.js"></script>
 
+     @yield('scripts')
 </body>
 
 </html>

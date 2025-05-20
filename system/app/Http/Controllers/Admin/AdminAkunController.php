@@ -88,7 +88,7 @@ class AdminAkunController extends Controller
         return view('admin.akun.nakes.edit', $data);
     }
 
-     function nakesUpdate(Nakes $nakes)
+    function nakesUpdate(Nakes $nakes)
     {
         $nakes->name = request('name');
         $nakes->email = request('email');
@@ -117,10 +117,9 @@ class AdminAkunController extends Controller
     function puskesmasCreate()
     {
         return view('admin.akun.puskesmas.create');
-
     }
 
-     function puskesmasStore()
+    function puskesmasStore()
     {
         $puskesmas =  new Puskesmas;
         $puskesmas->name = request('name');
@@ -149,7 +148,7 @@ class AdminAkunController extends Controller
         }
     }
 
-      function puskesmasDelete(Puskesmas $puskesmas)
+    function puskesmasDelete(Puskesmas $puskesmas)
     {
         $puskesmas->delete();
         return redirect('admin/akun/puskesmas');
@@ -165,10 +164,9 @@ class AdminAkunController extends Controller
     function IbuHamilCreate()
     {
         return view('admin.akun.ibu_hamil.create');
-
     }
 
-     function IbuHamilStore()
+    function IbuHamilStore()
     {
         $IbuHamil =  new IbuHamil;
         $IbuHamil->name = request('name');
@@ -197,7 +195,7 @@ class AdminAkunController extends Controller
         }
     }
 
-      function IbuHamilDelete(IbuHamil $IbuHamil)
+    function IbuHamilDelete(IbuHamil $IbuHamil)
     {
         $IbuHamil->delete();
         return redirect('admin/akun/ibu_hamil');
@@ -213,10 +211,9 @@ class AdminAkunController extends Controller
     function adminCreate()
     {
         return view('admin.akun.admin.create');
-
     }
 
-     function adminStore()
+    function adminStore()
     {
         $admin =  new Admin;
         $admin->name = request('name');
@@ -245,7 +242,7 @@ class AdminAkunController extends Controller
         }
     }
 
-      function adminDelete(Admin $admin)
+    function adminDelete(Admin $admin)
     {
         $admin->delete();
         return redirect('admin/akun/admin');

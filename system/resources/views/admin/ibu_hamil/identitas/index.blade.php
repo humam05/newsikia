@@ -90,8 +90,10 @@
                                         <a href="{{ url('admin/ibu_hamil/identitas/delete', $item->id) }}"
                                             class="btn btn-danger btn-sm"
                                             onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
-                                        <a href="{{ url('admin/ibu_hamil/periksa/create?id=' . $item->id) }}"
-                                            class="btn btn-success btn-sm">Periksa</a>
+                                        <a href="{{ url('admin/ibu_hamil/periksa_rutin/create?id=' . $item->id) }}"
+                                            class="btn btn-success btn-sm">Periksa Rutin</a>
+                                        <a href="{{ url('admin/ibu_hamil/periksa_trimester/create?id=' . $item->id) }}"
+                                            class="btn btn-info btn-sm">Periksa Trimester</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -16,6 +16,10 @@ Route::prefix('nakes')->group(function () {
         Route::controller(AkunController::class)->group(function () {
             Route::get('/', 'index');
             Route::get('/create', 'create');
+            Route::post('/store', 'store');
+            Route::get('/edit{akun}', 'edit');
+            Route::get('/update{akun}', 'update');
+            Route::get('/delete{akun}', 'delete');
         });
     });
     Route::prefix('ibu_hamil')->group(function () {
@@ -23,9 +27,13 @@ Route::prefix('nakes')->group(function () {
             Route::get('/identitas', 'identitasIndex');
             Route::get('/identitas/create', 'identitasCreate');
             Route::post('identitas/store', 'identitasStore');
-            Route::get('/show/{identitas}', 'show');
+            Route::get('/identitas/show/{identitas}', 'identitasShow');
+            Route::get('/identitas/edit/{identitas}', 'identitasEdit');
+            Route::post('/identitas/update/{identitas}', 'identitasUpdate');
+            Route::get('/identitas/delete/{identitas}', 'identitasDelete');
+            Route::get('/periksa_rutin', 'periksaRutinIndex');
+            Route::get('/periksa_trimester', 'periksaTrimesterIndex');
             Route::get('/hpl', 'hpl');
-            Route::get('/periksa', 'periksa');
         });
     });
     Route::prefix('bayi')->group(function () {

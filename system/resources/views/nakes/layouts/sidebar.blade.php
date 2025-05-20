@@ -135,8 +135,12 @@
                         <i class="fas fa-calendar-alt mr-2"></i> HPL
                     </a>
                     <div class="dropdown-divider"></div> <!-- Pemisah -->
-                    <a class="dropdown-item" href="{{ url('nakes/ibu_hamil/periksa') }}">
-                        <i class="fas fa-stethoscope"></i> Periksa
+                    <a class="dropdown-item" href="{{ url('nakes/ibu_hamil/periksa_rutin') }}">
+                        <i class="fas fa-stethoscope"></i> Periksa Rutin
+                    </a>
+                    <div class="dropdown-divider"></div> <!-- Pemisah -->
+                    <a class="dropdown-item" href="{{ url('nakes/ibu_hamil/periksa_trimester') }}">
+                        <i class="fas fa-stethoscope"></i> Periksa Trimester
                     </a>
                 </div>
             </li>
