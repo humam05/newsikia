@@ -43,14 +43,16 @@ class BidanController extends Controller
 
     function show(Bidan $bidan)
     {
-        $data['detail'] = $bidan;
+        $bidan->load('fasyankes'); // pastikan relasi diload
         return view('admin.bidan.show', compact('bidan'));
     }
+
+
 
     function edit(Bidan $bidan)
     {
         $data['detail'] = $bidan;
-         $data['fasyankes'] = Fasyankes::all();
+        $data['fasyankes'] = Fasyankes::all();
         return view('admin.bidan.edit', $data);
     }
 

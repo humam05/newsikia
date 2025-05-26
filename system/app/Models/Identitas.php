@@ -173,8 +173,7 @@ class Identitas extends Model
     }
 
     public function identitas()
-{
-    return $this->hasOne(Identitas::class, 'ibu_hamil_id');
-}
-
+    {
+        return $this->hasOne(Identitas::class, 'ibu_hamil_id');
+    }
 }

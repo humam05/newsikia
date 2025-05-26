@@ -50,9 +50,11 @@ Route::prefix('admin')->group(function () {
             Route::get('/identitas/edit/{identitas}', 'identitasEdit');
             Route::post('/identitas/update/{identitas}', 'identitasUpdate');
             Route::get('/identitas/delete/{identitas}', 'identitasDelete');
-            Route::get('periksa/create', 'periksaCreate');
-            Route::get('/periksa_rutin', 'periksaRutinIndex');
-            Route::get('/periksa_trimester', 'periksaTrimesterIndex');
+            Route::get('periksa_rutin', 'periksaRutinIndex');
+            Route::get('/periksa_rutin/create/{identitas}', 'periksaRutinCreate');
+            Route::post('/periksa_rutin/store',  'periksaRutinStore');
+            Route::get('periksa_trimester', 'periksaTrimesterIndex');
+            Route::get('/periksa_trimester/create/{identitas}', 'periksaTrimesterCreate');
 
             // Route::get('/create', 'create');
             // Route::post('/store', 'store');
