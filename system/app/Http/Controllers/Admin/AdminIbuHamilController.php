@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Identitas;
 use App\Models\PeriksaRutin;
+use App\Models\PeriksaTrimester;
 
 
 class AdminIbuHamilController extends Controller
@@ -18,7 +19,7 @@ class AdminIbuHamilController extends Controller
             $query->where('ibu_nik', 'like', '%' . $request->search . '%');
         }
 
-        $data['identitas'] = $query->get();
+        $data['identitas'] = Identitas::paginate(10);
         return view('admin.ibu_hamil.identitas.index', $data);
     }
 
@@ -34,48 +35,48 @@ class AdminIbuHamilController extends Controller
         $request->validate([
             'ibu_nama' => 'required|string|max:255',
             'ibu_nik' => 'required|numeric|unique:tb_identitas,ibu_nik',
-            'ibu_jkn' => 'required|string|max:255',
-            'ibu_faskes_tk1' => 'required|string|max:255',
-            'ibu_faskes_rujukan' => 'required|string|max:255',
-            'ibu_ttl' => 'required|string|max:255',
-            'ibu_pendidikan' => 'required|string|max:255',
-            'ibu_pekerjaan' => 'required|string|max:255',
-            'ibu_gol_darah' => 'required|string|max:3',
-            'ibu_telepon' => 'required|string|max:15',
-            'ibu_alamat' => 'required|string|max:500',
-            'ibu_asuransi_lain' => 'required|string|max:255',
-            'ibu_asuransi_nomor' => 'required|string|max:255',
-            'ibu_asuransi_berlaku' => 'required|date',
+            'ibu_jkn' => 'nullable|string|max:255',
+            'ibu_faskes_tk1' => 'nullable|string|max:255',
+            'ibu_faskes_rujukan' => 'nullable|string|max:255',
+            'ibu_ttl' => 'nullable|string|max:255',
+            'ibu_pendidikan' => 'nullable|string|max:255',
+            'ibu_pekerjaan' => 'nullable|string|max:255',
+            'ibu_gol_darah' => 'nullable|string|max:3',
+            'ibu_telepon' => 'nullable|string|max:15',
+            'ibu_alamat' => 'nullable|string|max:500',
+            'ibu_asuransi_lain' => 'nullable|string|max:255',
+            'ibu_asuransi_nomor' => 'nullable|string|max:255',
+            'ibu_asuransi_berlaku' => 'nullable|date',
             'suami_nama' => 'required|string|max:255',
             'suami_nik' => 'required|numeric',
-            'suami_jkn' => 'required|string|max:255',
-            'suami_faskes_tk1' => 'required|string|max:255',
-            'suami_faskes_rujukan' => 'required|string|max:255',
-            'suami_ttl' => 'required|string|max:255',
-            'suami_pendidikan' => 'required|string|max:255',
-            'suami_pekerjaan' => 'required|string|max:255',
-            'suami_gol_darah' => 'required|string|max:3',
-            'suami_telepon' => 'required|string|max:15',
-            'suami_alamat' => 'required|string|max:500',
-            'suami_asuransi_lain' => 'required|string|max:255',
-            'suami_asuransi_nomor' => 'required|string|max:255',
-            'suami_asuransi_berlaku' => 'required|date',
-            'anak_nama' => 'required|string|max:255',
-            'anak_nik' => 'required|numeric',
-            'anak_jkn' => 'required|string|max:255',
-            'anak_faskes_tk1' => 'required|string|max:255',
-            'anak_faskes_rujukan' => 'required|string|max:255',
-            'anak_tempat_lahir' => 'required|string|max:255',
-            'anak_tanggal_lahir' => 'required|date',
-            'anak_alamat' => 'required|string|max:500',
-            'anak_ke' => 'required|numeric',
-            'anak_akta_kelahiran' => 'required|string|max:255',
-            'anak_gol_darah' => 'required|string|max:3',
-            'puskesmas' => 'required|string|max:255',
-            'kohort_ibu' => 'required|string|max:255',
-            'kohort_bayi' => 'required|string|max:255',
-            'kohort_balita' => 'required|string|max:255',
-            'medik_rs' => 'required|string|max:255',
+            'suami_jkn' => 'nullable|string|max:255',
+            'suami_faskes_tk1' => 'nullable|string|max:255',
+            'suami_faskes_rujukan' => 'nullable|string|max:255',
+            'suami_ttl' => 'nullable|string|max:255',
+            'suami_pendidikan' => 'nullable|string|max:255',
+            'suami_pekerjaan' => 'nullable|string|max:255',
+            'suami_gol_darah' => 'nullable|string|max:3',
+            'suami_telepon' => 'nullable|string|max:15',
+            'suami_alamat' => 'nullable|string|max:500',
+            'suami_asuransi_lain' => 'nullable|string|max:255',
+            'suami_asuransi_nomor' => 'nullable|string|max:255',
+            'suami_asuransi_berlaku' => 'nullable|date',
+            'anak_nama' => 'nullable|string|max:255',
+            'anak_nik' => 'nullable|numeric',
+            'anak_jkn' => 'nullable|string|max:255',
+            'anak_faskes_tk1' => 'nullable|string|max:255',
+            'anak_faskes_rujukan' => 'nullable|string|max:255',
+            'anak_tempat_lahir' => 'nullable|string|max:255',
+            'anak_tanggal_lahir' => 'nullable|date',
+            'anak_alamat' => 'nullable|string|max:500',
+            'anak_ke' => 'nullable|numeric',
+            'anak_akta_kelahiran' => 'nullable|string|max:255',
+            'anak_gol_darah' => 'nullable|string|max:3',
+            'puskesmas' => 'nullable|string|max:255',
+            'kohort_ibu' => 'nullable|string|max:255',
+            'kohort_bayi' => 'nullable|string|max:255',
+            'kohort_balita' => 'nullable|string|max:255',
+            'medik_rs' => 'nullable|string|max:255',
         ]);
 
         // Menyimpan data ke dalam database
@@ -215,11 +216,20 @@ class AdminIbuHamilController extends Controller
     }
 
 
+// FUNCTION PERIKSA RUTIN
 
-
-    function periksaRutinIndex()
+    function periksaRutinIndex(Request $request)
     {
-        $data['periksa_rutin'] = periksaRutin::all();
+        $query = periksaRutin::with('identitas'); // load relasi identitas
+
+        if ($request->has('search')) {
+            $search = $request->search;
+            $query->whereHas('identitas', function ($q) use ($search) {
+                $q->where('ibu_nik', 'like', '%' . $search . '%');
+            });
+        }
+
+        $data['periksa_rutin'] = $query->get();
         return view('admin.ibu_hamil.periksa_rutin.index', $data);
     }
 
@@ -272,12 +282,89 @@ class AdminIbuHamilController extends Controller
         // Simpan ke database
         $periksa->save();
 
-        return redirect()->back()->with('success', 'Data pemeriksaan berhasil disimpan.');
+        return redirect('admin/ibu_hamil/periksa_rutin')->with('success', 'Data berhasil disimpan.');
     }
 
-    function periksaTrimesterIndex()
+    function periksaRutinShow(PeriksaRutin $periksaRutin)
     {
-        return view('admin.ibu_hamil.periksa_trimester.index');
+        // Pastikan relasi identitas ikut dimuat
+        $periksaRutin->load('identitas');
+
+        return view('admin.ibu_hamil.periksa_rutin.show', [
+            'periksaRutin' => $periksaRutin
+        ]);
+    }
+
+    function periksaRutinEdit(PeriksaRutin $periksaRutin)
+    {
+        // Load relasi identitas agar bisa ditampilkan di form
+        $periksaRutin->load('identitas');
+
+        return view('admin.ibu_hamil.periksa_rutin.edit', compact('periksaRutin'));
+    }
+
+    function periksaRutinUpdate(Request $request, PeriksaRutin $periksaRutin)
+    {
+        // Validasi data input
+        $request->validate([
+            'tanggal_periksa'   => 'required|date',
+            'berat_badan'       => 'nullable|numeric',
+            'tinggi_badan'      => 'nullable|numeric',
+            'lingkar_lengan'    => 'nullable|numeric',
+            'tekanan_darah'     => 'nullable|string',
+            'umur_kehamilan'    => 'nullable|integer',
+            'tfu'               => 'nullable|numeric',
+            'djj'               => 'nullable|integer',
+            'gerakan_janin'     => 'nullable|in:ada,tidak_ada',
+            'posisi_janin'      => 'nullable|in:kepala,sungsang,lintang',
+            'kaki_bengkak'      => 'nullable|string',
+            'keluhan'           => 'nullable|string',
+            'tindakan'          => 'nullable|string',
+            'catatan'           => 'nullable|string',
+        ]);
+
+        // Update data
+        $periksaRutin->tanggal_periksa  = $request->tanggal_periksa;
+        $periksaRutin->berat_badan      = $request->berat_badan;
+        $periksaRutin->tinggi_badan     = $request->tinggi_badan;
+        $periksaRutin->lingkar_lengan   = $request->lingkar_lengan;
+        $periksaRutin->tekanan_darah    = $request->tekanan_darah;
+        $periksaRutin->umur_kehamilan   = $request->umur_kehamilan;
+        $periksaRutin->tfu              = $request->tfu;
+        $periksaRutin->djj              = $request->djj;
+        $periksaRutin->gerakan_janin    = $request->gerakan_janin;
+        $periksaRutin->posisi_janin     = $request->posisi_janin;
+        $periksaRutin->kaki_bengkak     = $request->kaki_bengkak;
+        $periksaRutin->keluhan          = $request->keluhan;
+        $periksaRutin->tindakan         = $request->tindakan;
+        $periksaRutin->catatan          = $request->catatan;
+
+        $periksaRutin->save();
+
+        return redirect('admin/ibu_hamil/periksa_rutin')->with('success', 'Data berhasil diperbarui.');
+    }
+
+    function periksaRutinDelete(PeriksaRutin $periksaRutin)
+    {
+        $periksaRutin->delete();
+        return redirect('admin/ibu_hamil/periksa_rutin')->with('success', 'Data berhasil dihapus.');
+    }
+
+
+//PERIKSA TRIMESTER
+
+    function periksaTrimesterIndex(Request $request)
+    {
+        $query = PeriksaTrimester::with('identitas');
+
+        if ($request->has('search')) {
+            $search =  $request->search;
+            $query->whereHas('identitas', function ($q) use ($search) {
+                $q->where('ibu_nik', 'like', '%' . $search . '%');
+            });
+        }
+        $data['periksa_trimester'] = $query->get();
+        return view('admin.ibu_hamil.periksa_trimester.index', $data);
     }
 
     function periksaTrimesterCreate(Request $request, $identitas)

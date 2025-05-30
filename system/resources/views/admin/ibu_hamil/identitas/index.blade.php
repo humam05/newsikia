@@ -5,6 +5,12 @@
             display: flex;
             justify-content: flex-end;
         }
+
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
     </style>
     <div class="row">
         <div class="col-12">
@@ -15,8 +21,7 @@
                         <div class="col-md-12">
                             <div class="input-group mb-2">
                                 <input name="search" type="text" class="form-control" value="{{ request('search') }}"
-                                    placeholder="Cari Pasien Berdasarkan NO.KK / NIK" maxlength="16" minlength="16"
-                                    required>
+                                    placeholder="Cari Pasien Berdasarkan NO. NIK" maxlength="16" minlength="16" required>
                                 <div class="input-group-prepend ml-1">
                                     <button type="submit" class="btn btn-info btn-icon-split">
                                         <span class="icon text-white">
@@ -76,7 +81,8 @@
                         <tbody>
                             @foreach ($identitas as $item)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ ($identitas->currentPage() - 1) * $identitas->perPage() + $loop->iteration }}
+                                    </td>
                                     <td>{{ $item->ibu_nama }}</td>
                                     <td>{{ $item->ibu_nik }}</td>
                                     <td>{{ $item->ibu_jkn }}</td>
@@ -100,6 +106,13 @@
                         </tbody>
                     </table>
                 </div>
+                {{-- Pagination --}}
+                @if ($identitas->hasPages())
+                    <div class="pagination-container">
+                        {{ $identitas->links() }}
+                    </div>
+                @endif
+
             </div>
         </div>
     </div>

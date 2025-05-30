@@ -52,9 +52,9 @@
                             <div class="text-center p-3">
                                 <h2 class="mt-2">
                                     <i class="fas fa-users text-danger mr-2"></i>
-                                    <b>{{ $totalOrtu }}</b>
+                                    <b>{{ $totalIdentitas }}</b>
                                 </h2>
-                                <p class="text-muted mb-0">Total Orang Tua</p>
+                                <p class="text-muted mb-0">Ibu Hamil</p>
                             </div>
                         </div>
                     </div>

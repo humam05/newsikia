@@ -139,8 +139,7 @@
     <!-- App js -->
     <script src="{{ url('public') }}/template/assets/js/app.min.js"></script>
 
-    <!-- Tempat untuk script tambahan dari child view -->
-    @stack('scripts')
+    @yield('scripts')
 
 </body>
 

@@ -5,8 +5,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Bidan;
 use App\Models\Fasyankes;
 use App\Models\Bayi;
-use App\Models\Ortu;
 use App\Models\Posyandu;
+use App\Models\Identitas;
 
 class DashboardController extends Controller
 {
@@ -15,9 +15,9 @@ class DashboardController extends Controller
         $totalBidan = Bidan::count();
         $totalFasyankes = Fasyankes::count();
         $totalBayi = Bayi::count();
-        $totalOrtu = Ortu::count();
+        $totalIdentitas = Identitas::count();
         $totalPosyandu = Posyandu::count();
 
-        return view('admin.dashboard', compact('totalBidan', 'totalFasyankes', 'totalBayi', 'totalOrtu', 'totalPosyandu'));
+        return view('admin.dashboard', compact('totalBidan', 'totalFasyankes', 'totalBayi', 'totalIdentitas', 'totalPosyandu'));
     }
 }

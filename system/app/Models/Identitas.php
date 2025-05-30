@@ -176,4 +176,9 @@ class Identitas extends Model
     {
         return $this->hasOne(Identitas::class, 'ibu_hamil_id');
     }
+
+    public function periksaRutin()
+    {
+        return $this->hasMany(\App\Models\PeriksaRutin::class, 'identitas_id');
+    }
 }
