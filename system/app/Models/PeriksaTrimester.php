@@ -15,6 +15,7 @@ class PeriksaTrimester extends Model
         'identitas_id',
         'nama_dokter',
         'tanggal_periksa',
+        'trimester',
         'konjungtiva',
         'sklera',
         'kulit',

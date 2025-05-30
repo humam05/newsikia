@@ -58,9 +58,11 @@ Route::prefix('admin')->group(function () {
             Route::get('/periksa_rutin/edit/{periksaRutin}',  'periksaRutinEdit');
             Route::post('/periksa_rutin/update/{periksaRutin}',  'periksaRutinUpdate');
             Route::get('/periksa_rutin/delete/{periksaRutin}',  'periksaRutinDelete');
-            
+
             Route::get('periksa_trimester', 'periksaTrimesterIndex');
             Route::get('/periksa_trimester/create/{identitas}', 'periksaTrimesterCreate');
+            Route::post('/periksa_trimester/store',  'periksaTrimesterStore');
+
 
             // Route::get('/create', 'create');
             // Route::post('/store', 'store');

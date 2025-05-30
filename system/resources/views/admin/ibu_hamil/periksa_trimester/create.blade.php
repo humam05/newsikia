@@ -51,6 +51,10 @@
                 <label>Tanggal Periksa</label>
                 <input type="date" name="tanggal_periksa" class="form-control" required>
             </div>
+           <div class="form-col">
+                <label>Trimester Ke-</label>
+                <input type="text" name="trimester" class="form-control" required>
+            </div>
         </div>
         <div class="form-row">
             <div class="form-col">
@@ -137,7 +141,7 @@
                     <option value="Tidak normal">Tidak normal</option>
                 </select>
             </div>
-             <div class="form-col">
+            <div class="form-col">
                 <label>HPHT</label>
                 <input type="date" name="hpht" class="form-control">
             </div>
@@ -172,6 +176,67 @@
                 <input type="date" name="hpl_usg" class="form-control">
             </div>
         </div>
+        <div class="form-row">
+            <div class="form-col">
+                <label>Jumlah GS/Kantung Kehamilan</label>
+                <select name="jumlah_gs" class="form-control">
+                    <option value="">-- Pilih --</option>
+                    <option value="Teratur">Tunggal</option>
+                    <option value="Tidak Teratur">Kembar</option>
+                </select>
+            </div>
+            <div class="form-col">
+                <label>Diameter GS/Kantung Kehamilan</label>
+                <input type="number" name="diameter_gs" class="form-control">
+            </div>
+            <div class="form-col">
+                <label>GS Sesuai Umur Kehamilan</label>
+                <input type="date" name="umur_diameter_gs" class="form-control">
+            </div>
+            <div class="form-col">
+                <label>Jumlah Bayi</label>
+                <select name="jumlah_bayi" class="form-control">
+                    <option value="">-- Pilih --</option>
+                    <option value="Teratur">Tunggal</option>
+                    <option value="Tidak Teratur">Kembar</option>
+                </select>
+            </div>
+            <div class="form-col">
+                <label>CRL/Jarak Puncak Kepala Bokong</label>
+                <input type="number" name="crl" class="form-control">
+            </div>
+            <div class="form-col">
+                <label>CRL Sesuai Umur Kehamilan</label>
+                <input type="date" name="umur_crl" class="form-control">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-col">
+                <label>Jumlah Bayi</label>
+                <select name="jumlah_gs" class="form-control">
+                    <option value="">-- Pilih --</option>
+                    <option value="Teratur">Tunggal</option>
+                    <option value="Tidak Teratur">Kembar</option>
+                </select>
+            </div>
+            <div class="form-col">
+                <label>Letak Produk Kehamilan</label>
+                <select name="letak_produk_kehamilan" class="form-control">
+                    <option value="">-- Pilih --</option>
+                    <option value="Teratur">Intrauterin</option>
+                    <option value="Tidak Teratur">Extrauterin</option>
+                    <option value="Tidak Teratur">Tidak dapat ditentukan</option>
+                </select>
+            </div>
+            <div class="form-col">
+                <label>Pulsasi Jantung</label>
+                <select name="pulsasi_jantung" class="form-control">
+                    <option value="">-- Pilih --</option>
+                    <option value="Teratur">Tampak</option>
+                    <option value="Tidak Teratur">Tidak Tampak</option>
+                </select>
+            </div>
+        </div>
 
         {{-- Temuan Abnormal --}}
         <div class="form-group">
@@ -188,22 +253,85 @@
             <input type="text" name="temuan_abnormal_sebutkan" class="form-control">
         </div>
 
-        {{-- Pemeriksaan Lab (contoh 1 field) --}}
-        <div class="form-group">
-            <label>Hemoglobin</label>
-            <input type="text" name="hemoglobin" class="form-control">
+        <h5>Pemeriksaan Laboratorium</h5>
+        <div class="form-row">
+            <div class="form-col">
+                <label>Hemoglobin (g/dL)</label>
+                <input type="number" step="0.01" name="hemoglobin" class="form-control">
+            </div>
+            <div class="form-col">
+                <label>Golongan Darah</label>
+                <input type="text" name="golongan_darah" class="form-control">
+            </div>
+            <div class="form-col">
+                <label>Rhesus</label>
+                <input type="text" name="rhesus" class="form-control">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-col">
+                <label>Gula Darah Sewaktu (mg/dL)</label>
+                <input type="number" step="0.01" name="gula_darah_sewaktu" class="form-control">
+            </div>
+            <div class="form-col">
+                <label>Hasil HIV</label>
+                <select name="hasil_h" class="form-control">
+                    <option value="">-- Pilih --</option>
+                    <option value="ya">Reaktif</option>
+                    <option value="tidak">Nonreaktif</option>
+                </select>
+            </div>
+            <div class="form-col">
+                <label>Hasil Sifilis</label>
+                <select name="hasil_s" class="form-control">
+                    <option value="">-- Pilih --</option>
+                    <option value="ya">Reaktif</option>
+                    <option value="tidak">Nonreaktif</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <label>Hasil Hepatitis B</label>
+            <select name="hasil_hepatitis_b" class="form-control">
+                <option value="">-- Pilih --</option>
+                <option value="ya">Reaktif</option>
+                <option value="tidak">Nonreaktif</option>
+            </select>
         </div>
 
-        {{-- Kesimpulan & Rekomendasi --}}
-        <div class="form-group">
-            <label>Kesimpulan</label>
-            <textarea name="kesimpulan" class="form-control" rows="2"></textarea>
+        <h5>Skrining Kesehatan Jiwa</h5>
+        <div class="form-row">
+            <div class="form-col">
+                <label>Skrining Dilakukan?</label>
+                <select name="skrining_kesehatan_jiwa" class="form-control">
+                    <option value="">-- Pilih --</option>
+                    <option value="ya">Ya</option>
+                    <option value="tidak">Tidak</option>
+                </select>
+            </div>
+            <div class="form-col">
+                <label>Tindak Lanjut</label>
+                <input type="text" name="tindak_lanjut_jiwa" class="form-control">
+            </div>
         </div>
-        <div class="form-group">
-            <label>Rekomendasi</label>
-            <textarea name="rekomendasi" class="form-control" rows="2"></textarea>
+        <div>
+            <label>Perlu Rujukan?</label>
+            <select name="perlu_rujukan" class="form-control">
+                <option value="">-- Pilih --</option>
+                <option value="ya">Ya</option>
+                <option value="tidak">Tidak</option>
+            </select>
         </div>
-
+        <div class="form-row">
+            <div class="form-col">
+                <label>Kesimpulan</label>
+                <textarea name="kesimpulan" class="form-control"></textarea>
+            </div>
+            <div class="form-col">
+                <label>Rekomendasi</label>
+                <textarea name="rekomendasi" class="form-control"></textarea>
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary">Simpan Pemeriksaan</button>
     </form>
 

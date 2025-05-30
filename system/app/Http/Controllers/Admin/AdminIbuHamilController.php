@@ -216,7 +216,7 @@ class AdminIbuHamilController extends Controller
     }
 
 
-// FUNCTION PERIKSA RUTIN
+    // FUNCTION PERIKSA RUTIN
 
     function periksaRutinIndex(Request $request)
     {
@@ -351,7 +351,7 @@ class AdminIbuHamilController extends Controller
     }
 
 
-//PERIKSA TRIMESTER
+    //PERIKSA TRIMESTER
 
     function periksaTrimesterIndex(Request $request)
     {
@@ -371,5 +371,73 @@ class AdminIbuHamilController extends Controller
     {
         $identitas = Identitas::findOrFail($identitas);
         return view('admin.ibu_hamil.periksa_trimester.create', compact('identitas'));
+    }
+
+    function periksaTrimesterStore(Request $request)
+    {
+        // Validasi input
+        $request->validate([
+            'identitas_id' => 'required|exists:tb_identitas,id',
+            'tanggal_periksa' => 'required|date',
+            'hemoglobin' => 'nullable|numeric|min:0|max:25',
+            'gula_darah_sewaktu' => 'nullable|numeric|min:0|max:500',
+            'diameter_gs' => 'nullable|numeric|min:0|max:100',
+            'crl' => 'nullable|numeric|min:0|max:100',
+            'umur_kehamilan_hpht' => 'nullable|integer|min:0|max:50',
+            'umur_kehamilan_usg' => 'nullable|integer|min:0|max:50',
+            'skrining_kesehatan_jiwa' => 'nullable|boolean',
+            'perlu_rujukan' => 'nullable|boolean',
+        ]);
+
+        // Simpan data
+        $periksa = new PeriksaTrimester();
+        $periksa->fill($request->only([
+            'identitas_id',
+            'nama_dokter',
+            'tanggal_periksa',
+            'trimester',
+            'konjungtiva',
+            'sklera',
+            'kulit',
+            'leher',
+            'gigi_mulut',
+            'tht',
+            'dada',
+            'paru',
+            'perut',
+            'tungkai',
+            'hpht',
+            'keterangan_haid',
+            'umur_kehamilan_hpht',
+            'hpl_hpht',
+            'umur_kehamilan_usg',
+            'hpl_usg',
+            'jumlah_gs',
+            'diameter_gs',
+            'umur_diameter_gs',
+            'jumlah_bayi',
+            'crl',
+            'umur_crl',
+            'letak_produk_kehamilan',
+            'pulsasi_jantung',
+            'temuan_abnormal',
+            'temuan_abnormal_sebutkan',
+            'hemoglobin',
+            'golongan_darah',
+            'rhesus',
+            'gula_darah_sewaktu',
+            'hasil_h',
+            'hasil_s',
+            'hasil_hepatitis_b',
+            'skrining_kesehatan_jiwa',
+            'tindak_lanjut_jiwa',
+            'perlu_rujukan',
+            'kesimpulan',
+            'rekomendasi'
+        ]));
+
+        $periksa->save();
+
+        return redirect('admin/ibu_hamil/periksa_trimester')->with('success', 'Data pemeriksaan trimester berhasil disimpan.');
     }
 }
