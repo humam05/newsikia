@@ -5,6 +5,12 @@
             display: flex;
             justify-content: flex-start;
         }
+
+        .pagination-container {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
     </style>
     <div class="button-container">
         <a href="{{ url('/admin/ibu_hamil/identitas') }}" class="btn btn-success">
@@ -78,7 +84,8 @@
                         <tbody>
                             @forelse ($periksa_trimester as $item)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ ($periksa_trimester->currentPage() - 1) * $periksa_trimester->perPage() + $loop->iteration }}
+                                    </td>
                                     <td>{{ $item->identitas->ibu_nama ?? '-' }}</td>
                                     <td>{{ $item->identitas->ibu_nik ?? '-' }}</td>
                                     <td>{{ \Carbon\Carbon::parse($item->tanggal_periksa)->translatedFormat('l, d F Y') }}
@@ -102,7 +109,11 @@
                         </tbody>
                     </table>
                 </div>
-
+                @if ($periksa_trimester->hasPages())
+                    <div class="pagination-container mt-3">
+                        {{ $periksa_trimester->withQueryString()->links() }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>

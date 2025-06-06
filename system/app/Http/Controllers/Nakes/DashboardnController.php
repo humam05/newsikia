@@ -14,7 +14,7 @@ class DashboardnController extends Controller
         $query = Identitas::query();
 
         if ($request->has('search')) {
-            $query->where('nik_ibu', 'like', '%' . $request->search . '%');
+            $query->where('nik_ibu', 'ibu_nama', 'like', '%' . $request->search . '%');
         }
 
         $data['identitas'] = $query->get();

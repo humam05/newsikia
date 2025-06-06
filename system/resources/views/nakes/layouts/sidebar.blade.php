@@ -116,7 +116,7 @@
                     <span> Akun Ibu Hamil </span>
                 </a>
             </li>
-            <li  class="nav-item dropdown" class="{{ Request::is('nakes/ibuu_hamil*') ? 'active' : '' }}">
+            <li class="nav-item dropdown" {{ Request::is('nakes/ibu_hamil*') ? 'active' : '' }}>
                 <a class="nav-link dropdown-toggle d-flex align-items-center justify-content-between" href="#"
                     id="ibuHamilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
@@ -131,16 +131,12 @@
                         <i class="fas fa-female mr-2"></i> Data Ibu Hamil
                     </a>
                     <div class="dropdown-divider"></div> <!-- Pemisah -->
-                    <a class="dropdown-item" href="{{ url('nakes/ibu_hamil/hpl') }}">
-                        <i class="fas fa-calendar-alt mr-2"></i> HPL
-                    </a>
-                    <div class="dropdown-divider"></div> <!-- Pemisah -->
                     <a class="dropdown-item" href="{{ url('nakes/ibu_hamil/periksa_rutin') }}">
-                        <i class="fas fa-stethoscope"></i> Periksa Rutin
+                        <i class="fas fa-stethoscope mr-2"></i> Daftar Periksa Rutin
                     </a>
                     <div class="dropdown-divider"></div> <!-- Pemisah -->
                     <a class="dropdown-item" href="{{ url('nakes/ibu_hamil/periksa_trimester') }}">
-                        <i class="fas fa-stethoscope"></i> Periksa Trimester
+                        <i class="fas fa-calendar-check mr-2"></i> Daftar Periksa Trimester
                     </a>
                 </div>
             </li>

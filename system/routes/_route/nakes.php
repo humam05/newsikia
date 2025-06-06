@@ -31,8 +31,23 @@ Route::prefix('nakes')->group(function () {
             Route::get('/identitas/edit/{identitas}', 'identitasEdit');
             Route::post('/identitas/update/{identitas}', 'identitasUpdate');
             Route::get('/identitas/delete/{identitas}', 'identitasDelete');
-            Route::get('/periksa_rutin', 'periksaRutinIndex');
-            Route::get('/periksa_trimester', 'periksaTrimesterIndex');
+            // Route::get('/periksa_rutin', 'periksaRutinIndex');
+            Route::get('periksa_rutin', 'periksaRutinIndex');
+            Route::get('/periksa_rutin/create/{identitas}', 'periksaRutinCreate');
+            Route::post('/periksa_rutin/store',  'periksaRutinStore');
+            Route::get('/periksa_rutin/show/{periksaRutin}',  'periksaRutinShow');
+            Route::get('/periksa_rutin/edit/{periksaRutin}',  'periksaRutinEdit');
+            Route::post('/periksa_rutin/update/{periksaRutin}',  'periksaRutinUpdate');
+            Route::get('/periksa_rutin/delete/{periksaRutin}',  'periksaRutinDelete');
+            // Route::get('/periksa_trimester', 'periksaTrimesterIndex');
+
+            Route::get('periksa_trimester', 'periksaTrimesterIndex');
+            Route::get('/periksa_trimester/create/{identitas}', 'periksaTrimesterCreate');
+            Route::post('/periksa_trimester/store',  'periksaTrimesterStore');
+            Route::get('/periksa_trimester/show/{periksaTrimester}',  'periksaTrimesterShow');
+            Route::get('/periksa_trimester/edit/{periksaTrimester}',  'periksaTrimesterEdit');
+            Route::post('/periksa_trimester/update/{periksaTrimester}',  'periksaTrimesterUpdate');
+            Route::get('/periksa_trimester/delete/{periksaTrimester}',  'periksaTrimesterDelete');
             Route::get('/hpl', 'hpl');
         });
     });

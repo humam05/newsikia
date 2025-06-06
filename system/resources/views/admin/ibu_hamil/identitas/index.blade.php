@@ -100,6 +100,8 @@
                                             class="btn btn-success btn-sm">Periksa Rutin</a>
                                         <a href="{{ url('admin/ibu_hamil/periksa_trimester/create', $item->id) }}"
                                             class="btn btn-info btn-sm">Periksa Trimester</a>
+                                        <a href="{{ url('admin/ibu_hamil/data_anak/create', $item->id) }}"
+                                            class="btn btn-primary btn-sm">+ Data Anak</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -19,7 +19,7 @@ class AdminIbuHamilController extends Controller
             $query->where('ibu_nik', 'like', '%' . $request->search . '%');
         }
 
-        $data['identitas'] = Identitas::paginate(10);
+        $data['identitas'] = $query->paginate(10);
         return view('admin.ibu_hamil.identitas.index', $data);
     }
 
@@ -220,7 +220,7 @@ class AdminIbuHamilController extends Controller
 
     function periksaRutinIndex(Request $request)
     {
-        $query = periksaRutin::with('identitas'); // load relasi identitas
+        $query = PeriksaRutin::with('identitas'); // load relasi identitas
 
         if ($request->has('search')) {
             $search = $request->search;
@@ -229,9 +229,12 @@ class AdminIbuHamilController extends Controller
             });
         }
 
-        $data['periksa_rutin'] = $query->get();
+        // Tambahkan pagination
+        $data['periksa_rutin'] = $query->paginate(10);
+
         return view('admin.ibu_hamil.periksa_rutin.index', $data);
     }
+
 
     function periksaRutinCreate(Request $request, $identitas)
     {
@@ -358,14 +361,18 @@ class AdminIbuHamilController extends Controller
         $query = PeriksaTrimester::with('identitas');
 
         if ($request->has('search')) {
-            $search =  $request->search;
+            $search = $request->search;
             $query->whereHas('identitas', function ($q) use ($search) {
                 $q->where('ibu_nik', 'like', '%' . $search . '%');
             });
         }
-        $data['periksa_trimester'] = $query->get();
+
+        // Ganti dari get() menjadi paginate(10)
+        $data['periksa_trimester'] = $query->paginate(10);
+
         return view('admin.ibu_hamil.periksa_trimester.index', $data);
     }
+
 
     function periksaTrimesterCreate(Request $request, $identitas)
     {
@@ -378,16 +385,50 @@ class AdminIbuHamilController extends Controller
         // Validasi input
         $request->validate([
             'identitas_id' => 'required|exists:tb_identitas,id',
+            'nama_dokter' => 'nullable|string|max:255',
             'tanggal_periksa' => 'required|date',
-            'hemoglobin' => 'nullable|numeric|min:0|max:25',
-            'gula_darah_sewaktu' => 'nullable|numeric|min:0|max:500',
-            'diameter_gs' => 'nullable|numeric|min:0|max:100',
-            'crl' => 'nullable|numeric|min:0|max:100',
+            'trimester' => 'nullable|string|max:255',
+            'konjungtiva' => 'nullable|in:Normal,Tidak normal',
+            'sklera' => 'nullable|in:Normal,Tidak normal',
+            'kulit' => 'nullable|in:Normal,Tidak normal',
+            'leher' => 'nullable|in:Normal,Tidak normal',
+            'gigi_mulut' => 'nullable|in:Normal,Tidak normal',
+            'tht' => 'nullable|in:Normal,Tidak normal',
+            'dada' => 'nullable|in:Normal,Tidak normal',
+            'paru' => 'nullable|in:Normal,Tidak normal',
+            'perut' => 'nullable|in:Normal,Tidak normal',
+            'tungkai' => 'nullable|in:Normal,Tidak normal',
+            'hpht' => 'nullable|date',
+            'keterangan_haid' => 'nullable|in:Teratur,Tidak Teratur',
             'umur_kehamilan_hpht' => 'nullable|integer|min:0|max:50',
+            'hpl_hpht' => 'nullable|date',
             'umur_kehamilan_usg' => 'nullable|integer|min:0|max:50',
-            'skrining_kesehatan_jiwa' => 'nullable|boolean',
-            'perlu_rujukan' => 'nullable|boolean',
+            'hpl_usg' => 'nullable|date',
+            'jumlah_gs' => 'nullable|in:Tunggal,Kembar',
+            // Karena kamu ubah decimal jadi string, validasi ganti dari numeric ke string:
+            'diameter_gs' => 'nullable|string|max:255',
+            'umur_diameter_gs' => 'nullable|string|max:255',
+            'jumlah_bayi' => 'nullable|in:Tunggal,Kembar',
+            'crl' => 'nullable|string|max:255', // ubah numeric ke string
+            'umur_crl' => 'nullable|string|max:255',
+            'letak_produk_kehamilan' => 'nullable|in:Intrauterin,Extrauterin,Tidak dapat ditentukan',
+            'pulsasi_jantung' => 'nullable|in:Terlihat,Tidak Terlihat',
+            'temuan_abnormal' => 'nullable|in:ya,tidak',
+            'temuan_abnormal_sebutkan' => 'nullable|string|max:255',
+            'hemoglobin' => 'nullable|string|max:255', // ubah numeric ke string
+            'golongan_darah' => 'nullable|string|max:255',
+            'rhesus' => 'nullable|string|max:255',
+            'gula_darah_sewaktu' => 'nullable|string|max:255', // ubah numeric ke string
+            'hasil_h' => 'nullable|in:reaktif,nonreaktif',
+            'hasil_s' => 'nullable|in:reaktif,nonreaktif',
+            'hasil_hepatitis_b' => 'nullable|in:reaktif,nonreaktif',
+            'skrining_kesehatan_jiwa' => 'nullable|in:ya,tidak',
+            'tindak_lanjut_jiwa' => 'nullable|string|max:255',
+            'perlu_rujukan' => 'nullable|in:ya,tidak',
+            'kesimpulan' => 'nullable|string',
+            'rekomendasi' => 'nullable|string',
         ]);
+
 
         // Simpan data
         $periksa = new PeriksaTrimester();
@@ -440,4 +481,122 @@ class AdminIbuHamilController extends Controller
 
         return redirect('admin/ibu_hamil/periksa_trimester')->with('success', 'Data pemeriksaan trimester berhasil disimpan.');
     }
+
+    function periksaTrimesterShow(PeriksaTrimester $periksaTrimester)
+    {
+        // Pastikan relasi identitas ikut dimuat
+        $periksaTrimester->load('identitas');
+
+        return view('admin.ibu_hamil.periksa_trimester.show', [
+            'periksaTrimester' => $periksaTrimester
+        ]);
+    }
+
+    function periksaTrimesterEdit(PeriksaTrimester $periksaTrimester)
+    {
+        // Load relasi identitas agar bisa ditampilkan di form
+        $periksaTrimester->load('identitas');
+
+        return view('admin.ibu_hamil.periksa_trimester.edit', compact('periksaTrimester'));
+    }
+
+    public function periksaTrimesterUpdate(Request $request, PeriksaTrimester $periksaTrimester)
+    {
+        // Validasi data input
+        $request->validate([
+            'tanggal_periksa' => 'required|date',
+            'trimester' => 'nullable|string|max:255',
+            'konjungtiva' => 'nullable|in:Normal,Tidak normal',
+            'sklera' => 'nullable|in:Normal,Tidak normal',
+            'kulit' => 'nullable|in:Normal,Tidak normal',
+            'leher' => 'nullable|in:Normal,Tidak normal',
+            'gigi_mulut' => 'nullable|in:Normal,Tidak normal',
+            'tht' => 'nullable|in:Normal,Tidak normal',
+            'dada' => 'nullable|in:Normal,Tidak normal',
+            'paru' => 'nullable|in:Normal,Tidak normal',
+            'perut' => 'nullable|in:Normal,Tidak normal',
+            'tungkai' => 'nullable|in:Normal,Tidak normal',
+            'hpht' => 'nullable|date',
+            'keterangan_haid' => 'nullable|in:Teratur,Tidak Teratur',
+            'umur_kehamilan_hpht' => 'nullable|integer|min:0|max:50',
+            'hpl_hpht' => 'nullable|date',
+            'umur_kehamilan_usg' => 'nullable|integer|min:0|max:50',
+            'hpl_usg' => 'nullable|date',
+            'jumlah_gs' => 'nullable|in:Tunggal,Kembar',
+            'diameter_gs' => 'nullable|string|max:255',
+            'umur_diameter_gs' => 'nullable|string|max:255',
+            'jumlah_bayi' => 'nullable|in:Tunggal,Kembar',
+            'crl' => 'nullable|string|max:255',
+            'umur_crl' => 'nullable|string|max:255',
+            'letak_produk_kehamilan' => 'nullable|in:Intrauterin,Extrauterin,Tidak dapat ditentukan',
+            'pulsasi_jantung' => 'nullable|in:Terlihat,Tidak Terlihat',
+            'temuan_abnormal' => 'nullable|in:ya,tidak',
+            'temuan_abnormal_sebutkan' => 'nullable|string|max:255',
+            'hemoglobin' => 'nullable|string|max:255',
+            'golongan_darah' => 'nullable|string|max:255',
+            'rhesus' => 'nullable|string|max:255',
+            'gula_darah_sewaktu' => 'nullable|string|max:255',
+            'hasil_h' => 'nullable|in:reaktif,nonreaktif',
+            'hasil_s' => 'nullable|in:reaktif,nonreaktif',
+            'hasil_hepatitis_b' => 'nullable|in:reaktif,nonreaktif',
+            'skrining_kesehatan_jiwa' => 'nullable|in:ya,tidak',
+            'tindak_lanjut_jiwa' => 'nullable|string|max:255',
+            'perlu_rujukan' => 'nullable|in:ya,tidak',
+            'kesimpulan' => 'nullable|string',
+            'rekomendasi' => 'nullable|string',
+        ]);
+
+        // Update data
+        $periksaTrimester->tanggal_periksa = $request->tanggal_periksa;
+        $periksaTrimester->trimester = $request->trimester;
+        $periksaTrimester->konjungtiva = $request->konjungtiva;
+        $periksaTrimester->sklera = $request->sklera;
+        $periksaTrimester->kulit = $request->kulit;
+        $periksaTrimester->leher = $request->leher;
+        $periksaTrimester->gigi_mulut = $request->gigi_mulut;
+        $periksaTrimester->tht = $request->tht;
+        $periksaTrimester->dada = $request->dada;
+        $periksaTrimester->paru = $request->paru;
+        $periksaTrimester->perut = $request->perut;
+        $periksaTrimester->tungkai = $request->tungkai;
+        $periksaTrimester->hpht = $request->hpht;
+        $periksaTrimester->keterangan_haid = $request->keterangan_haid;
+        $periksaTrimester->umur_kehamilan_hpht = $request->umur_kehamilan_hpht;
+        $periksaTrimester->hpl_hpht = $request->hpl_hpht;
+        $periksaTrimester->umur_kehamilan_usg = $request->umur_kehamilan_usg;
+        $periksaTrimester->hpl_usg = $request->hpl_usg;
+        $periksaTrimester->jumlah_gs = $request->jumlah_gs;
+        $periksaTrimester->diameter_gs = $request->diameter_gs;
+        $periksaTrimester->umur_diameter_gs = $request->umur_diameter_gs;
+        $periksaTrimester->jumlah_bayi = $request->jumlah_bayi;
+        $periksaTrimester->crl = $request->crl;
+        $periksaTrimester->umur_crl = $request->umur_crl;
+        $periksaTrimester->letak_produk_kehamilan = $request->letak_produk_kehamilan;
+        $periksaTrimester->pulsasi_jantung = $request->pulsasi_jantung;
+        $periksaTrimester->temuan_abnormal = $request->temuan_abnormal;
+        $periksaTrimester->temuan_abnormal_sebutkan = $request->temuan_abnormal_sebutkan;
+        $periksaTrimester->hemoglobin = $request->hemoglobin;
+        $periksaTrimester->golongan_darah = $request->golongan_darah;
+        $periksaTrimester->rhesus = $request->rhesus;
+        $periksaTrimester->gula_darah_sewaktu = $request->gula_darah_sewaktu;
+        $periksaTrimester->hasil_h = $request->hasil_h;
+        $periksaTrimester->hasil_s = $request->hasil_s;
+        $periksaTrimester->hasil_hepatitis_b = $request->hasil_hepatitis_b;
+        $periksaTrimester->skrining_kesehatan_jiwa = $request->skrining_kesehatan_jiwa;
+        $periksaTrimester->tindak_lanjut_jiwa = $request->tindak_lanjut_jiwa;
+        $periksaTrimester->perlu_rujukan = $request->perlu_rujukan;
+        $periksaTrimester->kesimpulan = $request->kesimpulan;
+        $periksaTrimester->rekomendasi = $request->rekomendasi;
+
+        $periksaTrimester->save();
+
+        return redirect('admin/ibu_hamil/periksa_trimester')->with('success', 'Data pemeriksaan trimester berhasil diperbarui.');
+    }
+
+    function periksaTrimesterDelete(PeriksaTrimester $periksaTrimester)
+    {
+        $periksaTrimester->delete();
+        return redirect('admin/ibu_hamil/periksa_trimester')->with('success', 'Data berhasil dihapus.');
+    }
 }
+

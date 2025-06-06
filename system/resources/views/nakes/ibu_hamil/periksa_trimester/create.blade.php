@@ -1,4 +1,4 @@
-@extends('admin.layouts.base')
+@extends('nakes.layouts.base')
 
 @section('content')
     <style>
@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <form action="{{ url('admin/ibu_hamil/periksa_trimester/store') }}" method="POST">
+    <form action="{{ url('nakes/ibu_hamil/periksa_trimester/store') }}" method="POST">
         @csrf
 
         {{-- Identitas --}}

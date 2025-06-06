@@ -53,7 +53,7 @@
         margin: 5px 0;
     }
 
-    #sidebar-menu ul li.active > a {
+    #sidebar-menu ul li.active>a {
         background-color: #ffffff;
         color: #003455;
         font-weight: bold;
@@ -63,7 +63,8 @@
 <div class="left-side-menu">
     <div class="user-box">
         <div class="float-left">
-            <img src="{{ url('public') }}/template/assets/images/users/avatar-1.jpg" alt="" class="avatar-md rounded-circle">
+            <img src="{{ url('public') }}/template/assets/images/users/avatar-1.jpg" alt=""
+                class="avatar-md rounded-circle">
         </div>
         <div class="user-info">
             <a href="#">Alvia</a>
@@ -96,69 +97,81 @@
                 </a>
             </li>
             <li class="nav-item dropdown {{ Request::is('admin/ibu_hamil/*') ? 'active' : '' }}">
-                <a class="nav-link dropdown-toggle" href="#" id="akunDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-baby"></i>
+                <a class="nav-link dropdown-toggle" href="#" id="akunDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-heart"></i>
                     <span> Ibu Hamil </span>
                     <i class="fas fa-chevron-down ml-1"></i>
                 </a>
                 <div class="dropdown-menu border-0 shadow-sm rounded" aria-labelledby="akunDropdown">
-                    <a class="dropdown-item {{ Request::is('admin/ibu_hamil/identitas') ? 'active' : '' }}" href="{{ url('admin/ibu_hamil/identitas') }}">
-                        <i class="fas fa-baby mr-2"></i> Identitas
+                    <a class="dropdown-item {{ Request::is('admin/ibu_hamil/identitas') ? 'active' : '' }}"
+                        href="{{ url('admin/ibu_hamil/identitas') }}">
+                        <i class="fas fa-heart"></i> Data Ibu Hamil
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item {{ Request::is('admin/ibu_hamil/hpl') ? 'active' : '' }}" href="{{ url('admin/ibu_hamil/hpl') }}">
-                        <i class="fas fa-chart-line mr-2"></i> HPL
+                    <a class="dropdown-item {{ Request::is('admin/ibu_hamil/periksa_rutin') ? 'active' : '' }}"
+                        href="{{ url('admin/ibu_hamil/periksa_rutin') }}">
+                        <i class="fas fa-stethoscope mr-2"></i> Daftar Periksa Rutin
                     </a>
+
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item {{ Request::is('admin/ibu_hamil/periksa_rutin') ? 'active' : '' }}" href="{{ url('admin/ibu_hamil/periksa_rutin') }}">
-                        <i class="fas fa-chart-line mr-2"></i> Periksa Rutin
+                    <a class="dropdown-item {{ Request::is('admin/ibu_hamil/periksa_trimester') ? 'active' : '' }}"
+                        href="{{ url('admin/ibu_hamil/periksa_trimester') }}">
+                        <i class="fas fa-calendar-check mr-2"></i> Daftar Periksa Trimester
                     </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item {{ Request::is('admin/ibu_hamil/periksa_trimester') ? 'active' : '' }}" href="{{ url('admin/ibu_hamil/periksa_trimester') }}">
-                        <i class="fas fa-chart-line mr-2"></i> Periksa Trimester
+
+                </div>
+            </li>
+            <li class="nav-item dropdown {{ Request::is('admin/bayi/*') ? 'active' : '' }}">
+                <a class="nav-link dropdown-toggle" href="#" id="akunDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-baby"></i>
+                    <span> Bayi Balita </span>
+                    <i class="fas fa-chevron-down ml-1"></i>
+                </a>
+                <div class="dropdown-menu border-0 shadow-sm rounded" aria-labelledby="akunDropdown">
+                    <a class="dropdown-item {{ Request::is('admin/bayi/identitas') ? 'active' : '' }}"
+                        href="{{ url('admin/bayi/identitas') }}">
+                        <i class="fas fa-baby mr-2"></i> Data Bayi Balita
                     </a>
                 </div>
             </li>
-
-
-            <li class="{{ Request::is('admin/bayi*') ? 'active' : '' }}">
-                <a href="{{ url('admin/bayi') }}">
-                    <i class="fas fa-baby"></i>
-                    <span> Bayi </span>
-                </a>
-            </li>
-
             <li class="{{ Request::is('admin/ortu*') ? 'active' : '' }}">
                 <a href="{{ url('admin/ortu') }}">
                     <i class="fas fa-user-friends"></i>
                     <span> Data Orang Tua </span>
                 </a>
             </li>
-
             <li class="nav-item dropdown {{ Request::is('admin/akun/*') ? 'active' : '' }}">
-                <a class="nav-link dropdown-toggle" href="#" id="akunDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="akunDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-baby"></i>
                     <span> Akun </span>
                     <i class="fas fa-chevron-down ml-1"></i>
                 </a>
                 <div class="dropdown-menu border-0 shadow-sm rounded" aria-labelledby="akunDropdown">
-                    <a class="dropdown-item {{ Request::is('admin/akun/dinas') ? 'active' : '' }}" href="{{ url('admin/akun/dinas') }}">
+                    <a class="dropdown-item {{ Request::is('admin/akun/dinas') ? 'active' : '' }}"
+                        href="{{ url('admin/akun/dinas') }}">
                         <i class="fas fa-baby mr-2"></i> Dinas
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item {{ Request::is('admin/akun/admin') ? 'active' : '' }}" href="{{ url('admin/akun/admin') }}">
+                    <a class="dropdown-item {{ Request::is('admin/akun/admin') ? 'active' : '' }}"
+                        href="{{ url('admin/akun/admin') }}">
                         <i class="fas fa-baby mr-2"></i> Admin
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item {{ Request::is('admin/akun/nakes') ? 'active' : '' }}" href="{{ url('admin/akun/nakes') }}">
+                    <a class="dropdown-item {{ Request::is('admin/akun/nakes') ? 'active' : '' }}"
+                        href="{{ url('admin/akun/nakes') }}">
                         <i class="fas fa-chart-line mr-2"></i> Nakes
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item {{ Request::is('admin/akun/puskesmas') ? 'active' : '' }}" href="{{ url('admin/akun/puskesmas') }}">
+                    <a class="dropdown-item {{ Request::is('admin/akun/puskesmas') ? 'active' : '' }}"
+                        href="{{ url('admin/akun/puskesmas') }}">
                         <i class="fas fa-chart-line mr-2"></i> Puskesmas
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item {{ Request::is('admin/akun/ibu_hamil') ? 'active' : '' }}" href="{{ url('admin/akun/ibu_hamil') }}">
+                    <a class="dropdown-item {{ Request::is('admin/akun/ibu_hamil') ? 'active' : '' }}"
+                        href="{{ url('admin/akun/ibu_hamil') }}">
                         <i class="fas fa-chart-line mr-2"></i> Ibu Hamil
                     </a>
                 </div>
