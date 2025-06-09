@@ -90,6 +90,13 @@ Route::prefix('admin')->group(function () {
             Route::get('/edit/{bayi}', 'edit');
             Route::post('/update/{bayi}', 'update');
             Route::get('/delete/{bayi}', 'delete');
+
+            //Route identitas
+            Route::get('identitas', 'bayiIndex');
+            Route::get('identitas/create/{identitas}', 'bayiCreate');
+            Route::post('/identitas/store', 'bayiStore');
+
+
         });
     });
     Route::prefix('ortu')->group(function () {

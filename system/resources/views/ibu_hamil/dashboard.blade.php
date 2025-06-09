@@ -52,14 +52,21 @@
             </div>
         </div>
     </div>
-    <div class="profile-box">
+    {{-- <div class="profile-box">
         <img src="">
         <div class="profile-title">Data Keluarga</div>
-        <div class="button-container">
-            <a href="{{ route('ibu_hamil.identitas.lengkapi') }}" class="btn btn-primary">Lengkapi Data</a>
-
-        </div><br>
-    </div>
+        @foreach ($identitas as $item)
+            <tr>
+                <td>{{ $item->ibu_nama }}</td>
+                <td>{{ $item->ibu_nik }}</td>
+                <td>
+                    <a href="{{ url('ibu_hamil/identitas/edit', $item->id) }}" class="btn btn-success btn-sm">Lengkapi
+                        Data</a>
+                </td>
+            </tr>
+        @endforeach
+    </div><br>
+    </div> --}}
 
     {{-- <div class="row">
         <div class="col-lg-6">

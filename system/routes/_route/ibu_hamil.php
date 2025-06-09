@@ -44,7 +44,7 @@ Route::prefix('ibu_hamil')->group(function () {
     });
     Route::prefix('jadwal_posyandu')->group(function () {
         Route::controller(JadwalPosyanduController::class)->group(function () {
-            Route::get('/', 'index');
+            Route::get('/', 'index')->name('ibu_hamil.jadwal_posyandu.index');
         });
     });
 });

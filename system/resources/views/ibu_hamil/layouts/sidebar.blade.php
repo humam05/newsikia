@@ -95,12 +95,6 @@
                     <span> Kesehatan Bayi </span>
                 </a>
             </li>
-            <li class="{{ Request::is('ibu_hamil/kalender_kehamilan*') ? 'active' : '' }}">
-                <a href="{{ url('ibu_hamil/kalender_kehamilan') }}">
-                    <i class="fas fa-hourglass-half"></i>
-                    <span> Kalender Kehamilan </span>
-                </a>
-            </li>
             <li class="{{ Request::is('ibu_hamil/jadwal_posyandu*') ? 'active' : '' }}">
                 <a href="{{ url('ibu_hamil/jadwal_posyandu') }}">
                     <i class="fas fa-calendar-alt"></i>

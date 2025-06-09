@@ -21,4 +21,9 @@ class IbuHamil extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function identitas()
+    {
+        return $this->hasOne(Identitas::class, 'ibu_hamil_id');
+    }
 }

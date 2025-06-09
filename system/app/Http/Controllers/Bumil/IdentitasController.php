@@ -23,9 +23,7 @@ class IdentitasController extends Controller
         if (!$user) {
             return redirect('/login'); // atau route login ibuhamil kamu
         }
-
         $identitas = Identitas::where('ibu_hamil_id', $user->id)->first();
-
         if ($identitas) {
             // Kalau sudah ada data, redirect ke halaman edit
             return redirect()->route('identitas.edit', $identitas->id);

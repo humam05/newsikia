@@ -12,6 +12,7 @@ class Identitas extends Model
     protected $table = 'tb_identitas';
     protected $fillable = [
         // Data Ibu
+        'ibu_hamil_id',
         'ibu_nama',
         'ibu_nik',
         'ibu_jkn',
@@ -172,10 +173,10 @@ class Identitas extends Model
         return $this->belongsTo(IbuHamil::class, 'ibu_hamil_id');
     }
 
-    public function identitas()
-    {
-        return $this->hasOne(Identitas::class, 'ibu_hamil_id');
-    }
+    // public function identitas()
+    // {
+    //     return $this->hasOne(Identitas::class, 'ibu_hamil_id');
+    // }
 
     public function periksaRutin()
     {
