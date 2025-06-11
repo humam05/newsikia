@@ -53,7 +53,35 @@ class PeriksaTrimester extends Model
         'tindak_lanjut_jiwa',
         'perlu_rujukan',
         'kesimpulan',
-        'rekomendasi'
+        'rekomendasi',
+        'presentasi_bayi',
+        'keadaan_bayi',
+        'djj',
+        'irama_djj',
+        'lokasi_plasenta',
+        'jumlah_cairan_ketuban',
+        'sdp',
+        'bpd',
+        'bpd_sesuai',
+        'hc',
+        'hc_sesuai',
+        'ac',
+        'ac_sesuai',
+        'fl',
+        'fl_sesuai',
+        'efw_tbj',
+        'efw_tbj_sesuai',
+        'rencana_konsultasi',
+        'rencana_melahirkan',
+        'rencana_kontrasepsi',
+        'konseling',
+        'keluhan',
+        'pemeriksaan',
+        'tindakan',
+        'saran',
+        'tanggal_kembali',
+
+
     ];
 
     /**

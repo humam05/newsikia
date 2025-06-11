@@ -72,9 +72,9 @@
                 <label>Sklera</label>
                 <select name="sklera" class="form-control">
                     <option value="">-- Pilih --</option>
-                    <option value="Normal" {{ $periksaTrimester->sklera == 'Normal' ? 'selected' : '' }}>Normal</option>
+                    <option value="Normal" {{ $periksaTrimester->sklera == 'Normal' ? 'selected' : '' }}>Ikterik</option>
                     <option value="Tidak normal" {{ $periksaTrimester->sklera == 'Tidak normal' ? 'selected' : '' }}>Tidak
-                        normal</option>
+                        Ikterik</option>
                 </select>
             </div>
             <div class="form-col">
