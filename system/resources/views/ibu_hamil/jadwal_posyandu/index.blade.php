@@ -108,7 +108,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <h4 class="header-title mb-3">Data Posyandu</h4>
+            <h4 class="header-title mb-3">Daftar Posyandu</h4>
             <div class="button-container" style="text-align: right;">
                 <a href="{{ url('/admin/posyandu/create') }}" class="btn btn-primary">Tambah Jadwal Posyandu</a>
             </div>

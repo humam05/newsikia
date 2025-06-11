@@ -1,56 +1,60 @@
 <style>
     .left-side-menu {
-    background-color: #234c5c; /* Warna utama sidebar */
-    padding: 15px;
-    border-radius: 10px;
-}
+        background-color: #234c5c;
+        /* Warna utama sidebar */
+        padding: 15px;
+        border-radius: 10px;
+    }
 
-.user-box .user-info a {
-    color: #fff; /* Warna teks */
-    font-weight: bold;
-}
+    .user-box .user-info a {
+        color: #fff;
+        /* Warna teks */
+        font-weight: bold;
+    }
 
-#sidebar-menu ul li a {
-    color: white;
-    display: block;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: 0.3s;
-}
+    #sidebar-menu ul li a {
+        color: white;
+        display: block;
+        padding: 10px 15px;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
 
-#sidebar-menu ul li a:hover {
-    background: rgba(255, 255, 255, 0.5);
-    color: #003455; /* Warna saat hover */
-}
+    #sidebar-menu ul li a:hover {
+        background: rgba(255, 255, 255, 0.5);
+        color: #003455;
+        /* Warna saat hover */
+    }
 
-#sidebar-menu ul li.active > a {
-    background-color: #f6f6f6;
-    color: #003455;
-    font-weight: bold;
-}
-.dropdown-item {
-    color: black;
-    padding: 10px 20px;
-    display: block;
-}
+    #sidebar-menu ul li.active>a {
+        background-color: #f6f6f6;
+        color: #003455;
+        font-weight: bold;
+    }
 
-.dropdown-item:hover {
-    background-color: #2b5d6a;
-    color: white;
-}
+    .dropdown-item {
+        color: black;
+        padding: 10px 20px;
+        display: block;
+    }
 
-/* Tambahkan margin antar item */
-.dropdown-menu a {
-    margin-bottom: 5px; /* Jarak antar submenu */
-}
+    .dropdown-item:hover {
+        background-color: #2b5d6a;
+        color: white;
+    }
 
-/* Untuk pemisah antar submenu */
-.dropdown-divider {
-    height: 1px;
-    background-color: rgba(255, 255, 255, 0.3);
-    margin: 5px 0;
-}
+    /* Tambahkan margin antar item */
+    .dropdown-menu a {
+        margin-bottom: 5px;
+        /* Jarak antar submenu */
+    }
 
+    /* Untuk pemisah antar submenu */
+    .dropdown-divider {
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.3);
+        margin: 5px 0;
+    }
 </style>
 <div class="left-side-menu">
     <div class="user-box">
@@ -58,12 +62,14 @@
             <img src="{{ url('public') }}/template/assets/images/users/avatar-1.jpg" alt=""
                 class="avatar-md rounded-circle">
         </div>
+        @php
+            $user = Auth::guard('ibuhamil')->user();
+        @endphp
         <div class="user-info">
-            <a href="#">Alvia </a>
-            <p class="text-muted m-0">Administrator</p>
+            <a href="#">{{ Auth::guard('ibuhamil')->user()?->name ?? 'Ibu Hamil' }}</a>
+            <p class="text-muted m-0">Ibu Hamil</p>
         </div>
     </div>
-
     <!--- Sidemenu -->
     <div id="sidebar-menu">
 
@@ -83,11 +89,24 @@
                     <span> Data Diri </span>
                 </a>
             </li>
-            <li class="{{ Request::is('ibu_hamil/kesehatan_ibu*') ? 'active' : '' }}">
-                <a href="{{ url('ibu_hamil/kesehatan_ibu') }}">
-                    <i class="fas fa-hand-holding-heart"></i>
-                    <span> Kesehatan Ibu </span>
+            <li class="nav-item dropdown {{ Request::is('ibu_hamil/kesehatan_ibu/*') ? 'active' : '' }}">
+                <a class="nav-link dropdown-toggle" href="#" id="akunDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-baby"></i>
+                    <span>Pemeriksaan Ibu </span>
+                    <i class="fas fa-chevron-down ml-1"></i>
                 </a>
+                <div class="dropdown-menu border-0 shadow-sm rounded" aria-labelledby="akunDropdown">
+                    <a class="dropdown-item {{ Request::is('ibu_hamil/kesehatan_ibu/*') ? 'active' : '' }}"
+                        href="{{ url('ibu_hamil/kesehatan_ibu/periksa_rutin') }}">
+                        <i class="fas fa-baby mr-2"></i> Pemeriksaan Rutin
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item {{ Request::is('ibu_hamil/kesehatan_ibu/*') ? 'active' : '' }}"
+                        href="{{ url('ibu_hamil/kesehatan_ibu/periksa_trimester') }}">
+                        <i class="fas fa-baby mr-2"></i> Pemeriksaan Trimester
+                    </a>
+                </div>
             </li>
             <li class="{{ Request::is('ibu_hamil/kesehatan_bayi*') ? 'active' : '' }}">
                 <a href="{{ url('ibu_hamil/kesehatan_bayi') }}">

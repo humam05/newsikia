@@ -37,7 +37,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($identitas as $item)
+                            @forelse ($identitas as $item)
                                 <tr>
                                     <td>{{ $item->ibu_nama }}</td>
                                     <td>{{ $item->ibu_nik }}</td>
@@ -48,12 +48,16 @@
                                             class="btn btn-dark btn-sm">Show</a>
                                         <a href="{{ url('ibu_hamil/identitas/edit', $item->id) }}"
                                             class="btn btn-success btn-sm">Lengkapi Data</a>
-                                            <a href="{{ url('ibu_hamil/identitas/delete', $item->id) }}"
+                                        <a href="{{ url('ibu_hamil/identitas/delete', $item->id) }}"
                                             class="btn btn-danger btn-sm"
                                             onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="text-center">Belum ada data identitas.</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

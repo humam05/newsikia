@@ -182,4 +182,9 @@ class Identitas extends Model
     {
         return $this->hasMany(\App\Models\PeriksaRutin::class, 'identitas_id');
     }
+
+    public function anak()
+   {
+       return $this->hasMany(periksaBayi::class, 'identitas_id'); // Pastikan 'identitas_id' adalah kolom yang sesuai
+   }
 }

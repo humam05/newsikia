@@ -56,7 +56,6 @@ class AuthController extends Controller
 
     private function logoutFromAllGuards(): void
     {
-
         $guards = ['admin', 'nakes', 'ibuhamil', 'puskesmas', 'dinkes'];
 
         foreach ($guards as $guard) {
@@ -64,7 +63,6 @@ class AuthController extends Controller
                 Auth::guard($guard)->logout();
             }
         }
-
         request()->session()->invalidate();
         request()->session()->regenerateToken();
     }

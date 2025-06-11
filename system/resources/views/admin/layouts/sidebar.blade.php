@@ -134,6 +134,11 @@
                         href="{{ url('admin/bayi/identitas') }}">
                         <i class="fas fa-baby mr-2"></i> Data Bayi Balita
                     </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item {{ Request::is('admin/bayi/periksa') ? 'active' : '' }}"
+                        href="{{ url('admin/bayi/periksa') }}">
+                        <i class="fas fa-baby mr-2"></i> Daftar Periksa Bayi Balita
+                    </a>
                 </div>
             </li>
             <li class="{{ Request::is('admin/ortu*') ? 'active' : '' }}">

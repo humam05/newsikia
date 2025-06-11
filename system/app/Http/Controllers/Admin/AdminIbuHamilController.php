@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Identitas;
@@ -287,6 +287,60 @@ class AdminIbuHamilController extends Controller
 
         return redirect('admin/ibu_hamil/periksa_rutin')->with('success', 'Data berhasil disimpan.');
     }
+
+    // function storeForIbuHamil(Request $request)
+    // {
+    //     // Validasi data yang masuk
+    //     $request->validate([
+    //         'identitas_id'      => 'required|exists:tb_identitas,id',
+    //         'tanggal_periksa'   => 'required|date',
+    //         'berat_badan'       => 'nullable|numeric',
+    //         'tinggi_badan'      => 'nullable|numeric',
+    //         'lingkar_lengan'    => 'nullable|numeric',
+    //         'tekanan_darah'     => 'nullable|string',
+    //         'umur_kehamilan'    => 'nullable|integer',
+    //         'tfu'               => 'nullable|numeric',
+    //         'djj'               => 'nullable|integer',
+    //         'gerakan_janin'     => 'nullable|in:ada,tidak_ada',
+    //         'posisi_janin'      => 'nullable|in:kepala,sungsang,lintang',
+    //         'kaki_bengkak'      => 'nullable|string',
+    //         'keluhan'           => 'nullable|string',
+    //         'tindakan'          => 'nullable|string',
+    //         'catatan'           => 'nullable|string',
+    //     ]);
+    //     // Simpan ke database
+    //     $periksa = new PeriksaRutin;
+    //     $periksa->identitas_id     = $request->identitas_id;
+    //     $periksa->tanggal_periksa  = $request->tanggal_periksa;
+    //     $periksa->berat_badan      = $request->berat_badan;
+    //     $periksa->tinggi_badan     = $request->tinggi_badan;
+    //     $periksa->lingkar_lengan   = $request->lingkar_lengan;
+    //     $periksa->tekanan_darah    = $request->tekanan_darah;
+    //     $periksa->umur_kehamilan   = $request->umur_kehamilan;
+    //     $periksa->tfu              = $request->tfu;
+    //     $periksa->djj              = $request->djj;
+    //     $periksa->gerakan_janin    = $request->gerakan_janin;
+    //     $periksa->posisi_janin     = $request->posisi_janin;
+    //     $periksa->kaki_bengkak     = $request->kaki_bengkak;
+    //     $periksa->keluhan          = $request->keluhan;
+    //     $periksa->tindakan         = $request->tindakan;
+    //     $periksa->catatan          = $request->catatan;
+    //     // Simpan ke database
+    //     $periksa->save();
+    //     return redirect('ibu_hamil/periksa_rutin')->with('success', 'Data berhasil disimpan.');
+    // }
+
+    // public function showForIbuHamil(PeriksaRutin $periksaRutin)
+    // {
+    //     // Pastikan hanya ibu hamil yang memiliki identitas ini yang bisa mengakses
+    //     $user = Auth::guard('ibuhamil')->user();
+    //     if ($periksaRutin->identitas->ibu_hamil_id !== $user->id) {
+    //         abort(403, 'Anda tidak memiliki izin untuk mengakses halaman ini.');
+    //     }
+    //     // Pastikan relasi identitas ikut dimuat
+    //     $periksaRutin->load('identitas');
+    //     return view('ibu_hamil.periksa_rutin.show', compact('periksaRutin'));
+    // }
 
     function periksaRutinShow(PeriksaRutin $periksaRutin)
     {
@@ -599,4 +653,3 @@ class AdminIbuHamilController extends Controller
         return redirect('admin/ibu_hamil/periksa_trimester')->with('success', 'Data berhasil dihapus.');
     }
 }
-

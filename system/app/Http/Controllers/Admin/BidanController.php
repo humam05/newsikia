@@ -14,14 +14,11 @@ class BidanController extends Controller
         $data['bidan'] = Bidan::paginate(10);
         return view('admin.bidan.index', $data);
     }
-
     function create()
     {
         $fasyankesList = Fasyankes::all(); // Atau pakai where/limit kalau banyak
         return view('admin.bidan.create', compact('fasyankesList'));
     }
-
-
     function store()
     {
         $bidan = new Bidan;

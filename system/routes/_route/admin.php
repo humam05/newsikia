@@ -58,6 +58,8 @@ Route::prefix('admin')->group(function () {
             Route::get('/periksa_rutin/edit/{periksaRutin}',  'periksaRutinEdit');
             Route::post('/periksa_rutin/update/{periksaRutin}',  'periksaRutinUpdate');
             Route::get('/periksa_rutin/delete/{periksaRutin}',  'periksaRutinDelete');
+            // Route::post('/periksa_rutin/store', 'storeForIbuHamil');
+            // Route::get('/periksa_rutin/show/{periksaRutin}', 'showForIbuHamil');
 
             Route::get('periksa_trimester', 'periksaTrimesterIndex');
             Route::get('/periksa_trimester/create/{identitas}', 'periksaTrimesterCreate');
@@ -95,8 +97,19 @@ Route::prefix('admin')->group(function () {
             Route::get('identitas', 'bayiIndex');
             Route::get('identitas/create/{identitas}', 'bayiCreate');
             Route::post('/identitas/store', 'bayiStore');
+            Route::get('/identitas/show/{identitas}', 'bayiShow');
+            Route::get('/identitas/edit/{identitas}', 'bayiEdit');
+            Route::post('/identitas/update/{identitas}', 'bayiUpdate');
+            Route::get('/identitas/delete/{identitas}', 'bayiDelete');
 
-
+            //Route Periksa Bayi
+            Route::get('periksa', 'periksaIndex');
+            Route::get('periksa/create/{identitas}', 'periksaCreate');
+            Route::post('/periksa/store', 'periksaStore');
+            Route::get('/periksa/show/{periksaBayi}', 'periksaShow');
+            Route::get('/periksa/edit/{periksaBayi}', 'periksaEdit');
+            Route::post('/periksa/update/{periksaBayi}', 'periksaUpdate');
+            Route::get('/periksa/delete/{periksaBayi}', 'periksaDelete');
         });
     });
     Route::prefix('ortu')->group(function () {

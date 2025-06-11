@@ -2,63 +2,52 @@
 
 namespace App\Http\Controllers\Bumil;
 
-use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Identitas;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Identitas;
 
 class IdentitasController extends Controller
 {
-    // function index()
+    // public function index(Request $request)
     // {
-    //     $data['identitas'] = Identitas::all();
-    //     return view('ibu_hamil.identitas.index', $data);
-    // }
+    //     $user = Auth::guard('ibuhamil')->user();
 
-    // Redirect ke create atau edit sesuai data user
-    function lengkapiData()
+    //     $query = Identitas::where('ibu_hamil_id', $user->id);
+    //     $totalIbuHamil = $query->count();
+
+    //     if ($request->has('search') && !empty($request->search)) {
+    //         $query->where('ibu_nik', 'like', '%' . $request->search . '%');
+    //     }
+
+    //     $identitas = $query->get();
+
+    //     return view('ibu_hamil.identitas.index', compact('identitas', 'totalIbuHamil'));
+    // }
+     public function index(Request $request)
     {
         $user = Auth::guard('ibuhamil')->user();
+        // Pastikan user terotentikasi
         if (!$user) {
-            return redirect('/login'); // atau route login ibuhamil kamu
+            return redirect()->route('login'); // Atau route login yang sesuai
         }
-        $identitas = Identitas::where('ibu_hamil_id', $user->id)->first();
-        if ($identitas) {
-            // Kalau sudah ada data, redirect ke halaman edit
-            return redirect()->route('identitas.edit', $identitas->id);
-        } else {
-            // Kalau belum ada data, redirect ke halaman create
-            return redirect()->route('ibu_hamil.identitas.create');
-        }
-    }
-
-
-    function index(Request $request)
-    {
-        $user = Auth::guard('ibuhamil')->user(); // ambil user yang login
-
         $query = Identitas::where('ibu_hamil_id', $user->id);
         $totalIbuHamil = $query->count();
-
-        if ($request->has('search')) {
+        if ($request->has('search') && !empty($request->search)) {
             $query->where('ibu_nik', 'like', '%' . $request->search . '%');
         }
-
         $identitas = $query->get();
-
         return view('ibu_hamil.identitas.index', compact('identitas', 'totalIbuHamil'));
     }
 
-    function create()
+    public function create()
     {
         return view('ibu_hamil.identitas.create');
     }
 
-    function store(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
-            // Data Ibu (wajib hanya nama & nik)
             'ibu_nama' => 'required|string|max:255',
             'ibu_nik' => 'required|numeric|digits:16',
             'ibu_jkn' => 'nullable|string|max:255',
@@ -74,7 +63,6 @@ class IdentitasController extends Controller
             'ibu_asuransi_nomor' => 'nullable|string|max:255',
             'ibu_asuransi_berlaku' => 'nullable|date',
 
-            // Data Suami (wajib hanya nama & nik)
             'suami_nama' => 'required|string|max:255',
             'suami_nik' => 'required|numeric|digits:16',
             'suami_jkn' => 'nullable|string|max:255',
@@ -90,7 +78,6 @@ class IdentitasController extends Controller
             'suami_asuransi_nomor' => 'nullable|string|max:255',
             'suami_asuransi_berlaku' => 'nullable|date',
 
-            // Data Anak (opsional semua)
             'anak_nama' => 'nullable|string|max:255',
             'anak_nik' => 'nullable|numeric|digits:16',
             'anak_jkn' => 'nullable|string|max:255',
@@ -103,7 +90,6 @@ class IdentitasController extends Controller
             'anak_akta_kelahiran' => 'nullable|string|max:255',
             'anak_gol_darah' => 'nullable|string|max:3',
 
-            // Fasilitas Kesehatan (opsional semua)
             'puskesmas' => 'nullable|string|max:255',
             'kohort_ibu' => 'nullable|string|max:255',
             'kohort_bayi' => 'nullable|string|max:255',
@@ -111,32 +97,56 @@ class IdentitasController extends Controller
             'medik_rs' => 'nullable|string|max:255',
         ]);
 
-        // Ambil data dari form dan tambahkan ID ibu hamil yang sedang login
         $data = $request->all();
         $data['ibu_hamil_id'] = Auth::guard('ibuhamil')->id();
 
         Identitas::create($data);
 
-        return redirect('ibu_hamil/identitas')->with('success', 'Data berhasil disimpan.');
+        return redirect()->route('ibu_hamil.identitas.index')->with('success', 'Data berhasil disimpan.');
     }
 
+    // public function show(Identitas $identitas)
+    // {
+    //     $user = Auth::guard('ibuhamil')->user();
+    //     if ($identitas->ibu_hamil_id !== $user->id) {
+    //         abort(403, 'Akses tidak diizinkan.');
+    //     }
 
-    function show(Identitas $identitas)
+    //     return view('ibu_hamil.identitas.show', ['identitas' => $identitas]);
+    // }
+
+    public function show(Identitas $identitas)
     {
-        $data['detail'] = $identitas;
+        $user = Auth::guard('ibuhamil')->user();
+        // Pastikan user terotentikasi
+        if (!$user) {
+            return redirect()->route('login'); // Atau route login yang sesuai
+        }
+        // Verifikasi apakah identitas ini milik ibu hamil yang sedang login
+        if ($identitas->ibu_hamil_id !== $user->id) {
+            abort(403, 'Anda tidak memiliki izin untuk melihat data ini.');
+        }
         return view('ibu_hamil.identitas.show', compact('identitas'));
     }
 
-    function edit(Identitas $identitas)
+    public function edit(Identitas $identitas)
     {
-        $data['detail'] = $identitas;
-        return view('ibu_hamil.identitas.edit', $data);
+        $user = Auth::guard('ibuhamil')->user();
+        if ($identitas->ibu_hamil_id !== $user->id) {
+            abort(403, 'Akses tidak diizinkan.');
+        }
+
+        return view('ibu_hamil.identitas.edit', ['detail' => $identitas]);
     }
 
-    function update(Request $request, Identitas $identitas)
+    public function update(Request $request, Identitas $identitas)
     {
+        $user = Auth::guard('ibuhamil')->user();
+        if ($identitas->ibu_hamil_id !== $user->id) {
+            abort(403, 'Akses tidak diizinkan.');
+        }
+
         $request->validate([
-            // Data Ibu
             'ibu_nama' => 'required|string|max:255',
             'ibu_nik' => 'required|numeric|digits:16',
             'ibu_jkn' => 'nullable|string|max:255',
@@ -152,7 +162,6 @@ class IdentitasController extends Controller
             'ibu_asuransi_nomor' => 'nullable|string|max:255',
             'ibu_asuransi_berlaku' => 'nullable|date',
 
-            // Data Suami
             'suami_nama' => 'required|string|max:255',
             'suami_nik' => 'required|numeric|digits:16',
             'suami_jkn' => 'nullable|string|max:255',
@@ -168,7 +177,6 @@ class IdentitasController extends Controller
             'suami_asuransi_nomor' => 'nullable|string|max:255',
             'suami_asuransi_berlaku' => 'nullable|date',
 
-            // Data Anak
             'anak_nama' => 'nullable|string|max:255',
             'anak_nik' => 'nullable|numeric|digits:16',
             'anak_jkn' => 'nullable|string|max:255',
@@ -181,7 +189,6 @@ class IdentitasController extends Controller
             'anak_akta_kelahiran' => 'nullable|string|max:255',
             'anak_gol_darah' => 'nullable|string|max:3',
 
-            // Fasilitas Kesehatan
             'puskesmas' => 'nullable|string|max:255',
             'kohort_ibu' => 'nullable|string|max:255',
             'kohort_bayi' => 'nullable|string|max:255',
@@ -189,17 +196,21 @@ class IdentitasController extends Controller
             'medik_rs' => 'nullable|string|max:255',
         ]);
 
-        $data = $request->except(['ibu_hamil_id']); // agar tidak bisa ubah ID user
-
+        $data = $request->except(['ibu_hamil_id']);
         $identitas->update($data);
 
-        return redirect('ibu_hamil/identitas')->with('success', 'Data berhasil diperbarui.');
+        return redirect()->route('ibu_hamil.identitas.index')->with('success', 'Data berhasil diperbarui.');
     }
 
-
-    function delete(Identitas $identitas)
+    public function delete(Identitas $identitas)
     {
+        $user = Auth::guard('ibuhamil')->user();
+        if ($identitas->ibu_hamil_id !== $user->id) {
+            abort(403, 'Akses tidak diizinkan.');
+        }
+
         $identitas->delete();
-        return redirect('ibu_hamil/identitas')->with('success', 'Data berhasil dihapus.');
+
+        return redirect()->route('ibu_hamil.identitas.index')->with('success', 'Data berhasil dihapus.');
     }
 }

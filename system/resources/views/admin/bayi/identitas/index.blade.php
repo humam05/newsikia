@@ -21,7 +21,7 @@
                         <div class="col-md-12">
                             <div class="input-group mb-2">
                                 <input name="search" type="text" class="form-control" value="{{ request('search') }}"
-                                    placeholder="Cari Pasien Berdasarkan NO. NIK" maxlength="16" minlength="16" required>
+                                    placeholder="Cari Bayi Berdasarkan Nama Bayi/ Nama Ibu/ Nik Ibu " required>
                                 <div class="input-group-prepend ml-1">
                                     <button type="submit" class="btn btn-info btn-icon-split">
                                         <span class="icon text-white">
@@ -51,7 +51,7 @@
     <div class="row mt-3">
         <div class="col-12">
             <div>
-                <h4 class="header-title mb-3">Daftar Pemeriksaan Rutin</h4>
+                <h4 class="header-title mb-3">Data Bayi Balita</h4>
             </div>
         </div>
     </div>
@@ -91,6 +91,8 @@
                                         <a href="{{ url('admin/bayi/identitas/delete', $item->id) }}"
                                             class="btn btn-danger btn-sm"
                                             onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</a>
+                                        <a href="{{ url('admin/bayi/periksa/create', $item->id) }}"
+                                            class="btn btn-success btn-sm">Periksa</a>
                                     </td>
                                 </tr>
                             @empty
