@@ -80,8 +80,13 @@ class PeriksaTrimester extends Model
         'tindakan',
         'saran',
         'tanggal_kembali',
-
-
+        'tanggal_periksa_2',
+        'tanggal_periksa_3',
+        'usg_trimester_3',
+        'urin_reduksi',
+        'tempat_melahirkan',
+        'penjelasan',
+        'protein_urin'
     ];
 
     /**

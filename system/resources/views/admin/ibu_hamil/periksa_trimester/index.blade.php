@@ -7,10 +7,10 @@
         }
 
         .pagination-container {
-                display: flex;
-                justify-content: center;
-                margin-top: 20px;
-            }
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
     </style>
     <div class="button-container">
         <a href="{{ url('/admin/ibu_hamil/identitas') }}" class="btn btn-success">
@@ -92,8 +92,9 @@
                                     </td>
                                     <td>{{ $item->trimester }}</td>
                                     <td>
-                                        <a href="{{ url('admin/ibu_hamil/periksa_trimester/show', $item->id) }}"
+                                        <a href="{{ url('admin/ibu_hamil/periksa_trimester/show', $item->id) }}?step=trimester{{ $item->trimester }}"
                                             class="btn btn-dark btn-sm">Show</a>
+
                                         <a href="{{ url('admin/ibu_hamil/periksa_trimester/edit', $item->id) }}"
                                             class="btn btn-warning btn-sm">Edit</a>
                                         <a href="{{ url('admin/ibu_hamil/periksa_trimester/delete', $item->id) }}"

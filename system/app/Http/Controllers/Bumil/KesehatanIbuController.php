@@ -6,79 +6,46 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PeriksaRutin;
 use App\Models\PeriksaTrimester;
-use App\Models\Identitas; // Tambahkan ini
+use App\Models\Identitas;
 use Illuminate\Support\Facades\Auth;
 
 class KesehatanIbuController extends Controller
 {
-    function indexRutin(Request $request)
+    function indexRutin()
     {
-        // Ambil user yang sedang login
-        $user = Auth::guard('ibuhamil')->user();
+        $login = Auth::guard('ibuhamil')->user();
+        $identitas = Identitas::where('ibu_hamil_id', $login->id)->first();
+        $data['periksa_rutin'] = PeriksaRutin::where('identitas_id', $identitas->id)->with('identitas')->get();
 
-        // Pastikan user terotentikasi
-        if (!$user) {
-            return redirect()->route('login'); // Atau route login yang sesuai
-        }
-
-        // Ambil data identitas ibu hamil yang sedang login
-        $identitas = Identitas::where('ibu_hamil_id', $user->id)->first();
-
-        // Jika identitas tidak ditemukan, mungkin perlu redirect atau menampilkan pesan error
-        if (!$identitas) {
-            return redirect()->back()->with('error', 'Data identitas tidak ditemukan.');
-        }
-
-        // Ambil data periksa rutin yang terkait dengan identitas ibu hamil
-        $query = PeriksaRutin::where('identitas_id', $identitas->id);
-
-        // Jika ada pencarian
-        if ($request->has('search')) {
-            $search = $request->search;
-            $query->where('nama_pemeriksaan', 'like', "%$search%")
-                ->orWhere('hasil_pemeriksaan', 'like', "%$search%");
-        }
-
-        // Ambil data dengan urutan terbaru
-        $periksaRutin = $query->latest()->get();
-
-        // Kirim data ke view
-        return view('ibu_hamil.kesehatan_ibu.periksa_rutin.index', compact('periksaRutin'));
+        return view('ibu_hamil.kesehatan_ibu.periksa_rutin.index', $data);
     }
 
-
-    function indexTrimester(Request $request)
+    function indexTrimester()
     {
-        // Ambil user yang sedang login
-        $user = Auth::guard('ibuhamil')->user();
+        $login = Auth::guard('ibuhamil')->user();
+        $identitas = Identitas::where('ibu_hamil_id', $login->id)->first();
+        $data['periksa_trimester'] = PeriksaTrimester::where('identitas_id', $identitas->id)->with('identitas')->get();
 
-        // Pastikan user terotentikasi
-        if (!$user) {
-            return redirect()->route('login'); // Atau route login yang sesuai
-        }
+        return view('ibu_hamil.kesehatan_ibu.periksa_trimester.index', $data);
+    }
 
-        // Ambil data identitas ibu hamil yang sedang login
-        $identitas = Identitas::where('ibu_hamil_id', $user->id)->first();
+    function showRutin(PeriksaRutin $periksaRutin)
+    {
+        // Pastikan relasi 'identitas' dimuat
+        $periksaRutin->load('identitas');
 
-        // Jika identitas tidak ditemukan, mungkin perlu redirect atau menampilkan pesan error
-        if (!$identitas) {
-            return redirect()->back()->with('error', 'Data identitas tidak ditemukan.');
-        }
+        return view('ibu_hamil.kesehatan_ibu.periksa_rutin.show', [
+            'periksaRutin' => $periksaRutin
+        ]);
+    }
 
-        // Ambil data periksa trimester yang terkait dengan identitas ibu hamil
-        $query = PeriksaTrimester::where('identitas_id', $identitas->id);
+    function showTrimester(PeriksaTrimester $periksaTrimester)
+    {
+        // Sama seperti showRutin, muat relasi 'identitas'
+        $periksaTrimester->load('identitas');
 
-        // Jika ada pencarian
-        if ($request->has('search')) {
-            $search = $request->search;
-            $query->where('nama_pemeriksaan', 'like', "%$search%")
-                ->orWhere('hasil_pemeriksaan', 'like', "%$search%");
-        }
-
-        // Ambil data dengan urutan terbaru
-        $periksaTrimester = $query->latest()->get();
-
-        // Kirim data ke view
-        return view('ibu_hamil.kesehatan_ibu.periksa_trimester.index', compact('periksaTrimester'));
+        return view('ibu_hamil.kesehatan_ibu.periksa_trimester.show', [
+            'periksaTrimester' => $periksaTrimester
+        ]);
     }
 }

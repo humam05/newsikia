@@ -23,6 +23,7 @@ class BidanController extends Controller
     {
         $bidan = new Bidan;
         $bidan->fasyankes_id = request('fasyankes_id');
+        $bidan->profesi = request('profesi');
         $bidan->nama_bidan = request('nama_bidan');
         $bidan->nik = request('nik');
         $bidan->no_telpon = request('no_telpon');
@@ -56,6 +57,7 @@ class BidanController extends Controller
     function update(Bidan $bidan)
     {
         $bidan->fasyankes_id = request('fasyankes_id');
+        $bidan->profesi = request('profesi');
         $bidan->nama_bidan = request('nama_bidan');
         $bidan->nik = request('nik');
         $bidan->no_telpon = request('no_telpon');

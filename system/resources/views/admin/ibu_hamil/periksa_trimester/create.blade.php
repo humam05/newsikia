@@ -64,7 +64,7 @@
             <div class="form-row">
                 <div class="form-col">
                     <label>Tanggal Periksa</label>
-                    <input type="date" name="tanggal_periksa" class="form-control" required>
+                    <input type="date" name="tanggal_periksa" class="form-control">
                 </div>
             </div>
             <div class="form-row">
@@ -337,7 +337,6 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Simpan Pemeriksaan</button>
-
         </div>
 
 
@@ -354,34 +353,34 @@
             <div class="form-row">
                 <div class="form-col">
                     <label>Tanggal Periksa</label>
-                    <input type="date" name="tanggal_periksa_2" class="form-control" required>
+                    <input type="date" name="tanggal_periksa_2" class="form-control">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-col">
                     <label>Keluhan</label>
-                    <textarea name="rekomendasi" class="form-control"></textarea>
+                    <textarea name="keluhan" class="form-control"></textarea>
                 </div>
                 <div class="form-col">
                     <label>Pemeriksaan</label>
-                    <textarea name="rekomendasi" class="form-control"></textarea>
+                    <textarea name="pemeriksaan" class="form-control"></textarea>
                 </div>
             </div>
             <div class="form-row">
 
                 <div class="form-col">
                     <label>Tindakan</label>
-                    <textarea name="rekomendasi" class="form-control"></textarea>
+                    <textarea name="tindakan" class="form-control"></textarea>
                 </div>
                 <div class="form-col">
                     <label>Saran</label>
-                    <textarea name="rekomendasi" class="form-control"></textarea>
+                    <textarea name="saran" class="form-control"></textarea>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-col">
                     <label>Tanggal Kembali</label>
-                    <input type="date" name="hpht" class="form-control">
+                    <input type="date" name="tanggal_kembali" class="form-control">
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Simpan Pemeriksaan</button>
@@ -410,7 +409,7 @@
             <div class="form-row">
                 <div class="form-col">
                     <label>Tanggal Periksa</label>
-                    <input type="date" name="tanggal_periksa_3" class="form-control" required>
+                    <input type="date" name="tanggal_periksa_3" class="form-control">
                 </div>
             </div>
             <div class="form-row">
@@ -753,7 +752,7 @@
                     <textarea name="penjelasan" class="form-control" rows="3"></textarea>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Simpan Pemeriksaan</button>
+            <button class="btn btn-primary">Simpan Pemeriksaan</button>
     </form>
 
     <script>

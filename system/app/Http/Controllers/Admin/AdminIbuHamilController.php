@@ -283,65 +283,13 @@ class AdminIbuHamilController extends Controller
         $periksa->tindakan         = $request->tindakan;
         $periksa->catatan          = $request->catatan;
 
+
+
         // Simpan ke database
         $periksa->save();
 
         return redirect('admin/ibu_hamil/periksa_rutin')->with('success', 'Data berhasil disimpan.');
     }
-
-    // function storeForIbuHamil(Request $request)
-    // {
-    //     // Validasi data yang masuk
-    //     $request->validate([
-    //         'identitas_id'      => 'required|exists:tb_identitas,id',
-    //         'tanggal_periksa'   => 'required|date',
-    //         'berat_badan'       => 'nullable|numeric',
-    //         'tinggi_badan'      => 'nullable|numeric',
-    //         'lingkar_lengan'    => 'nullable|numeric',
-    //         'tekanan_darah'     => 'nullable|string',
-    //         'umur_kehamilan'    => 'nullable|integer',
-    //         'tfu'               => 'nullable|numeric',
-    //         'djj'               => 'nullable|integer',
-    //         'gerakan_janin'     => 'nullable|in:ada,tidak_ada',
-    //         'posisi_janin'      => 'nullable|in:kepala,sungsang,lintang',
-    //         'kaki_bengkak'      => 'nullable|string',
-    //         'keluhan'           => 'nullable|string',
-    //         'tindakan'          => 'nullable|string',
-    //         'catatan'           => 'nullable|string',
-    //     ]);
-    //     // Simpan ke database
-    //     $periksa = new PeriksaRutin;
-    //     $periksa->identitas_id     = $request->identitas_id;
-    //     $periksa->tanggal_periksa  = $request->tanggal_periksa;
-    //     $periksa->berat_badan      = $request->berat_badan;
-    //     $periksa->tinggi_badan     = $request->tinggi_badan;
-    //     $periksa->lingkar_lengan   = $request->lingkar_lengan;
-    //     $periksa->tekanan_darah    = $request->tekanan_darah;
-    //     $periksa->umur_kehamilan   = $request->umur_kehamilan;
-    //     $periksa->tfu              = $request->tfu;
-    //     $periksa->djj              = $request->djj;
-    //     $periksa->gerakan_janin    = $request->gerakan_janin;
-    //     $periksa->posisi_janin     = $request->posisi_janin;
-    //     $periksa->kaki_bengkak     = $request->kaki_bengkak;
-    //     $periksa->keluhan          = $request->keluhan;
-    //     $periksa->tindakan         = $request->tindakan;
-    //     $periksa->catatan          = $request->catatan;
-    //     // Simpan ke database
-    //     $periksa->save();
-    //     return redirect('ibu_hamil/periksa_rutin')->with('success', 'Data berhasil disimpan.');
-    // }
-
-    // public function showForIbuHamil(PeriksaRutin $periksaRutin)
-    // {
-    //     // Pastikan hanya ibu hamil yang memiliki identitas ini yang bisa mengakses
-    //     $user = Auth::guard('ibuhamil')->user();
-    //     if ($periksaRutin->identitas->ibu_hamil_id !== $user->id) {
-    //         abort(403, 'Anda tidak memiliki izin untuk mengakses halaman ini.');
-    //     }
-    //     // Pastikan relasi identitas ikut dimuat
-    //     $periksaRutin->load('identitas');
-    //     return view('ibu_hamil.periksa_rutin.show', compact('periksaRutin'));
-    // }
 
     function periksaRutinShow(PeriksaRutin $periksaRutin)
     {
@@ -435,306 +383,14 @@ class AdminIbuHamilController extends Controller
         return view('admin.ibu_hamil.periksa_trimester.create', compact('identitas'));
     }
 
-    function periksaTrimesterStore(Request $request)
+    public function periksaTrimesterStore(Request $request)
     {
-        // Validasi input
-        $request->validate([
-            'identitas_id' => 'required|exists:tb_identitas,id',
-            'nama_dokter' => 'nullable|string|max:255',
-            'tanggal_periksa' => 'required|date',
-            'trimester' => 'nullable|string|max:255',
 
-            // Pemeriksaan fisik
-            'konjungtiva' => 'nullable|in:Normal,Tidak normal',
-            'sklera' => 'nullable|in:Ikterik,Tidak Ikterik',
-            'kulit' => 'nullable|in:Normal,Tidak normal',
-            'leher' => 'nullable|in:Normal,Tidak normal',
-            'gigi_mulut' => 'nullable|in:Normal,Tidak normal',
-            'tht' => 'nullable|in:Normal,Tidak normal',
-            'dada' => 'nullable|in:Normal,Tidak normal',
-            'paru' => 'nullable|in:Normal,Tidak normal',
-            'perut' => 'nullable|in:Normal,Tidak normal',
-            'tungkai' => 'nullable|in:Normal,Tidak normal',
-
-            // Riwayat haid dan kehamilan
-            'hpht' => 'nullable|date',
-            'keterangan_haid' => 'nullable|in:Teratur,Tidak Teratur',
-            'umur_kehamilan_hpht' => 'nullable|integer|min:0|max:50',
-            'hpl_hpht' => 'nullable|date',
-            'umur_kehamilan_usg' => 'nullable|integer|min:0|max:50',
-            'hpl_usg' => 'nullable|date',
-
-            // Pemeriksaan USG awal
-            'jumlah_gs' => 'nullable|in:Tunggal,Kembar',
-            'diameter_gs' => 'nullable|string|max:255',
-            'umur_diameter_gs' => 'nullable|string|max:255',
-            'jumlah_bayi' => 'nullable|in:Tunggal,Kembar',
-            'crl' => 'nullable|string|max:255',
-            'umur_crl' => 'nullable|string|max:255',
-            'letak_produk_kehamilan' => 'nullable|in:Intrauterin,Extrauterin,Tidak dapat ditentukan',
-            'pulsasi_jantung' => 'nullable|in:Terlihat,Tidak Terlihat',
-            'temuan_abnormal' => 'nullable|in:ya,tidak',
-            'temuan_abnormal_sebutkan' => 'nullable|string|max:255',
-
-            // Pemeriksaan laboratorium
-            'hemoglobin' => 'nullable|string|max:255',
-            'golongan_darah' => 'nullable|string|max:255',
-            'rhesus' => 'nullable|string|max:255',
-            'gula_darah_sewaktu' => 'nullable|string|max:255',
-            'hasil_h' => 'nullable|in:reaktif,nonreaktif',
-            'hasil_s' => 'nullable|in:reaktif,nonreaktif',
-            'hasil_hepatitis_b' => 'nullable|in:reaktif,nonreaktif',
-
-            // Skrining jiwa & tindak lanjut
-            'skrining_kesehatan_jiwa' => 'nullable|in:ya,tidak',
-            'tindak_lanjut_jiwa' => 'nullable|string|max:255',
-            'perlu_rujukan' => 'nullable|in:ya,tidak',
-
-            // Kesimpulan & rekomendasi
-            'kesimpulan' => 'nullable|string',
-            'rekomendasi' => 'nullable|string',
-
-            // Kolom tambahan
-            'presentasi_bayi' => 'nullable|in:Kepala,Bokong,Letak Lintang',
-            'keadaan_bayi' => 'nullable|in:Hidup,Meninggal',
-            'djj' => 'nullable|string|max:255',
-            'irama_djj' => 'nullable|in:normal,tidak normal',
-            'lokasi_plasenta' => 'nullable|in:Fundus,Corpus,Letak rendah,Previa',
-            'jumlah_cairan_ketuban' => 'nullable|in:cukup,kurang,berlebih',
-            'sdp' => 'nullable|numeric|min:0',
-
-            // Biometri bayi
-            'bpd' => 'nullable|numeric|min:0',
-            'bpd_sesuai' => 'nullable|string|max:255',
-            'hc' => 'nullable|numeric|min:0',
-            'hc_sesuai' => 'nullable|string|max:255',
-            'ac' => 'nullable|numeric|min:0',
-            'ac_sesuai' => 'nullable|string|max:255',
-            'fl' => 'nullable|numeric|min:0',
-            'fl_sesuai' => 'nullable|string|max:255',
-            'efw_tbj' => 'nullable|numeric|min:0',
-            'efw_tbj_sesuai' => 'nullable|string|max:255',
-
-            'rencana_konsultasi' => 'nullable|in:gizi,kebidanan,anak,penyakit dalam,neurologi,tht,psikiatri,lain lain',
-            'rencana_melahirkan' => 'nullable|in:normal,pervaginam berbantu,sectio caesaria',
-            'rencana_kontrasepsi' => 'nullable|in:akdr,pil,suntik,steril,mal,implan,belum memilih',
-            'konseling' => 'nullable|in:ya,tidak',
-            'keluhan' => 'nullable|string',
-            'pemeriksaan' => 'nullable|string',
-            'tindakan' => 'nullable|string',
-            'saran' => 'nullable|string',
-            'tanggal_kembali' => 'nullable|date',
-            'tanggal_periksa' => 'nullable|date',
-            'tanggal_periksa_2' => 'nullable|date',
-            'tanggal_periksa_3' => 'nullable|date',
-            'usg_trimester_3' => 'nullable|numeric',
-            'protein_urin' => 'nullable|string',
-            'urin_reduksi' => 'nullable|in:negatif,+1,+2,+3,+4',
-            'tempat_melahirkan' => 'nullable|in:fktp,fkrtl',
-            'penjelasan' => 'nullable|string',
-
-        ]);
-
-
-        // Simpan data
-        $periksa = new PeriksaTrimester();
-        $periksa->fill($request->only([
-            'identitas_id',
-            'nama_dokter',
-            'tanggal_periksa',
-            'trimester',
-            'konjungtiva',
-            'sklera',
-            'kulit',
-            'leher',
-            'gigi_mulut',
-            'tht',
-            'dada',
-            'paru',
-            'perut',
-            'tungkai',
-            'hpht',
-            'keterangan_haid',
-            'umur_kehamilan_hpht',
-            'hpl_hpht',
-            'umur_kehamilan_usg',
-            'hpl_usg',
-            'jumlah_gs',
-            'diameter_gs',
-            'umur_diameter_gs',
-            'jumlah_bayi',
-            'crl',
-            'umur_crl',
-            'letak_produk_kehamilan',
-            'pulsasi_jantung',
-            'temuan_abnormal',
-            'temuan_abnormal_sebutkan',
-            'hemoglobin',
-            'golongan_darah',
-            'rhesus',
-            'gula_darah_sewaktu',
-            'hasil_h',
-            'hasil_s',
-            'hasil_hepatitis_b',
-            'skrining_kesehatan_jiwa',
-            'tindak_lanjut_jiwa',
-            'perlu_rujukan',
-            'kesimpulan',
-            'rekomendasi',
-            'presentasi_bayi',
-            'keadaan_bayi',
-            'djj',
-            'irama_djj',
-            'lokasi_plasenta',
-            'jumlah_cairan_ketuban',
-            'sdp',
-            'bpd',
-            'bpd_sesuai',
-            'hc',
-            'hc_sesuai',
-            'ac',
-            'ac_sesuai',
-            'fl',
-            'fl_sesuai',
-            'efw_tbj',
-            'efw_tbj_sesuai',
-            'rencana_konsultasi',
-            'rencana_melahirkan',
-            'rencana_kontrasepsi',
-            'konseling',
-            'tanggal_periksa_2',
-            'tanggal_periksa_3',
-            'usg_trimester_3',
-            'protein_urin',
-            'urin_reduksi',
-            'tempat_melahirkan',
-            'penjelasan'
-
-        ]));
-
-        $periksa->save();
-
-        return redirect('admin/ibu_hamil/periksa_trimester')->with('success', 'Data pemeriksaan trimester berhasil disimpan.');
-    }
-
-    function periksaTrimesterShow(PeriksaTrimester $periksaTrimester)
-    {
-        // Pastikan relasi identitas ikut dimuat
-        $periksaTrimester->load('identitas');
-
-        return view('admin.ibu_hamil.periksa_trimester.show', [
-            'periksaTrimester' => $periksaTrimester
-        ]);
-    }
-
-    function periksaTrimesterEdit(PeriksaTrimester $periksaTrimester)
-    {
-        // Load relasi identitas agar bisa ditampilkan di form
-        $periksaTrimester->load('identitas');
-
-        return view('admin.ibu_hamil.periksa_trimester.edit', compact('periksaTrimester'));
-    }
-
-    public function periksaTrimesterUpdate(Request $request, PeriksaTrimester $periksaTrimester)
-    {
-        // Validasi input
-        $request->validate([
-            'identitas_id' => 'required|exists:tb_identitas,id',
-            'nama_dokter' => 'nullable|string|max:255',
-            'tanggal_periksa' => 'required|date',
-            'trimester' => 'nullable|string|max:255',
-
-            // Pemeriksaan fisik
-            'konjungtiva' => 'nullable|in:Normal,Tidak normal',
-            'sklera' => 'nullable|in:Ikterik,Tidak Ikterik',
-            'kulit' => 'nullable|in:Normal,Tidak normal',
-            'leher' => 'nullable|in:Normal,Tidak normal',
-            'gigi_mulut' => 'nullable|in:Normal,Tidak normal',
-            'tht' => 'nullable|in:Normal,Tidak normal',
-            'dada' => 'nullable|in:Normal,Tidak normal',
-            'paru' => 'nullable|in:Normal,Tidak normal',
-            'perut' => 'nullable|in:Normal,Tidak normal',
-            'tungkai' => 'nullable|in:Normal,Tidak normal',
-
-            // Riwayat haid dan kehamilan
-            'hpht' => 'nullable|date',
-            'keterangan_haid' => 'nullable|in:Teratur,Tidak Teratur',
-            'umur_kehamilan_hpht' => 'nullable|integer|min:0|max:50',
-            'hpl_hpht' => 'nullable|date',
-            'umur_kehamilan_usg' => 'nullable|integer|min:0|max:50',
-            'hpl_usg' => 'nullable|date',
-
-            // Pemeriksaan USG awal
-            'jumlah_gs' => 'nullable|in:Tunggal,Kembar',
-            'diameter_gs' => 'nullable|string|max:255',
-            'umur_diameter_gs' => 'nullable|string|max:255',
-            'jumlah_bayi' => 'nullable|in:Tunggal,Kembar',
-            'crl' => 'nullable|string|max:255',
-            'umur_crl' => 'nullable|string|max:255',
-            'letak_produk_kehamilan' => 'nullable|in:Intrauterin,Extrauterin,Tidak dapat ditentukan',
-            'pulsasi_jantung' => 'nullable|in:Terlihat,Tidak Terlihat',
-            'temuan_abnormal' => 'nullable|in:ya,tidak',
-            'temuan_abnormal_sebutkan' => 'nullable|string|max:255',
-
-            // Pemeriksaan laboratorium
-            'hemoglobin' => 'nullable|string|max:255',
-            'golongan_darah' => 'nullable|string|max:255',
-            'rhesus' => 'nullable|string|max:255',
-            'gula_darah_sewaktu' => 'nullable|string|max:255',
-            'hasil_h' => 'nullable|in:reaktif,nonreaktif',
-            'hasil_s' => 'nullable|in:reaktif,nonreaktif',
-            'hasil_hepatitis_b' => 'nullable|in:reaktif,nonreaktif',
-
-            // Skrining jiwa & tindak lanjut
-            'skrining_kesehatan_jiwa' => 'nullable|in:ya,tidak',
-            'tindak_lanjut_jiwa' => 'nullable|string|max:255',
-            'perlu_rujukan' => 'nullable|in:ya,tidak',
-
-            // Kesimpulan & rekomendasi
-            'kesimpulan' => 'nullable|string',
-            'rekomendasi' => 'nullable|string',
-
-            // Kolom tambahan
-            'presentasi_bayi' => 'nullable|in:Kepala,Bokong,Letak Lintang',
-            'keadaan_bayi' => 'nullable|in:Hidup,Meninggal',
-            'djj' => 'nullable|string|max:255',
-            'irama_djj' => 'nullable|in:normal,tidak normal',
-            'lokasi_plasenta' => 'nullable|in:Fundus,Corpus,Letak rendah,Previa',
-            'jumlah_cairan_ketuban' => 'nullable|in:cukup,kurang,berlebih',
-            'sdp' => 'nullable|numeric|min:0',
-
-            // Biometri bayi
-            'bpd' => 'nullable|numeric|min:0',
-            'bpd_sesuai' => 'nullable|string|max:255',
-            'hc' => 'nullable|numeric|min:0',
-            'hc_sesuai' => 'nullable|string|max:255',
-            'ac' => 'nullable|numeric|min:0',
-            'ac_sesuai' => 'nullable|string|max:255',
-            'fl' => 'nullable|numeric|min:0',
-            'fl_sesuai' => 'nullable|string|max:255',
-            'efw_tbj' => 'nullable|numeric|min:0',
-            'efw_tbj_sesuai' => 'nullable|string|max:255',
-
-            'rencana_konsultasi' => 'nullable|in:gizi,kebidanan,anak,penyakit dalam,neurologi,tht,psikiatri,lain lain',
-            'rencana_melahirkan' => 'nullable|in:normal,pervaginam berbantu,sectio caesaria',
-            'rencana_kontrasepsi' => 'nullable|in:akdr,pil,suntik,steril,mal,implan,belum memilih',
-            'konseling' => 'nullable|in:ya,tidak',
-            'keluhan' => 'nullable|string',
-            'pemeriksaan' => 'nullable|string',
-            'tindakan' => 'nullable|string',
-            'saran' => 'nullable|string',
-            'tanggal_kembali' => 'nullable|date',
-            'tanggal_periksa_2' => 'nullable|date',
-            'tanggal_periksa_3' => 'nullable|date',
-            'usg_trimester_3' => 'nullable|numeric',
-            'urin_reduksi' => 'nullable|in:negatif,+1,+2,+3,+4',
-            'tempat_melahirkan' => 'nullable|in:fktp,fkrtl',
-            'penjelasan' => 'nullable|string',
-            'protein_urin' => 'nullable|string',
-
-        ]);
-        // Update data satu per satu
+        $periksaTrimester = new PeriksaTrimester;
+        $periksaTrimester->identitas_id = $request->identitas_id;
         $periksaTrimester->tanggal_periksa = $request->tanggal_periksa;
+        $periksaTrimester->tanggal_periksa_2 = $request->tanggal_periksa_2;
+        $periksaTrimester->tanggal_periksa_3 = $request->tanggal_periksa_3;
         $periksaTrimester->trimester = $request->trimester;
         $periksaTrimester->konjungtiva = $request->konjungtiva;
         $periksaTrimester->sklera = $request->sklera;
@@ -781,8 +437,8 @@ class AdminIbuHamilController extends Controller
         $periksaTrimester->lokasi_plasenta = $request->lokasi_plasenta;
         $periksaTrimester->jumlah_cairan_ketuban = $request->jumlah_cairan_ketuban;
         $periksaTrimester->sdp = $request->sdp;
-        $periksaTrimester->bdp = $request->bdp;
-        $periksaTrimester->bdp_sesuai = $request->bdp_sesuai;
+        $periksaTrimester->bpd = $request->bpd;
+        $periksaTrimester->bpd_sesuai = $request->bpd_sesuai;
         $periksaTrimester->hc = $request->hc;
         $periksaTrimester->hc_sesuai = $request->hc_sesuai;
         $periksaTrimester->ac = $request->ac;
@@ -808,9 +464,132 @@ class AdminIbuHamilController extends Controller
         $periksaTrimester->tempat_melahirkan = $request->tempat_melahirkan;
         $periksaTrimester->penjelasan = $request->penjelasan;
 
+        // dd($periksaTrimester);
+        // Simpan ke database
+        $periksaTrimester->save();
 
 
+        // Simpan data
+        // PeriksaTrimester::create($validated);
 
+        return redirect('admin/ibu_hamil/periksa_trimester')->with('success', 'Data pemeriksaan trimester berhasil disimpan.');
+    }
+
+    // function periksaTrimesterShow(PeriksaTrimester $periksaTrimester)
+    // {
+    //     // Pastikan relasi identitas ikut dimuat
+    //     $periksaTrimester->load('identitas');
+
+    //     return view('admin.ibu_hamil.periksa_trimester.show', [
+    //         'periksaTrimester' => $periksaTrimester
+    //     ]);
+    // }
+    function periksaTrimesterShow(PeriksaTrimester $periksaTrimester)
+    {
+        $periksaTrimester->load('identitas');
+
+        // Ambil semua kolom dari model
+        $fields = $periksaTrimester->getAttributes();
+
+        // Filter hanya yang terisi
+        $filledFields = collect($fields)->filter(function ($value) {
+            return !is_null($value) && $value !== '';
+        });
+
+        return view('admin.ibu_hamil.periksa_trimester.show', [
+            'filledFields' => $filledFields,
+            'periksaTrimester' => $periksaTrimester,
+        ]);
+    }
+
+
+    function periksaTrimesterEdit(PeriksaTrimester $periksaTrimester)
+    {
+        // Load relasi identitas agar bisa ditampilkan di form
+        $periksaTrimester->load('identitas');
+
+        return view('admin.ibu_hamil.periksa_trimester.edit', compact('periksaTrimester'));
+    }
+
+    public function periksaTrimesterUpdate(Request $request, PeriksaTrimester $periksaTrimester)
+    {
+        
+        // Update data satu per satu
+        $periksaTrimester->tanggal_periksa = $request->tanggal_periksa;
+        $periksaTrimester->tanggal_periksa_2 = $request->tanggal_periksa_2;
+        $periksaTrimester->tanggal_periksa_3 = $request->tanggal_periksa_3;
+        $periksaTrimester->trimester = $request->trimester;
+        $periksaTrimester->konjungtiva = $request->konjungtiva;
+        $periksaTrimester->sklera = $request->sklera;
+        $periksaTrimester->kulit = $request->kulit;
+        $periksaTrimester->leher = $request->leher;
+        $periksaTrimester->gigi_mulut = $request->gigi_mulut;
+        $periksaTrimester->tht = $request->tht;
+        $periksaTrimester->dada = $request->dada;
+        $periksaTrimester->paru = $request->paru;
+        $periksaTrimester->perut = $request->perut;
+        $periksaTrimester->tungkai = $request->tungkai;
+        $periksaTrimester->hpht = $request->hpht;
+        $periksaTrimester->keterangan_haid = $request->keterangan_haid;
+        $periksaTrimester->umur_kehamilan_hpht = $request->umur_kehamilan_hpht;
+        $periksaTrimester->hpl_hpht = $request->hpl_hpht;
+        $periksaTrimester->umur_kehamilan_usg = $request->umur_kehamilan_usg;
+        $periksaTrimester->hpl_usg = $request->hpl_usg;
+        $periksaTrimester->jumlah_gs = $request->jumlah_gs;
+        $periksaTrimester->diameter_gs = $request->diameter_gs;
+        $periksaTrimester->umur_diameter_gs = $request->umur_diameter_gs;
+        $periksaTrimester->jumlah_bayi = $request->jumlah_bayi;
+        $periksaTrimester->crl = $request->crl;
+        $periksaTrimester->umur_crl = $request->umur_crl;
+        $periksaTrimester->letak_produk_kehamilan = $request->letak_produk_kehamilan;
+        $periksaTrimester->pulsasi_jantung = $request->pulsasi_jantung;
+        $periksaTrimester->temuan_abnormal = $request->temuan_abnormal;
+        $periksaTrimester->temuan_abnormal_sebutkan = $request->temuan_abnormal_sebutkan;
+        $periksaTrimester->hemoglobin = $request->hemoglobin;
+        $periksaTrimester->golongan_darah = $request->golongan_darah;
+        $periksaTrimester->rhesus = $request->rhesus;
+        $periksaTrimester->gula_darah_sewaktu = $request->gula_darah_sewaktu;
+        $periksaTrimester->hasil_h = $request->hasil_h;
+        $periksaTrimester->hasil_s = $request->hasil_s;
+        $periksaTrimester->hasil_hepatitis_b = $request->hasil_hepatitis_b;
+        $periksaTrimester->skrining_kesehatan_jiwa = $request->skrining_kesehatan_jiwa;
+        $periksaTrimester->tindak_lanjut_jiwa = $request->tindak_lanjut_jiwa;
+        $periksaTrimester->perlu_rujukan = $request->perlu_rujukan;
+        $periksaTrimester->kesimpulan = $request->kesimpulan;
+        $periksaTrimester->rekomendasi = $request->rekomendasi;
+        $periksaTrimester->presentasi_bayi = $request->presentasi_bayi;
+        $periksaTrimester->keadaan_bayi = $request->keadaan_bayi;
+        $periksaTrimester->djj = $request->djj;
+        $periksaTrimester->irama_djj = $request->irama_djj;
+        $periksaTrimester->lokasi_plasenta = $request->lokasi_plasenta;
+        $periksaTrimester->jumlah_cairan_ketuban = $request->jumlah_cairan_ketuban;
+        $periksaTrimester->sdp = $request->sdp;
+        $periksaTrimester->bpd = $request->bpd;
+        $periksaTrimester->bpd_sesuai = $request->bpd_sesuai;
+        $periksaTrimester->hc = $request->hc;
+        $periksaTrimester->hc_sesuai = $request->hc_sesuai;
+        $periksaTrimester->ac = $request->ac;
+        $periksaTrimester->ac_sesuai = $request->ac_sesuai;
+        $periksaTrimester->fl = $request->fl;
+        $periksaTrimester->fl_sesuai = $request->fl_sesuai;
+        $periksaTrimester->efw_tbj = $request->efw_tbj;
+        $periksaTrimester->efw_tbj_sesuai = $request->efw_tbj_sesuai;
+        $periksaTrimester->rencana_konsultasi = $request->rencana_konsultasi;
+        $periksaTrimester->rencana_melahirkan = $request->rencana_melahirkan;
+        $periksaTrimester->rencana_kontrasepsi = $request->rencana_kontrasepsi;
+        $periksaTrimester->konseling = $request->konseling;
+        $periksaTrimester->keluhan = $request->keluhan;
+        $periksaTrimester->pemeriksaan = $request->pemeriksaan;
+        $periksaTrimester->tindakan = $request->tindakan;
+        $periksaTrimester->saran = $request->saran;
+        $periksaTrimester->tanggal_kembali = $request->tanggal_kembali;
+        $periksaTrimester->tanggal_periksa_2 = $request->tanggal_periksa_2;
+        $periksaTrimester->tanggal_periksa_3 = $request->tanggal_periksa_3;
+        $periksaTrimester->usg_trimester_3 = $request->usg_trimester_3;
+        $periksaTrimester->protein_urin = $request->protein_urin;
+        $periksaTrimester->urin_reduksi = $request->urin_reduksi;
+        $periksaTrimester->tempat_melahirkan = $request->tempat_melahirkan;
+        $periksaTrimester->penjelasan = $request->penjelasan;
 
 
         // Simpan perubahan

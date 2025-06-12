@@ -33,7 +33,9 @@ Route::prefix('ibu_hamil')->middleware('auth:ibuhamil')->group(function () {
     Route::prefix('kesehatan_ibu')->group(function () {
         Route::controller(KesehatanIbuController::class)->group(function () {
             Route::get('/periksa_rutin', 'indexRutin');
+            Route::get('/periksa_rutin/show/{periksaRutin}',  'showRutin');
             Route::get('/periksa_trimester', 'indexTrimester');
+            Route::get('/periksa_trimester/show/{periksaTrimester}',  'showTrimester');
         });
     });
     Route::prefix('kesehatan_bayi')->group(function () {

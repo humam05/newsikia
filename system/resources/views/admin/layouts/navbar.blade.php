@@ -28,10 +28,7 @@
                 <i class="mdi mdi-settings-outline noti-icon"></i>
             </a>
         </li>
-
-
     </ul>
-
     <!-- LOGO -->
     <div class="logo-box">
         <a href="index.html" class="logo text-center logo-dark">
@@ -40,14 +37,12 @@
                     height="65">
                 <!-- <span class="logo-lg-text-dark">Simple</span> -->
             </span><br>
-
             <span class="logo-sm" style="margin-left: -100px">
                 <!-- <span class="logo-lg-text-dark">S</span> -->
                 <img src="{{ url('public') }}/template/assets/images/plugins/sikia_ketapang.png" alt=""
                     height="65">
             </span><br>
         </a>
-
         <a href="index.html" class="logo text-center logo-light">
             <span class="logo-lg">
                 <img src="{{ url('public') }}/template/assets/images/logo-light.png" alt="" height="26">

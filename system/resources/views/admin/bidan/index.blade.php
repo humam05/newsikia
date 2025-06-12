@@ -30,6 +30,7 @@
                             <tr>
                                 <th>No.</th>
                                 <th>Nama</th>
+                                <th>Profesi</th>
                                 <th>Nik</th>
                                 <th>No Telpon</th>
                                 <th>Email</th>
@@ -42,6 +43,7 @@
                                 <tr>
                                     <td>{{ ($bidan->currentPage() - 1) * $bidan->perPage() + $index + 1 }}</td>
                                     <td>{{ $item->nama_bidan }}</td>
+                                    <td>{{ $item->profesi }}</td>
                                     <td>{{ $item->nik }}</td>
                                     <td>{{ $item->no_telpon }}</td>
                                     <td>{{ $item->email }}</td>

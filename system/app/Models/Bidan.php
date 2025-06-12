@@ -13,6 +13,7 @@ class Bidan extends Model
     protected $table = 'tb_bidan';
     protected $fillable = [
         'nama_bidan',
+        'profesi',
         'nik',
         'no_telpon',
         'email',
@@ -28,6 +29,7 @@ class Bidan extends Model
 
     static $rules = [
         'nama_bidan' => 'required',
+        'profesi' => 'required|in:bidan, dokter',
         'nik' => 'required',
         'no_telpon' => 'required',
         'email' => 'required',
@@ -43,6 +45,7 @@ class Bidan extends Model
 
     static $message = [
         'nama_bidan.required' => 'Inputan tidak boleh kosong',
+        'profesi.required' => 'Inputan tidak boleh kosong',
         'nik.required' => 'Inputan tidak boleh kosong',
         'no_telpon.required' => 'Inputan tidak boleh kosong',
         'email.required' => 'Inputan tidak boleh kosong',
