@@ -73,16 +73,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($identitas as $item)
-                                {{-- @php
-                                    $ibu = DB::table('tb_identitas')->where('id', $item->ibu_id)->first();
-                                @endphp --}}
+                            @forelse ($anak as $index => $item)
                                 <tr>
-                                    <td>{{ ($identitas->currentPage() - 1) * $identitas->perPage() + $loop->iteration }}
-                                    </td>
-                                    <td>{{ $item->ibu_nama ?? '-' }}</td>
-                                    <td>{{ $item->ibu_nik ?? '-' }}</td>
-                                    <td>{{ $item->anak_nama ?? '-' }}</td>
+                                    <td>{{ ($anak->currentPage() - 1) * $anak->perPage() + $loop->iteration }}</td>
+                                    <td>{{ $item->identitas->ibu_nama ?? '-' }}</td>
+                                    <td>{{ $item->identitas->ibu_nik ?? '-' }}</td>
+                                    <td>{{ $item->anak_nama }} ({{ $item->anak_ke ?? '-' }})</td>
                                     <td>
                                         <a href="{{ url('admin/bayi/identitas/show', $item->id) }}"
                                             class="btn btn-dark btn-sm">Show</a>
@@ -101,11 +97,13 @@
                                 </tr>
                             @endforelse
                         </tbody>
+
+
                     </table>
                 </div>
-                @if ($identitas->hasPages())
+                @if ($anak->hasPages())
                     <div class="pagination-container mt-3">
-                        {{ $identitas->withQueryString()->links() }}
+                        {{ $anak->withQueryString()->links() }}
                     </div>
                 @endif
             </div>

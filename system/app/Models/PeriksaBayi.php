@@ -12,7 +12,7 @@ class PeriksaBayi extends Model
     protected $table = 'tb_pemeriksaan_balita';
 
     protected $fillable = [
-        'identitas_id',
+        'anak_id',
         'tanggal_pemeriksaan',
         'umur_bulan',
         'berat_badan',
@@ -23,8 +23,9 @@ class PeriksaBayi extends Model
         'vitamin_a',
     ];
 
-    public function identitas()
+
+    public function anak()
     {
-        return $this->belongsTo(Identitas::class, 'identitas_id');
+        return $this->belongsTo(Anak::class);
     }
 }

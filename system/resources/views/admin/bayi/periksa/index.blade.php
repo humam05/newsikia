@@ -82,9 +82,9 @@
                         @forelse ($periksaBayi as $item)
                             <tr>
                                 <td>{{ ($periksaBayi->currentPage() - 1) * $periksaBayi->perPage() + $loop->iteration }}</td>
-                                <td>{{ $item->identitas->ibu_nama ?? '-' }}</td>
-                                <td>{{ $item->identitas->ibu_nik ?? '-' }}</td>
-                                <td>{{ $item->identitas->anak_nama ?? '-' }}</td>
+                                <td>{{ $item->anak->identitas->ibu_nama ?? '-' }}</td>
+                                <td>{{ $item->anak->identitas->ibu_nik ?? '-' }}</td>
+                                <td>{{ $item->anak->anak_nama ?? '-' }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal_pemeriksaan)->translatedFormat('l, d F Y') }}</td>
                                 <td>{{ $item->umur_bulan ?? '-' }}</td>
                                 <td>{{ $item->berat_badan ?? '-' }} kg</td>

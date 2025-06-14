@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Identitas;
 use App\Models\PeriksaRutin;
 use App\Models\PeriksaTrimester;
+use App\Models\IbuHamil;
 
 
 class AdminIbuHamilController extends Controller
@@ -464,26 +465,14 @@ class AdminIbuHamilController extends Controller
         $periksaTrimester->tempat_melahirkan = $request->tempat_melahirkan;
         $periksaTrimester->penjelasan = $request->penjelasan;
 
-        // dd($periksaTrimester);
         // Simpan ke database
         $periksaTrimester->save();
 
 
-        // Simpan data
-        // PeriksaTrimester::create($validated);
 
         return redirect('admin/ibu_hamil/periksa_trimester')->with('success', 'Data pemeriksaan trimester berhasil disimpan.');
     }
 
-    // function periksaTrimesterShow(PeriksaTrimester $periksaTrimester)
-    // {
-    //     // Pastikan relasi identitas ikut dimuat
-    //     $periksaTrimester->load('identitas');
-
-    //     return view('admin.ibu_hamil.periksa_trimester.show', [
-    //         'periksaTrimester' => $periksaTrimester
-    //     ]);
-    // }
     function periksaTrimesterShow(PeriksaTrimester $periksaTrimester)
     {
         $periksaTrimester->load('identitas');
@@ -503,6 +492,8 @@ class AdminIbuHamilController extends Controller
     }
 
 
+
+
     function periksaTrimesterEdit(PeriksaTrimester $periksaTrimester)
     {
         // Load relasi identitas agar bisa ditampilkan di form
@@ -513,7 +504,7 @@ class AdminIbuHamilController extends Controller
 
     public function periksaTrimesterUpdate(Request $request, PeriksaTrimester $periksaTrimester)
     {
-        
+
         // Update data satu per satu
         $periksaTrimester->tanggal_periksa = $request->tanggal_periksa;
         $periksaTrimester->tanggal_periksa_2 = $request->tanggal_periksa_2;

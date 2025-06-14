@@ -29,6 +29,14 @@ Route::prefix('ibu_hamil')->middleware('auth:ibuhamil')->group(function () {
         });
     });
 
+    Route::prefix('anak')->group(function () {
+        Route::controller(IdentitasController::class)->group(function () {
+            Route::get('/', 'indexAnak');
+            Route::get('/show/{id}',  'showAnak');
+
+        });
+    });
+
 
     Route::prefix('kesehatan_ibu')->group(function () {
         Route::controller(KesehatanIbuController::class)->group(function () {
@@ -41,6 +49,11 @@ Route::prefix('ibu_hamil')->middleware('auth:ibuhamil')->group(function () {
     Route::prefix('kesehatan_bayi')->group(function () {
         Route::controller(KesehatanBayiController::class)->group(function () {
             Route::get('/', 'index');
+            Route::get('/show/{periksaBayi}', 'show');
+
+
+            // Route::get('/show/{periksaBayi}',  'show');
+
         });
     });
     Route::prefix('jadwal_posyandu')->group(function () {

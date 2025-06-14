@@ -1,4 +1,4 @@
-@extends('admin.layouts.base')
+@extends('ibu_hamil.layouts.base')
 
 @section('content')
     <style>
@@ -110,7 +110,7 @@
         </div>
     </div>
 
-    <a href="{{ url('admin/bayi/periksa') }}" class="btn btn-secondary mt-3">
+    <a href="{{ url('ibu_hamil/kesehatan_bayi') }}" class="btn btn-secondary mt-3">
         <i class="fas fa-arrow-left"></i> Kembali
     </a>
 @endsection

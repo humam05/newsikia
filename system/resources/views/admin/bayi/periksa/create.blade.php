@@ -105,16 +105,17 @@
     <form action="{{ url('admin/bayi/periksa/store') }}" method="POST">
         @csrf
 
-        <input type="hidden" name="identitas_id" value="{{ $identitas->id }}">
+        <input type="hidden" name="anak_id" value="{{ $anak->id }}">
+        
 
 <div class="form-row">
     <div class="form-col">
         <label>Nama Anak</label>
-        <input type="text" class="form-control" value="{{ $identitas->anak_nama }}" readonly>
+        <input type="text" class="form-control" value="{{ $anak->anak_nama }}" readonly>
     </div>
     <div class="form-col">
         <label>NIK Anak</label>
-        <input type="text" class="form-control" value="{{ $identitas->anak_nik }}" readonly>
+        <input type="text" class="form-control" value="{{ $anak->anak_nik }}" readonly>
     </div>
 </div>
         <div class="form-row">

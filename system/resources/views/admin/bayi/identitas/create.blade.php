@@ -184,38 +184,7 @@
             </div>
         </div>
 
-        <h2>Fasilitas Pelayanan Kesehatan</h2>
-        <h3>Primer</h3>
-        <div class="form-row">
-            <div class="form-col">
-                <label>Puskesmas Domisili</label>
-                <input type="text" name="puskesmas">
-            </div>
-            <div class="form-col">
-                <label>No. Reg. Kohort Ibu</label>
-                <input type="text" name="kohort_ibu">
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-col">
-                <label>No. Reg. Kohort Bayi</label>
-                <input type="text" name="kohort_bayi">
-            </div>
-            <div class="form-col">
-                <label>No. Reg. Kohort Balita dan Anak Pra-Sekolah</label>
-                <input type="text" name="kohort_balita">
-            </div>
-        </div>
-
-        <h3>Sekunder</h3>
-        <div class="form-row">
-            <div class="form-col">
-                <label>No. Catatan Medik RS</label>
-                <input type="text" name="medik_rs">
-            </div>
-        </div>
-    </div>
+        
 
     <button type="submit" class="btn btn-primary">Simpan Data Bayi</button>
 </form>

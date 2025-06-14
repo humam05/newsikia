@@ -1,4 +1,4 @@
-@extends('admin.layouts.base')
+@extends('ibu_hamil.layouts.base')
 
 @section('content')
 
@@ -53,17 +53,6 @@
     <body>
         <div class="container">
             <div class="card">
-                  <h2>Identitas Ibu</h2>
-                <div class="row">
-                    <div class="col-6 detail-group">
-                        <label class="detail-label">Nama Ibu</label>
-                        <div class="detail-value">{{ $identitas->ibu_nama ?? '-' }}</div>
-                    </div>
-                    <div class="col-6 detail-group">
-                        <label class="detail-label">NIK Ibu</label>
-                        <div class="detail-value">{{ $identitas->ibu_nik ?? '-' }}</div>
-                    </div>
-                </div>
                 <h2>Identitas Anak</h2>
                 <div class="row">
                     <div class="col-6 detail-group">
@@ -125,7 +114,7 @@
                 </div>
 
                 <div class="d-flex mt-3">
-                    <a href="{{ url('admin/bayi/identitas') }}" class="btn btn-secondary">
+                    <a href="{{ url('ibu_hamil/anak') }}" class="btn btn-secondary">
                         <i class="fas fa-arrow-left"></i> Kembali
                     </a>
                 </div>

@@ -141,12 +141,7 @@
                     </a>
                 </div>
             </li>
-            <li class="{{ Request::is('admin/ortu*') ? 'active' : '' }}">
-                <a href="{{ url('admin/ortu') }}">
-                    <i class="fas fa-user-friends"></i>
-                    <span> Data Orang Tua </span>
-                </a>
-            </li>
+           
             <li class="nav-item dropdown {{ Request::is('admin/akun/*') ? 'active' : '' }}">
                 <a class="nav-link dropdown-toggle" href="#" id="akunDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

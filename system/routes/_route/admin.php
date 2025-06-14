@@ -5,7 +5,6 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FasyankesController;
 use App\Http\Controllers\Admin\BidanController;
 use App\Http\Controllers\Admin\BayiController;
-use App\Http\Controllers\Admin\OrtuController;
 use App\Http\Controllers\Admin\AdminAkunController;
 use App\Http\Controllers\Admin\AdminPosyanduController;
 use App\Http\Controllers\Admin\AdminIbuHamilController;
@@ -19,13 +18,13 @@ Route::prefix('admin')->group(function () {
     // Prefix untuk Fasyankes
     Route::prefix('fasyankes')->group(function () {
         Route::controller(FasyankesController::class)->group(function () {
-            Route::get('/', 'index'); // Menampilkan daftar Fasyankes
-            Route::get('/create', 'create'); // Menampilkan form tambah data
-            Route::post('/store', 'store'); // Proses tambah data
-            Route::get('/show/{fasyankes}', 'show'); // Menampilkan detail Fasyankes
-            Route::get('/edit/{fasyankes}', 'edit'); // Menampilkan form edit data
-            Route::post('/update/{fasyankes}', 'update'); // Proses update data
-            Route::get('/delete/{fasyankes}', 'delete'); // Proses hapus data
+            Route::get('/', 'index');
+            Route::get('/create', 'create');
+            Route::post('/store', 'store');
+            Route::get('/show/{fasyankes}', 'show');
+            Route::get('/edit/{fasyankes}', 'edit');
+            Route::post('/update/{fasyankes}', 'update');
+            Route::get('/delete/{fasyankes}', 'delete');
         });
     });
 
@@ -58,8 +57,6 @@ Route::prefix('admin')->group(function () {
             Route::get('/periksa_rutin/edit/{periksaRutin}',  'periksaRutinEdit');
             Route::post('/periksa_rutin/update/{periksaRutin}',  'periksaRutinUpdate');
             Route::get('/periksa_rutin/delete/{periksaRutin}',  'periksaRutinDelete');
-            // Route::post('/periksa_rutin/store', 'storeForIbuHamil');
-            // Route::get('/periksa_rutin/show/{periksaRutin}', 'showForIbuHamil');
 
             Route::get('periksa_trimester', 'periksaTrimesterIndex');
             Route::get('/periksa_trimester/create/{identitas}', 'periksaTrimesterCreate');
@@ -68,18 +65,6 @@ Route::prefix('admin')->group(function () {
             Route::get('/periksa_trimester/edit/{periksaTrimester}',  'periksaTrimesterEdit');
             Route::post('/periksa_trimester/update/{periksaTrimester}',  'periksaTrimesterUpdate');
             Route::get('/periksa_trimester/delete/{periksaTrimester}',  'periksaTrimesterDelete');
-
-
-
-
-
-
-            // Route::get('/create', 'create');
-            // Route::post('/store', 'store');
-            // Route::get('/show/{bidan}', 'show');
-            // Route::get('/edit/{bidan}', 'edit');
-            // Route::post('/update/{bidan}', 'update');
-            // Route::get('/delete/{bidan}', 'delete');
         });
     });
 
@@ -94,13 +79,27 @@ Route::prefix('admin')->group(function () {
             Route::get('/delete/{bayi}', 'delete');
 
             //Route identitas
-            Route::get('identitas', 'bayiIndex');
-            Route::get('identitas/create/{identitas}', 'bayiCreate');
-            Route::post('/identitas/store', 'bayiStore');
-            Route::get('/identitas/show/{identitas}', 'bayiShow');
-            Route::get('/identitas/edit/{identitas}', 'bayiEdit');
-            Route::post('/identitas/update/{identitas}', 'bayiUpdate');
-            Route::get('/identitas/delete/{identitas}', 'bayiDelete');
+            // Route::get('identitas', 'bayiIndex');
+            // Route::get('identitas/create/{identitas}', 'bayiCreate');
+            // Route::post('/identitas/store', 'bayiStore');
+            // Route::get('/identitas/show/{identitas}', 'bayiShow');
+            // Route::get('/identitas/edit/{identitas}', 'bayiEdit');
+            // Route::post('/identitas/update/{identitas}', 'bayiUpdate');
+            // Route::get('/identitas/delete/{identitas}', 'bayiDelete');
+
+            //IDENTITAS BAYI
+            Route::get('identitas', 'bayiIdentitasIndex');
+
+            Route::get('identitas/create/{anak}', 'bayiIdentitasCreate');
+            Route::post('/identitas/store', 'bayiIdentitasStore');
+            Route::get('/identitas/show/{anak}', 'bayiIdentitasShow');
+            Route::get('/identitas/edit/{anak}', 'bayiIdentitasEdit');
+            Route::post('/identitas/update/{anak}', 'bayiIdentitasUpdate');
+            Route::get('/identitas/delete/{anak}', 'bayiIdentitasDelete');
+
+
+
+
 
             //Route Periksa Bayi
             Route::get('periksa', 'periksaIndex');
@@ -110,17 +109,6 @@ Route::prefix('admin')->group(function () {
             Route::get('/periksa/edit/{periksaBayi}', 'periksaEdit');
             Route::post('/periksa/update/{periksaBayi}', 'periksaUpdate');
             Route::get('/periksa/delete/{periksaBayi}', 'periksaDelete');
-        });
-    });
-    Route::prefix('ortu')->group(function () {
-        Route::controller(OrtuController::class)->group(function () {
-            Route::get('/', 'index'); // Menampilkan daftar Fasyankes
-            Route::get('/create', 'create');
-            Route::post('/store', 'store');
-            Route::get('/show/{ortu}', 'show');
-            Route::get('/edit/{ortu}', 'edit');
-            Route::post('/update/{ortu}', 'update');
-            Route::get('/delete/{ortu}', 'delete');
         });
     });
     Route::prefix('akun')->group(function () {

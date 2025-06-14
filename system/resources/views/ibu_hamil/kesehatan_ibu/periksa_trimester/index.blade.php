@@ -36,7 +36,8 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->identitas->ibu_nama ?? '-' }}</td>
                                     <td>{{ $item->identitas->ibu_nik ?? '-' }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($item->tanggal_periksa)->translatedFormat('l, d F Y') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($item->tanggal_periksa)->translatedFormat('l, d F Y') }}
+                                    </td>
                                     <td>{{ $item->trimester }}</td>
                                     <td>
                                         <a href="{{ url('ibu_hamil/kesehatan_ibu/periksa_trimester/show', $item->id) }}"

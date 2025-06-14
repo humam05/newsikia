@@ -1,14 +1,12 @@
 <style>
     .left-side-menu {
         background-color: #234c5c;
-        /* Warna utama sidebar */
         padding: 15px;
         border-radius: 10px;
     }
 
     .user-box .user-info a {
         color: #fff;
-        /* Warna teks */
         font-weight: bold;
     }
 
@@ -23,13 +21,13 @@
     #sidebar-menu ul li a:hover {
         background: rgba(255, 255, 255, 0.5);
         color: #003455;
-        /* Warna saat hover */
     }
 
-    #sidebar-menu ul li.active>a {
-        background-color: #f6f6f6;
-        color: #003455;
-        font-weight: bold;
+    .dropdown-menu {
+        background-color: #337682;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 0;
     }
 
     .dropdown-item {
@@ -38,22 +36,27 @@
         display: block;
     }
 
-    .dropdown-item:hover {
+    .dropdown-item:hover,
+    .dropdown-item.active {
         background-color: #2b5d6a;
-        color: white;
+        color: white !important;
+        font-weight: bold;
     }
 
-    /* Tambahkan margin antar item */
     .dropdown-menu a {
         margin-bottom: 5px;
-        /* Jarak antar submenu */
     }
 
-    /* Untuk pemisah antar submenu */
     .dropdown-divider {
         height: 1px;
         background-color: rgba(255, 255, 255, 0.3);
         margin: 5px 0;
+    }
+
+    #sidebar-menu ul li.active>a {
+        background-color: #ffffff;
+        color: #003455;
+        font-weight: bold;
     }
 </style>
 <div class="left-side-menu">
@@ -89,20 +92,26 @@
                     <span> Data Diri </span>
                 </a>
             </li>
-            <li class="nav-item dropdown {{ Request::is('ibu_hamil/kesehatan_ibu/*') ? 'active' : '' }}">
-                <a class="nav-link dropdown-toggle" href="#" id="akunDropdown" role="button"
+            <li class="{{ Request::is('ibu_hamil/anak*') ? 'active' : '' }}">
+                <a href="{{ url('ibu_hamil/anak') }}">
+                    <i class="fas fa-id-card"></i>
+                    <span> Data Anak </span>
+                </a>
+            </li>
+                   <li class="nav-item dropdown {{ Request::is('ibu_hamil/kesehatan_ibu/*') ? 'active' : '' }}">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdownKesehatanIbu" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-baby"></i>
                     <span>Pemeriksaan Ibu </span>
                     <i class="fas fa-chevron-down ml-1"></i>
                 </a>
-                <div class="dropdown-menu border-0 shadow-sm rounded" aria-labelledby="akunDropdown">
-                    <a class="dropdown-item {{ Request::is('ibu_hamil/kesehatan_ibu/*') ? 'active' : '' }}"
+                <div class="dropdown-menu border-0 shadow-sm rounded" aria-labelledby="dropdownKesehatanIbu">
+                    <a class="dropdown-item {{ Request::is('ibu_hamil/kesehatan_ibu/periksa_rutin*') ? 'active' : '' }}"
                         href="{{ url('ibu_hamil/kesehatan_ibu/periksa_rutin') }}">
                         <i class="fas fa-baby mr-2"></i> Pemeriksaan Rutin
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item {{ Request::is('ibu_hamil/kesehatan_ibu/*') ? 'active' : '' }}"
+                    <a class="dropdown-item {{ Request::is('ibu_hamil/kesehatan_ibu/periksa_trimester*') ? 'active' : '' }}"
                         href="{{ url('ibu_hamil/kesehatan_ibu/periksa_trimester') }}">
                         <i class="fas fa-baby mr-2"></i> Pemeriksaan Trimester
                     </a>

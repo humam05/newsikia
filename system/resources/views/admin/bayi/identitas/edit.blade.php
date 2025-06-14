@@ -129,11 +129,11 @@
         <div class="form-row">
             <div class="form-col">
                 <label>Nama</label>
-                <input type="text" name="ibu_nama" value="{{ $detail->ibu_nama }}" readonly>
+                <input type="text" name="ibu_nama" value="{{ $detail->identitas->ibu_nama }}" readonly>
             </div>
             <div class="form-col">
                 <label>NIK</label>
-                <input type="text" name="ibu_nik" maxlength="16" minlength="16" value="{{ $detail->ibu_nik }}" readonly>
+                <input type="text" name="ibu_nik" maxlength="16" minlength="16" value="{{ $detail->identitas->ibu_nik }}" readonly>
             </div>
         </div>
 
@@ -201,37 +201,6 @@
             </div>
         </div>
 
-        <h2>Fasilitas Pelayanan Kesehatan</h2>
-        <h3>Primer</h3>
-        <div class="form-row">
-            <div class="form-col">
-                <label>Puskesmas Domisili</label>
-                <input type="text" name="puskesmas" value="{{ $detail->puskesmas }}">
-            </div>
-            <div class="form-col">
-                <label>No. Reg. Kohort Ibu</label>
-                <input type="text" name="kohort_ibu" value="{{ $detail->kohort_ibu }}">
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-col">
-                <label>No. Reg. Kohort Bayi</label>
-                <input type="text" name="kohort_bayi" value="{{ $detail->kohort_bayi }}">
-            </div>
-            <div class="form-col">
-                <label>No. Reg. Kohort Balita dan Anak Pra-Sekolah</label>
-                <input type="text" name="kohort_balita" value="{{ $detail->kohort_balita }}">
-            </div>
-        </div>
-
-        <h3>Sekunder</h3>
-        <div class="form-row">
-            <div class="form-col">
-                <label>No. Catatan Medik RS</label>
-                <input type="text" name="medik_rs" value="{{ $detail->medik_rs }}">
-            </div>
-        </div>
 
         <div class="mt-4">
             <button type="submit" class="btn-orange w-100" id="submitBtn">Simpan</button>

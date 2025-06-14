@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Identitas;
+use App\Models\Anak;
 
 class IdentitasController extends Controller
 {
@@ -24,7 +25,7 @@ class IdentitasController extends Controller
 
     //     return view('ibu_hamil.identitas.index', compact('identitas', 'totalIbuHamil'));
     // }
-     public function index(Request $request)
+    public function index(Request $request)
     {
         $user = Auth::guard('ibuhamil')->user();
         // Pastikan user terotentikasi
@@ -39,6 +40,44 @@ class IdentitasController extends Controller
         $identitas = $query->get();
         return view('ibu_hamil.identitas.index', compact('identitas', 'totalIbuHamil'));
     }
+
+    public function indexAnak(Request $request)
+    {
+        $user = Auth::guard('ibuhamil')->user();
+        if (!$user) {
+            return redirect()->route('login');
+        }
+
+        $query = Anak::where('ibu_hamil_id', $user->id)->orderBy('anak_ke');
+        // Ambil identitas ibu berdasarkan user login
+        $identitas = Identitas::where('ibu_hamil_id', $user->id)->first();
+
+        // Jika tidak ada data identitas, tampilkan halaman kosong
+        if (!$identitas) {
+            return view('ibu_hamil.anak.index', ['anak' => collect(), 'totalAnak' => 0]);
+        }
+
+        $query = Anak::where('identitas_id', $identitas->id);
+
+        if ($request->has('search') && !empty($request->search)) {
+            $query->where('anak_nama', 'like', '%' . $request->search . '%');
+        }
+
+        $anak = $query->get();
+        $totalAnak = $anak->count();
+
+        return view('ibu_hamil.anak.index', compact('anak', 'totalAnak'));
+    }
+
+    public function showAnak($id)
+    {
+        // Ambil data anak berdasarkan ID
+        $anak = Anak::findOrFail($id);
+
+        // Kirim data ke view
+        return view('ibu_hamil.anak.show', compact('anak'));
+    }
+
 
     public function create()
     {

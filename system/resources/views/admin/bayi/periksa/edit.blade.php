@@ -77,16 +77,16 @@
 <form action="{{ url('admin/bayi/periksa/update/'.$periksaBayi->id) }}" method="POST">
     @csrf
 
-    <input type="hidden" name="identitas_id" value="{{ $periksaBayi->identitas_id }}">
+    <input type="hidden" name="identitas_id" value="{{ $periksaBayi->anak_id }}">
 
     <div class="form-row">
         <div class="form-col">
             <label>Nama Anak</label>
-            <input type="text" class="form-control" value="{{ $periksaBayi->identitas->anak_nama }}" readonly>
+            <input type="text" class="form-control" value="{{ $periksaBayi->anak->anak_nama }}" readonly>
         </div>
         <div class="form-col">
             <label>NIK Anak</label>
-            <input type="text" class="form-control" value="{{ $periksaBayi->identitas->anak_nik }}" readonly>
+            <input type="text" class="form-control" value="{{ $periksaBayi->anak->anak_nik }}" readonly>
         </div>
     </div>
 
