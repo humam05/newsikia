@@ -92,7 +92,6 @@ Route::prefix('admin')->group(function () {
 
             //IDENTITAS BAYI
             Route::get('identitas', 'bayiIdentitasIndex');
-
             Route::get('identitas/create/{anak}', 'bayiIdentitasCreate');
             Route::post('/identitas/store', 'bayiIdentitasStore');
             Route::get('/identitas/show/{anak}', 'bayiIdentitasShow');

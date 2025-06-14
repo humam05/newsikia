@@ -53,17 +53,29 @@
                     <div class="row">
                         <div class="mb-4 col-6">
                             <label for="nama_bidan" class="form-label">
-                                <i class="fas fa-user-nurse"></i> Nama Bidan
+                                <i class="fas fa-user-nurse"></i> Nama
                             </label>
                             <input type="text" class="form-control" id="nama_bidan" name="nama_bidan"
                                 value="{{ $detail->nama_bidan }}" required>
                         </div>
+
                         <div class="mb-4 col-6">
                             <label for="nik" class="form-label">
                                 <i class="fas fa-id-card"></i> NIK
                             </label>
                             <input type="text" class="form-control" id="nik" name="nik"
                                 value="{{ $detail->nik }}" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="mb-3 col-12">
+                            <label for="profesi" class="form-label">Profesi</label>
+                            <select name="profesi" id="profesi" class="form-control" required>
+                                <option value="bidan" {{ old('profesi', $detail->profesi) == 'bidan' ? 'selected' : '' }}>
+                                    Bidan</option>
+                                <option value="dokter" {{ old('profesi', $detail->profesi) == 'dokter' ? 'selected' : '' }}>
+                                    Dokter</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row">
@@ -177,18 +189,18 @@
     </body>
 @endsection
 @push('styles')
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endpush
 
 @push('scripts')
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#fasyankes_id').select2({
-            placeholder: "Pilih Fasyankes",
-            allowClear: true
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#fasyankes_id').select2({
+                placeholder: "Pilih Fasyankes",
+                allowClear: true
+            });
         });
-    });
-</script>
+    </script>
 @endpush

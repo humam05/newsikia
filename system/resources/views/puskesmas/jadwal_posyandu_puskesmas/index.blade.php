@@ -74,7 +74,8 @@
         <div class="col-12">
             <section class="card">
                 <header class="card-header text-uppercase" style="height: 70px;">
-                    <form action="{{ url('puskesmas/jadwal_posyandu_puskesmas') }}" method="GET" class="form-horizontal form-label-left mb-4">
+                    <form action="{{ url('puskesmas/jadwal_posyandu_puskesmas') }}" method="GET"
+                        class="form-horizontal form-label-left mb-4">
                         <div class="col-md-12">
                             <div class="input-group mb-2">
                                 <input name="search" type="text" class="form-control" value="{{ request('search') }}"
@@ -89,7 +90,8 @@
                                 </div>
                                 @if (request('search'))
                                     <div class="input-group-prepend ml-1">
-                                        <a href="{{ url('puskesmas/jadwal_posyandu_puskesmas') }}" class="btn btn-secondary btn-icon-split">
+                                        <a href="{{ url('puskesmas/jadwal_posyandu_puskesmas') }}"
+                                            class="btn btn-secondary btn-icon-split">
                                             <span class="icon text-white">
                                                 <i class="fas fa-times"></i>
                                             </span>
@@ -109,7 +111,8 @@
         <div class="col-12">
             <h4 class="header-title mb-3">Data Posyandu</h4>
             <div class="button-container" style="text-align: right;">
-                <a href="{{ url('/puskesmas/jadwal_posyandu_puskesmas/create') }}" class="btn btn-primary">Tambah Jadwal Posyandu</a>
+                <a href="{{ url('/puskesmas/jadwal_posyandu_puskesmas/create') }}" class="btn btn-primary">Tambah Jadwal
+                    Posyandu</a>
             </div>
         </div>
     </div>
@@ -118,7 +121,8 @@
         @foreach ($posyandu as $item)
             <div class="card-item">
                 @if ($item->foto)
-                    <img src="{{ asset('system/storage/app/public/posyandu/' . $item->foto) }}" alt="Foto Posyandu" class="card-image">
+                    <img src="{{ asset('system/storage/app/public/posyandu/' . $item->foto) }}" alt="Foto Posyandu"
+                        class="card-image">
                 @else
                     <img src="https://via.placeholder.com/300x150?text=No+Image" alt="No Image" class="card-image">
                 @endif
@@ -130,11 +134,14 @@
                             {{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</div>
                         <div class="card-text"><strong>Waktu:</strong> {{ $item->waktu }}</div>
                         <div class="card-text"><strong>Lokasi:</strong> {{ $item->lokasi }}</div>
-                        <div class="card-text"><strong>Fasyankes:</strong> {{ $item->nama_fasyankes }}</div>
+                        <div class="card-text"><strong>Fasyankes:</strong> {{ $item->fasyankes->nama ?? '-' }}</div>
+
                     </div>
                     <div class="card-actions">
-                        <a href="{{ url('puskesmas/jadwal_posyandu_puskesmas/edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="{{ url('puskesmas/jadwal_posyandu_puskesmas/delete', $item->id) }}" class="btn btn-danger btn-sm"
+                        <a href="{{ url('puskesmas/jadwal_posyandu_puskesmas/edit', $item->id) }}"
+                            class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{{ url('puskesmas/jadwal_posyandu_puskesmas/delete', $item->id) }}"
+                            class="btn btn-danger btn-sm"
                             onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
                     </div>
                 </div>

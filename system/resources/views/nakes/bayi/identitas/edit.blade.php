@@ -1,0 +1,209 @@
+@extends('nakes.layouts.base')
+
+@section('content')
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f7f9fb;
+            color: #333;
+        }
+
+        form {
+            background: #ffffff;
+            padding: 25px;
+            max-width: 100%;
+            width: 100%;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+            font-size: 14px;
+        }
+
+        h2,
+        h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #2c3e50;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 5px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .form-col {
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #444;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            background-color: #fefefe;
+            box-sizing: border-box;
+            transition: border-color 0.2s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 10px 20px;
+            font-size: 14px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                flex-direction: column;
+            }
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .btn-orange {
+            background-color: #2a8f28;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: 0.3s ease;
+        }
+
+        .btn-orange:hover {
+            background-color: #034709;
+        }
+
+        .btn-orange:disabled {
+            background-color: #ccc;
+            color: #666;
+        }
+    </style>
+    <form action="{{ url('nakes/bayi/identitas/update', $detail->id) }}" method="POST" >
+        @csrf
+
+        <h2>Identitas Ibu</h2>
+
+        <div class="form-row">
+            <div class="form-col">
+                <label>Nama</label>
+                <input type="text" name="ibu_nama" value="{{ $detail->identitas->ibu_nama }}" readonly>
+            </div>
+            <div class="form-col">
+                <label>NIK</label>
+                <input type="text" name="ibu_nik" maxlength="16" minlength="16" value="{{ $detail->identitas->ibu_nik }}" readonly>
+            </div>
+        </div>
+
+        {{-- STEP 3: Data Anak & Fasilitas --}}
+        <h2>Identitas Anak</h2>
+        <div class="form-row">
+            <div class="form-col">
+                <label>Nama</label>
+                <input type="text" name="anak_nama" value="{{ $detail->anak_nama }}">
+            </div>
+            <div class="form-col">
+                <label>NIK</label>
+                <input type="text" name="anak_nik" maxlength="16" minlength="16" value="{{ $detail->anak_nik }}">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-col">
+                <label>No. JKN</label>
+                <input type="text" name="anak_jkn" value="{{ $detail->anak_jkn }}">
+            </div>
+            <div class="form-col">
+                <label>Fasilitas Kesehatan TK1</label>
+                <input type="text" name="anak_faskes_tk1" value="{{ $detail->anak_faskes_tk1 }}">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-col">
+                <label>Fasilitas Kesehatan Rujukan</label>
+                <input type="text" name="anak_faskes_rujukan" value="{{ $detail->anak_faskes_rujukan }}">
+            </div>
+            <div class="form-col">
+                <label>Tempat Lahir</label>
+                <input type="text" name="anak_tempat_lahir" value="{{ $detail->anak_tempat_lahir }}">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-col">
+                <label>Tanggal Lahir</label>
+                <input type="date" name="anak_tanggal_lahir" value="{{ $detail->anak_tanggal_lahir }}">
+            </div>
+            <div class="form-col">
+                <label>Alamat Rumah</label>
+                <textarea name="anak_alamat">{{ $detail->anak_alamat }}</textarea>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-col">
+                <label>Anak ke-</label>
+                <input type="number" name="anak_ke" value="{{ $detail->anak_ke }}">
+            </div>
+            <div class="form-col">
+                <label>Nomor Akta Kelahiran</label>
+                <input type="text" name="anak_akta_kelahiran" value="{{ $detail->anak_akta_kelahiran }}">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-col">
+                <label>Golongan Darah</label>
+                <input type="text" name="anak_gol_darah" value="{{ $detail->anak_gol_darah }}">
+            </div>
+        </div>
+
+
+        <div class="mt-4">
+            <button type="submit" class="btn-orange w-100" id="submitBtn">Simpan</button>
+        </div>
+    </form>
+@endsection

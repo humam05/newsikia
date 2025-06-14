@@ -151,16 +151,12 @@
                     <i class="fas fa-chevron-down ml-1"></i> <!-- Panah dropdown -->
                 </a>
                 <div class="dropdown-menu border-0 shadow-sm rounded" aria-labelledby="bayiBalitaDropdown">
-                    <a class="dropdown-item" href="{{ url('nakes/bayi') }}">
+                    <a class="dropdown-item" href="{{ url('nakes/bayi/identitas') }}">
                         <i class="fas fa-baby mr-2"></i> Data Bayi Balita
                     </a>
                     <div class="dropdown-divider"></div> <!-- Pemisah -->
-                    <a class="dropdown-item" href="{{ url('nakes/bayi/kms') }}">
-                        <i class="fas fa-chart-line mr-2"></i> KMS
-                    </a>
-                    <div class="dropdown-divider"></div> <!-- Pemisah -->
                     <a class="dropdown-item" href="{{ url('nakes/bayi/periksa') }}">
-                        <i class="fas fa-stethoscope"></i> Periksa
+                        <i class="fas fa-stethoscope"></i> Daftar Periksa Bayi Balita
                     </a>
                 </div>
             <li class="{{ Request::is('nakes/broadcast*') ? 'active' : '' }}">

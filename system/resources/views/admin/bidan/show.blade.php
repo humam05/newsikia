@@ -104,8 +104,9 @@
                     <div class="col-6 detail-group">
                         <label class="detail-label"><i class="fas fa-hospital"></i> Nama Fasyankes</label>
                         <div class="detail-value">
-                            {{ $bidan->fasyankes->nama_fasyankes ?? '-' }}
+                            {{ $bidan->fasyankes->nama ?? '-' }}
                         </div>
+
                     </div>
 
 

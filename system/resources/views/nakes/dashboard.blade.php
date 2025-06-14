@@ -8,7 +8,7 @@
         </div>
     </div>
     <!-- Form Pencarian -->
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-12">
             <section class="card">
                 <header class="card-header text-uppercase" style="height: 70px;">
@@ -44,7 +44,7 @@
                 </header>
             </section>
         </div>
-    </div>
+    </div> --}}
 
     <div class="row row justify-content-center">
         <div class="col-8">
@@ -76,7 +76,7 @@
     </div>
     </div>
     <!--end row -->
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-sm-12">
             <div class="card-box">
                 <h5 class="mt-0 font-14 mb-3">Ibu Hamil</h5>
@@ -118,6 +118,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- end row -->
 @endsection

@@ -56,7 +56,25 @@ Route::prefix('nakes')->group(function () {
     });
     Route::prefix('bayi')->group(function () {
         Route::controller(BayinController::class)->group(function () {
-            Route::get('/', 'index');
+             Route::get('identitas', 'bayiIdentitasIndex');
+            Route::get('identitas/create/{anak}', 'bayiIdentitasCreate');
+            Route::post('/identitas/store', 'bayiIdentitasStore');
+            Route::get('/identitas/show/{anak}', 'bayiIdentitasShow');
+            Route::get('/identitas/edit/{anak}', 'bayiIdentitasEdit');
+            Route::post('/identitas/update/{anak}', 'bayiIdentitasUpdate');
+            Route::get('/identitas/delete/{anak}', 'bayiIdentitasDelete');
+
+
+              //Route Periksa Bayi
+            Route::get('periksa', 'periksaIndex');
+            Route::get('periksa/create/{identitas}', 'periksaCreate');
+            Route::post('/periksa/store', 'periksaStore');
+            Route::get('/periksa/show/{periksaBayi}', 'periksaShow');
+            Route::get('/periksa/edit/{periksaBayi}', 'periksaEdit');
+            Route::post('/periksa/update/{periksaBayi}', 'periksaUpdate');
+            Route::get('/periksa/delete/{periksaBayi}', 'periksaDelete');
+
+
             Route::get('kms', 'kms');
         });
     });

@@ -140,7 +140,7 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item {{ Request::is('admin/bayi/periksa') ? 'active' : '' }}"
                         href="{{ url('admin/bayi/periksa') }}">
-                        <i class="fas fa-baby mr-2"></i> Daftar Periksa Bayi Balita
+                        <i class="fas fa-stethoscope"></i> Daftar Periksa Bayi Balita
                     </a>
                 </div>
             </li>
@@ -153,11 +153,6 @@
                     <i class="fas fa-chevron-down ml-1"></i>
                 </a>
                 <div class="dropdown-menu border-0 shadow-sm rounded" aria-labelledby="akunDropdown">
-                    <a class="dropdown-item {{ Request::is('admin/akun/dinas') ? 'active' : '' }}"
-                        href="{{ url('admin/akun/dinas') }}">
-                        <i class="fas fa-baby mr-2"></i> Dinas
-                    </a>
-                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item {{ Request::is('admin/akun/admin') ? 'active' : '' }}"
                         href="{{ url('admin/akun/admin') }}">
                         <i class="fas fa-baby mr-2"></i> Admin

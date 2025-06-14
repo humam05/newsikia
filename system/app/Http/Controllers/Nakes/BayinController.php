@@ -5,15 +5,264 @@ namespace App\Http\Controllers\Nakes;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Identitas;
+use App\Models\PeriksaBayi;
+use App\Models\Anak;
+use Illuminate\Support\Facades\Auth;
+
+
+
 class BayinController extends Controller
 {
-    function index()
+
+
+    function bayiIdentitasCreate(Request $request, $identitas)
     {
-        return view('nakes.bayi.index');
+        // Ambil data ibu hamil berdasarkan ID dari model Identitas, bukan Anak
+        $identitas = Identitas::findOrFail($identitas);
+
+        // Kirim data ibu hamil ke view untuk menambahkan anak
+        return view('nakes.bayi.identitas.create', compact('identitas'));
     }
 
-    function kms()
+
+    function bayiIdentitasStore(Request $request)
     {
-        return view('nakes.bayi.kms');
+        $request->validate([
+            'identitas_id' => 'required|exists:tb_identitas,id',
+            'anak_nama' => 'required|string|max:255',
+            'ibu_nama' => 'required|string|max:255',
+            'anak_nik' => 'nullable|string|size:16',
+            'anak_jkn' => 'nullable|string|max:255',
+            'anak_faskes_tk1' => 'nullable|string|max:255',
+            'anak_faskes_rujukan' => 'nullable|string|max:255',
+            'anak_tempat_lahir' => 'nullable|string|max:255',
+            'anak_tanggal_lahir' => 'nullable|date',
+            'anak_alamat' => 'nullable|string',
+            'anak_ke' => 'nullable|integer|min:1',
+            'anak_akta_kelahiran' => 'nullable|string|max:255',
+            'anak_gol_darah' => 'nullable|string|max:255',
+        ]);
+
+        // Ambil data identitas berdasarkan ID
+        $identitas = Identitas::findOrFail($request->identitas_id);
+
+        Anak::create([
+            'identitas_id' => $request->identitas_id,
+            'anak_nama' => $request->anak_nama,
+            'anak_nik' => $request->anak_nik,
+            'anak_jkn' => $request->anak_jkn,
+            'anak_faskes_tk1' => $request->anak_faskes_tk1,
+            'anak_faskes_rujukan' => $request->anak_faskes_rujukan,
+            'anak_tempat_lahir' => $request->anak_tempat_lahir,
+            'anak_tanggal_lahir' => $request->anak_tanggal_lahir,
+            'anak_alamat' => $request->anak_alamat,
+            'anak_ke' => $request->anak_ke,
+            'anak_akta_kelahiran' => $request->anak_akta_kelahiran,
+            'anak_gol_darah' => $request->anak_gol_darah,
+        ]);
+
+        return redirect('nakes/bayi/identitas')->with('success', 'Data anak berhasil disimpan.');
+    }
+
+
+
+    function bayiIdentitasIndex(Request $request)
+    {
+        $query = Anak::with('identitas');
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where('anak_nama', 'like', '%' . $search . '%')
+                ->orWhereHas('identitas', function ($q) use ($search) {
+                    $q->where('ibu_nama', 'like', '%' . $search . '%')
+                        ->orWhere('ibu_nik', 'like', '%' . $search . '%');
+                });
+        }
+
+        $data['anak'] = $query->paginate(10);
+
+        return view('nakes.bayi.identitas.index', $data);
+    }
+
+    function bayiIdentitasShow(Anak $anak)
+    {
+        $anak->load('identitas'); // Pastikan relasi identitas dimuat
+        return view('nakes.bayi.identitas.show', [
+            'anak' => $anak,
+            'identitas' => $anak->identitas, // opsional
+        ]);
+    }
+
+
+    public function bayiIdentitasEdit(Anak $anak)
+    {
+        // Pastikan relasi ke identitas (ibu) dimuat
+        $anak->load('identitas');
+
+        return view('nakes.bayi.identitas.edit', [
+            'detail' => $anak,
+            'ibu' => $anak->identitas // opsional, jika ingin akses langsung di view
+        ]);
+    }
+
+
+
+    function bayiIdentitasUpdate(Request $request, $id)
+    {
+        $request->validate([
+            'anak_nama' => 'required|string|max:255',
+            'anak_nik' => 'nullable|string|size:16',
+            'anak_jkn' => 'nullable|string|max:255',
+            'anak_faskes_tk1' => 'nullable|string|max:255',
+            'anak_faskes_rujukan' => 'nullable|string|max:255',
+            'anak_tempat_lahir' => 'nullable|string|max:255',
+            'anak_tanggal_lahir' => 'nullable|date',
+            'anak_alamat' => 'nullable|string',
+            'anak_ke' => 'nullable|integer|min:1',
+            'anak_akta_kelahiran' => 'nullable|string|max:255',
+            'anak_gol_darah' => 'nullable|string|max:255',
+        ]);
+
+        // Temukan anak berdasarkan ID-nya
+        $anak = Anak::findOrFail($id);
+
+        // Update data anak
+        $anak->update([
+            'anak_nama' => $request->anak_nama,
+            'anak_nik' => $request->anak_nik,
+            'anak_jkn' => $request->anak_jkn,
+            'anak_faskes_tk1' => $request->anak_faskes_tk1,
+            'anak_faskes_rujukan' => $request->anak_faskes_rujukan,
+            'anak_tempat_lahir' => $request->anak_tempat_lahir,
+            'anak_tanggal_lahir' => $request->anak_tanggal_lahir,
+            'anak_alamat' => $request->anak_alamat,
+            'anak_ke' => $request->anak_ke,
+            'anak_akta_kelahiran' => $request->anak_akta_kelahiran,
+            'anak_gol_darah' => $request->anak_gol_darah,
+        ]);
+
+        return redirect('nakes/bayi/identitas')->with('success', 'Data anak berhasil diperbarui.');
+    }
+
+    function bayiIdentitasDelete(Anak $anak)
+    {
+        $anak->delete();
+        return redirect('nakes/bayi/identitas')->with('success', 'Data berhasil dihapus.');
+    }
+
+
+
+
+    function periksaCreate(Request $request, $anak)
+    {
+        $anak = Anak::findOrFail($anak);
+        return view('nakes.bayi.periksa.create', compact('anak'));
+    }
+
+    function periksaStore(Request $request)
+    {
+        // Validasi input
+        $validated = $request->validate([
+            'anak_id'       => 'required|exists:tb_anak,id',
+            'tanggal_pemeriksaan' => 'required|date',
+            'umur_bulan'           => 'nullable|integer|min:0',
+            'berat_badan'         => 'nullable|string',
+            'tinggi_badan'        => 'nullable|string',
+            'lingkar_kepala'      => 'nullable|string',
+            'lingkar_lengan'      => 'nullable|string',
+            'imunisasi'           => 'nullable|in:BCG,Hepatitis B,Polio,DPT-HB-Hib 1,DPT-HB-Hib 2,DPT-HB-Hib 3,Campak,Campak-Rubella,Booster DPT,Booster Polio,Tidak Ada',
+            'vitamin_a'           => 'nullable|in:Biru,Merah',
+        ]);
+
+        // Simpan data pemeriksaan
+        PeriksaBayi::create($validated);
+
+        // Redirect dengan pesan sukses
+        return redirect('nakes/bayi/periksa')->with('success', 'Data pemeriksaan balita berhasil disimpan.');
+    }
+    function periksaIndex(Request $request)
+    {
+        $query = PeriksaBayi::with('anak.identitas'); // memuat relasi anak & identitas ibu
+
+        if ($request->has('search')) {
+            $search = $request->search;
+            $query->whereHas('anak', function ($q) use ($search) {
+                $q->where('anak_nama', 'like', '%' . $search . '%')
+                    ->orWhereHas('identitas', function ($q2) use ($search) {
+                        $q2->where('nama', 'like', '%' . $search . '%');
+                    });
+            });
+        }
+
+        $data['periksaBayi'] = $query->paginate(10);
+
+        return view('nakes.bayi.periksa.index', $data);
+    }
+
+
+
+
+    function periksaShow(PeriksaBayi $periksaBayi)
+    {
+        // Pastikan relasi identitas ikut dimuat
+        $periksaBayi->load('anak');
+        // Verifikasi apakah pengguna yang sedang login adalah pemilik identitas
+        $user = Auth::guard('ibuhamil')->user();
+        // if (!$user || $periksaBayi->anak->ibu_hamil_id !== $user->id) {
+        //     abort(403, 'Anda tidak memiliki izin untuk melihat data ini.');
+        // }
+        return view('nakes.bayi.periksa.show', [
+            'periksaBayi' => $periksaBayi
+        ]);
+    }
+
+    function periksaEdit(PeriksaBayi $periksaBayi)
+    {
+        $periksaBayi->load('anak',);
+
+        return view('nakes.bayi.periksa.edit', [
+            'periksaBayi' => $periksaBayi
+        ]);
+    }
+
+    function periksaUpdate(Request $request, $id)
+    {
+        // Validasi input
+        $request->validate([
+            'tanggal_pemeriksaan' => 'required|date',
+            'umur_bulan' => 'nullable|integer|min:0',
+            'berat_badan' => 'nullable|string',
+            'tinggi_badan' => 'nullable|string',
+            'lingkar_kepala' => 'nullable|string',
+            'lingkar_lengan' => 'nullable|string',
+            'imunisasi' => 'nullable|string',
+            'vitamin_a' => 'nullable|string',
+        ]);
+
+        // Temukan data berdasarkan ID
+        $periksa = PeriksaBayi::findOrFail($id);
+
+        // Update data
+        $periksa->tanggal_pemeriksaan = $request->tanggal_pemeriksaan;
+        $periksa->umur_bulan = $request->umur_bulan;
+        $periksa->berat_badan = $request->berat_badan;
+        $periksa->tinggi_badan = $request->tinggi_badan;
+        $periksa->lingkar_kepala = $request->lingkar_kepala;
+        $periksa->lingkar_lengan = $request->lingkar_lengan;
+        $periksa->imunisasi = $request->imunisasi;
+        $periksa->vitamin_a = $request->vitamin_a;
+
+        // Simpan perubahan
+        $periksa->save();
+
+        // Redirect dengan pesan sukses
+        return redirect('nakes/bayi/periksa')->with('success', 'Data pemeriksaan berhasil diperbarui.');
+    }
+
+    function periksaDelete(PeriksaBayi $periksaBayi)
+    {
+        $periksaBayi->delete();
+        return redirect('nakes/bayi/periksa')->with('success', 'Data pemeriksaan berhasil dihapus');
     }
 }

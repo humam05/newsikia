@@ -38,12 +38,13 @@ class AuthController extends Controller
         } elseif (Auth::guard('puskesmas')->attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended('puskesmas/dashboard');
-        // } elseif (Auth::guard('dinkes')->attempt($credentials)) {
-        //     $request->session()->regenerate();
-        //     return redirect()->intended('dinkes/dashboard');
+            // } elseif (Auth::guard('dinkes')->attempt($credentials)) {
+            //     $request->session()->regenerate();
+            //     return redirect()->intended('dinkes/dashboard');
         } else {
             return back()->withErrors([
-                'error' => 'Login gagal',
+                'error' => 'Email atau password salah. Silakan coba lagi.
+',
             ])->withInput(request(['email']));
         }
     }
