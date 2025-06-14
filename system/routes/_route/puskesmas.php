@@ -28,6 +28,9 @@ use App\Http\Controllers\Dinkes\BayiDinkesController;
 use App\Http\Controllers\Dinkes\IbuHamilDinkesController;
 use Illuminate\Support\Facades\Route;
 
+Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+
+
 Route::prefix('puskesmas')->group(function () {
     Route::controller(DashboardpController::class)->group(function () {
         Route::get('/dashboard', 'index');

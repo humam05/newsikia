@@ -52,10 +52,10 @@ return [
         'driver' => 'session',
         'provider' => 'puskesmas',
     ],
-    'dinkes' => [
-        'driver' => 'session',
-        'provider' => 'dinkes',
-    ],
+    // 'dinkes' => [
+    //     'driver' => 'session',
+    //     'provider' => 'dinkes',
+    // ],
 ],
 
     /*
@@ -92,10 +92,10 @@ return [
         'driver' => 'eloquent',
         'model' => App\Models\Puskesmas::class,
     ],
-    'dinkes' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\Dinkes::class,
-    ],
+    // 'dinkes' => [
+    //     'driver' => 'eloquent',
+    //     'model' => App\Models\Dinkes::class,
+    // ],
 ],
 
     /*

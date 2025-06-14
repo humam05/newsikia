@@ -10,6 +10,9 @@ use App\Http\Controllers\Admin\AdminPosyanduController;
 use App\Http\Controllers\Admin\AdminIbuHamilController;
 use Illuminate\Support\Facades\Route;
 
+
+Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+
 Route::prefix('admin')->group(function () {
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/dashboard', 'index');

@@ -91,9 +91,12 @@
             <img src="{{ url('public') }}/template/assets/images/users/avatar-1.jpg" alt=""
                 class="avatar-md rounded-circle">
         </div>
+        @php
+            $user = Auth::guard('nakes')->user();
+        @endphp
         <div class="user-info">
-            <a href="#">Alvia </a>
-            <p class="text-muted m-0">Administrator</p>
+            <a href="#">{{ Auth::guard('nakes')->user()?->name ?? 'Nakes' }}</a>
+            <p class="text-muted m-0">Nakes</p>
         </div>
     </div>
 

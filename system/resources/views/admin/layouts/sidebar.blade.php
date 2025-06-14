@@ -66,9 +66,12 @@
             <img src="{{ url('public') }}/template/assets/images/users/avatar-1.jpg" alt=""
                 class="avatar-md rounded-circle">
         </div>
+          @php
+            $user = Auth::guard('admin')->user();
+        @endphp
         <div class="user-info">
-            <a href="#">Alvia</a>
-            <p class="text-muted m-0">Administrator</p>
+            <a href="#">{{ Auth::guard('admin')->user()?->name ?? 'Admin' }}</a>
+            <p class="text-muted m-0">Admin</p>
         </div>
     </div>
 
@@ -141,7 +144,7 @@
                     </a>
                 </div>
             </li>
-           
+
             <li class="nav-item dropdown {{ Request::is('admin/akun/*') ? 'active' : '' }}">
                 <a class="nav-link dropdown-toggle" href="#" id="akunDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

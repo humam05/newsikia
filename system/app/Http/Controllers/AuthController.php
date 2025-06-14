@@ -38,9 +38,9 @@ class AuthController extends Controller
         } elseif (Auth::guard('puskesmas')->attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended('puskesmas/dashboard');
-        } elseif (Auth::guard('dinkes')->attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended('dinkes/dashboard');
+        // } elseif (Auth::guard('dinkes')->attempt($credentials)) {
+        //     $request->session()->regenerate();
+        //     return redirect()->intended('dinkes/dashboard');
         } else {
             return back()->withErrors([
                 'error' => 'Login gagal',
@@ -56,7 +56,7 @@ class AuthController extends Controller
 
     private function logoutFromAllGuards(): void
     {
-        $guards = ['admin', 'nakes', 'ibuhamil', 'puskesmas', 'dinkes'];
+        $guards = ['admin', 'nakes', 'ibuhamil', 'puskesmas'];
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {

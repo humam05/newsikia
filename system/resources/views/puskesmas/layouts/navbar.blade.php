@@ -5,20 +5,37 @@
                 aria-haspopup="false" aria-expanded="false">
                 <img src="{{ url('public') }}/template/assets/images/users/avatar-1.jpg" alt="user-image"
                     class="rounded-circle">
+                @php
+                    $user = null;
+
+                    if (Auth::guard('admin')->check()) {
+                        $user = Auth::guard('admin')->user();
+                    } elseif (Auth::guard('nakes')->check()) {
+                        $user = Auth::guard('nakes')->user();
+                    } elseif (Auth::guard('ibuhamil')->check()) {
+                        $user = Auth::guard('ibuhamil')->user();
+                    } elseif (Auth::guard('puskesmas')->check()) {
+                        $user = Auth::guard('puskesmas')->user();
+                    } elseif (Auth::guard('dinkes')->check()) {
+                        $user = Auth::guard('dinkes')->user();
+                    }
+                @endphp
+
                 <span class="pro-user-name ml-1">
-                    Maxine K <i class="mdi mdi-chevron-down"></i>
+                    {{ $user->name ?? 'Pengguna' }} <i class="mdi mdi-chevron-down"></i>
                 </span>
+
+
             </a>
             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-
-
                 <div class="dropdown-divider"></div>
-
                 <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <i class="mdi mdi-logout-variant"></i>
-                    <span>Logout</span>
-                </a>
+                <form action="{{ route('logout') }}" method="POST" onsubmit="return confirm('Yakin ingin logout?');">
+                    @csrf
+                    <button type="submit" class="btn btn-danger w-100 mt-3">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </form>
 
             </div>
         </li>

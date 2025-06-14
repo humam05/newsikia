@@ -7,6 +7,9 @@ use App\Http\Controllers\Nakes\BumilController;
 use App\Http\Controllers\Nakes\BayinController;
 use Illuminate\Support\Facades\Route;
 
+
+Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+
 // PREFIX ROUTE NAKES
 Route::prefix('nakes')->group(function () {
     Route::controller(DashboardnController::class)->group(function () {

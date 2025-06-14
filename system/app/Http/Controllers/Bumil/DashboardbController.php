@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Auth;
 class DashboardbController extends Controller
 {
     function index()
-{
-    // Misalnya hanya menampilkan identitas milik user yang login
-    $identitas = Identitas::where('ibu_hamil_id', Auth::id())->get();
+    {
+        // Misalnya hanya menampilkan identitas milik user yang login
+        $identitas = Identitas::where('ibu_hamil_id', Auth::id())->get();
 
-    return view('ibu_hamil.dashboard', compact('identitas'));
-}
+        return view('ibu_hamil.dashboard', compact('identitas'));
+    }
 
     function edit(Identitas $identitas)
     {

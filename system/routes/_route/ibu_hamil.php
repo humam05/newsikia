@@ -62,3 +62,6 @@ Route::prefix('ibu_hamil')->middleware('auth:ibuhamil')->group(function () {
         });
     });
 });
+
+
+Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
