@@ -47,7 +47,7 @@
     <body>
         <div class="container">
             <div class="card">
-                <h1 class="text-center mb-4">Edit Bidan</h1>
+                <h1 class="text-center mb-4">Edit Data Tenaga Kesehatan</h1>
                 <form action="{{ url('admin/bidan/update', $detail->id) }}" method="POST">
                     @csrf
                     <div class="row">

@@ -21,7 +21,7 @@
                         <div class="col-md-12">
                             <div class="input-group mb-2">
                                 <input name="search" type="text" class="form-control" value="{{ request('search') }}"
-                                    placeholder="Cari Bayi Berdasarkan Nama Bayi/ Nama Ibu/ Nik Ibu " required>
+                                    placeholder="Cari Bayi Berdasarkan Nama Anak/ Nama Ibu/ Nik Ibu " required>
                                 <div class="input-group-prepend ml-1">
                                     <button type="submit" class="btn btn-info btn-icon-split">
                                         <span class="icon text-white">
@@ -69,6 +69,7 @@
                                 <th>Nama Ibu</th>
                                 <th>NIK Ibu</th>
                                 <th>Nama Anak</th>
+                                <th>Anak Ke-</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -78,7 +79,8 @@
                                     <td>{{ ($anak->currentPage() - 1) * $anak->perPage() + $loop->iteration }}</td>
                                     <td>{{ $item->identitas->ibu_nama ?? '-' }}</td>
                                     <td>{{ $item->identitas->ibu_nik ?? '-' }}</td>
-                                    <td>{{ $item->anak_nama }} ({{ $item->anak_ke ?? '-' }})</td>
+                                    <td>{{ $item->anak_nama ?? '-'}} </td>
+                                    <td>{{ $item->anak_ke ?? '-' }}</td>
                                     <td>
                                         <a href="{{ url('nakes/bayi/identitas/show', $item->id) }}"
                                             class="btn btn-dark btn-sm">Show</a>

@@ -40,12 +40,22 @@ class KesehatanIbuController extends Controller
     }
 
     function showTrimester(PeriksaTrimester $periksaTrimester)
-    {
-        // Sama seperti showRutin, muat relasi 'identitas'
-        $periksaTrimester->load('identitas');
+{
+    // Muat relasi 'identitas'
+    $periksaTrimester->load('identitas');
 
-        return view('ibu_hamil.kesehatan_ibu.periksa_trimester.show', [
-            'periksaTrimester' => $periksaTrimester
-        ]);
-    }
+    // Ambil semua kolom dari model
+    $fields = $periksaTrimester->getAttributes();
+
+    // Filter hanya yang terisi (tidak null dan tidak string kosong)
+    $filledFields = collect($fields)->filter(function ($value) {
+        return !is_null($value) && $value !== '';
+    });
+
+    return view('ibu_hamil.kesehatan_ibu.periksa_trimester.show', [
+        'periksaTrimester' => $periksaTrimester,
+        'filledFields' => $filledFields,
+    ]);
+}
+
 }

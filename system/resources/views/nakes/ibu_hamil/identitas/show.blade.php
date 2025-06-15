@@ -208,68 +208,7 @@
                     <div class="detail-value">{{ $identitas->suami_asuransi_berlaku }}</div>
                 </div>
 
-                <h2>Identitas Anak</h2>
-                <div class="row">
-                    <div class="col-6 detail-group">
-                        <label class="detail-label">Nama</label>
-                        <div class="detail-value">{{ $identitas->anak_nama }}</div>
-                    </div>
-                    <div class="col-6 detail-group">
-                        <label class="detail-label">NIK</label>
-                        <div class="detail-value">{{ $identitas->anak_nik }}</div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-6 detail-group">
-                        <label class="detail-label">No. JKN</label>
-                        <div class="detail-value">{{ $identitas->anak_jkn }}</div>
-                    </div>
-                    <div class="col-6 detail-group">
-                        <label class="detail-label">Fasilitas Kesehatan TK1</label>
-                        <div class="detail-value">{{ $identitas->anak_faskes_tk1 }}</div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-6 detail-group">
-                        <label class="detail-label">Fasilitas Kesehatan Rujukan</label>
-                        <div class="detail-value">{{ $identitas->anak_faskes_rujukan }}</div>
-                    </div>
-                    <div class="col-6 detail-group">
-                        <label class="detail-label">Tempat Lahir</label>
-                        <div class="detail-value">{{ $identitas->anak_tempat_lahir }}</div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-6 detail-group">
-                        <label class="detail-label">Tanggal Lahir</label>
-                        <div class="detail-value">{{ $identitas->anak_tanggal_lahir }}</div>
-                    </div>
-                    <div class="col-6 detail-group">
-                        <label class="detail-label">Alamat Rumah</label>
-                        <div class="detail-value">{{ $identitas->anak_alamat }}</div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-6 detail-group">
-                        <label class="detail-label">Anak ke-</label>
-                        <div class="detail-value">{{ $identitas->anak_ke }}</div>
-                    </div>
-                    <div class="col-6 detail-group">
-                        <label class="detail-label">Nomor Akta Kelahiran</label>
-                        <div class="detail-value">{{ $identitas->anak_akta_kelahiran }}</div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-6 detail-group">
-                        <label class="detail-label">Golongan Darah</label>
-                        <div class="detail-value">{{ $identitas->anak_gol_darah }}</div>
-                    </div>
-                </div>
+               
 
                 <h2>Fasilitas Pelayanan Kesehatan</h2>
                 <h3>Primer</h3>

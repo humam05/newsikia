@@ -76,11 +76,11 @@
     <body>
         <div class="container">
             <div class="card">
-                <h1>Detail Bidan</h1>
+                <h1>Detail Data Tenaga Kesehatan</h1>
 
                 <div class="row">
                     <div class="col-6 detail-group">
-                        <label class="detail-label"><i class="fas fa-user-nurse"></i> Nama Bidan</label>
+                        <label class="detail-label"><i class="fas fa-user-nurse"></i> Nama </label>
                         <div class="detail-value">{{ $bidan->nama_bidan }}</div>
                     </div>
                     <div class="col-6 detail-group">

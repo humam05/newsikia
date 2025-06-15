@@ -60,11 +60,11 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="card-box">
-                <div class="button-container">
+                {{-- <div class="button-container">
                     <a href="{{ url('/admin/ibu_hamil/identitas/create') }}" class="btn btn-primary">
                         Tambah Data
                     </a>
-                </div><br>
+                </div><br> --}}
                 <div class="table-responsive">
                     <table class="table table-hover mails m-0 table table-actions-bar table-centered">
                         <thead>

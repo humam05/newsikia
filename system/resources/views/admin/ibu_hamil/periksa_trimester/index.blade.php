@@ -73,11 +73,7 @@
                                 <th>No.</th>
                                 <th>Nama Ibu</th>
                                 <th>NIK</th>
-                                <th>Hari / Tanggal</th>
                                 <th>Trimester</th>
-                                {{-- <th>Keluhan</th>
-                                <th>Berat Badan</th>
-                                <th>Tinggi Fundus</th> --}}
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -88,8 +84,6 @@
                                     </td>
                                     <td>{{ $item->identitas->ibu_nama ?? '-' }}</td>
                                     <td>{{ $item->identitas->ibu_nik ?? '-' }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($item->tanggal_periksa)->translatedFormat('l, d F Y') }}
-                                    </td>
                                     <td>{{ $item->trimester }}</td>
                                     <td>
                                         <a href="{{ url('admin/ibu_hamil/periksa_trimester/show', $item->id) }}?step=trimester{{ $item->trimester }}"

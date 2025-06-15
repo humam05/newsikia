@@ -64,9 +64,9 @@
                         $hasResults = isset($identitas) && $identitas->count() > 0;
                     @endphp
                     @if (!($search && $hasResults))
-                        <a href="{{ url('nakes/ibu_hamil/identitas/create') }}" class="btn btn-primary">
+                        {{-- <a href="{{ url('nakes/ibu_hamil/identitas/create') }}" class="btn btn-primary">
                             Tambah Data
-                        </a>
+                        </a> --}}
                     @endif
                 </div><br>
                 <div class="table-responsive">

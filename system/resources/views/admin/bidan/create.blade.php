@@ -23,7 +23,7 @@
 
         <div class="row">
             <div class="mb-3 col-md-6">
-                <label for="nama_bidan" class="form-label">Nama Bidan</label>
+                <label for="nama_bidan" class="form-label">Nama</label>
                 <input type="text" name="nama_bidan" id="nama_bidan" class="form-control" placeholder="Masukkan Nama"
                     required>
             </div>

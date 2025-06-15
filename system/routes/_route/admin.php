@@ -46,7 +46,7 @@ Route::prefix('admin')->group(function () {
     Route::prefix('ibu_hamil')->group(function () {
         Route::controller(AdminIbuHamilController::class)->group(function () {
             Route::get('/identitas', 'identitasIndex');
-            Route::get('/identitas/create', 'identitasCreate');
+            // Route::get('/identitas/create', 'identitasCreate');
             Route::post('/identitas/store', 'identitasStore');
             Route::get('/identitas/show/{identitas}', 'identitasShow');
             Route::get('/identitas/edit/{identitas}', 'identitasEdit');

@@ -36,7 +36,7 @@ class AkunController extends Controller
         return view('nakes.akun.edit', $data);
     }
 
-    function pdate(IbuHamil $IbuHamil)
+    function update(IbuHamil $IbuHamil)
     {
         $IbuHamil->name = request('name');
         $IbuHamil->email = request('email');

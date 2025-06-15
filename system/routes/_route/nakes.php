@@ -20,15 +20,15 @@ Route::prefix('nakes')->group(function () {
             Route::get('/', 'index');
             Route::get('/create', 'create');
             Route::post('/store', 'store');
-            Route::get('/edit{akun}', 'edit');
-            Route::get('/update{akun}', 'update');
-            Route::get('/delete{akun}', 'delete');
+            Route::get('/edit/{IbuHamil}', 'edit');
+            Route::post('/update/{IbuHamil}', 'update');
+            Route::get('/delete/{IbuHamil}', 'delete');
         });
     });
     Route::prefix('ibu_hamil')->group(function () {
         Route::controller(BumilController::class)->group(function () {
             Route::get('/identitas', 'identitasIndex');
-            Route::get('/identitas/create', 'identitasCreate');
+            // Route::get('/identitas/create', 'identitasCreate');
             Route::post('identitas/store', 'identitasStore');
             Route::get('/identitas/show/{identitas}', 'identitasShow');
             Route::get('/identitas/edit/{identitas}', 'identitasEdit');
@@ -75,7 +75,6 @@ Route::prefix('nakes')->group(function () {
             Route::get('/periksa/delete/{periksaBayi}', 'periksaDelete');
 
 
-            Route::get('kms', 'kms');
         });
     });
 });

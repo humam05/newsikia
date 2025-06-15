@@ -384,6 +384,14 @@
                         <div class="detail-value">{{ $periksaTrimester->identitas->ibu_nik ?? '-' }}</div>
                     </div>
                 </div>
+                <div class="row">
+                      <div class="col-12 detail-group">
+                        <label class="detail-label"><i class="fas fa-calendar-alt"></i> Tanggal Periksa</label>
+                        <div class="detail-value">
+                            {{ $periksaTrimester->tanggal_periksa_2 ? \Carbon\Carbon::parse($periksaTrimester->tanggal_periksa_2)->translatedFormat('l, d F Y') : '-' }}
+                        </div>
+                    </div>
+                </div>
                 <div class="form-row">
                     <div class="col-6 detail-group">
                         <label class="detail-label"> Keluhan</label>
@@ -412,11 +420,15 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="form-row">
+                    @php
+                        use Carbon\Carbon;
+                    @endphp
                     <div class="col-12 detail-group">
-                        <label class="detail-label"> Tanggal Kembali</label>
+                        <label class="detail-label">Tanggal Kembali</label>
                         <div class="detail-value" style="white-space: pre-wrap;">
-                            {{ $periksaTrimester->tanggal_kembali ?? '-' }}
+                            {{ $periksaTrimester->tanggal_kembali ? Carbon::parse($periksaTrimester->tanggal_kembali)->translatedFormat('d F Y') : '-' }}
                         </div>
                     </div>
                 </div>
@@ -454,7 +466,7 @@
                     <div class="col-6 detail-group">
                         <label class="detail-label"><i class="fas fa-calendar-alt"></i> Tanggal Periksa</label>
                         <div class="detail-value">
-                            {{ $periksaTrimester->tanggal_periksa ? \Carbon\Carbon::parse($periksaTrimester->tanggal_periksa)->translatedFormat('l, d F Y') : '-' }}
+                            {{ $periksaTrimester->tanggal_periksa_3 ? \Carbon\Carbon::parse($periksaTrimester->tanggal_periksa_3)->translatedFormat('l, d F Y') : '-' }}
                         </div>
                     </div>
                     <div class="col-6 detail-group">

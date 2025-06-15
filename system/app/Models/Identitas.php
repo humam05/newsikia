@@ -45,17 +45,17 @@ class Identitas extends Model
         'suami_asuransi_berlaku',
 
         // Data Anak
-        'anak_nama',
-        'anak_nik',
-        'anak_jkn',
-        'anak_faskes_tk1',
-        'anak_faskes_rujukan',
-        'anak_tempat_lahir',
-        'anak_tanggal_lahir',
-        'anak_alamat',
-        'anak_ke',
-        'anak_akta_kelahiran',
-        'anak_gol_darah',
+        // 'anak_nama',
+        // 'anak_nik',
+        // 'anak_jkn',
+        // 'anak_faskes_tk1',
+        // 'anak_faskes_rujukan',
+        // 'anak_tempat_lahir',
+        // 'anak_tanggal_lahir',
+        // 'anak_alamat',
+        // 'anak_ke',
+        // 'anak_akta_kelahiran',
+        // 'anak_gol_darah',
 
         // Fasilitas Kesehatan
         'puskesmas',

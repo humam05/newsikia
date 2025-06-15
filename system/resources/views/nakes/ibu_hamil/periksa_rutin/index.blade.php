@@ -94,7 +94,7 @@
                                     </td>
                                     <td>{{ $item->keluhan }}</td>
                                     <td>{{ $item->berat_badan }} kg</td>
-                                    <td>{{ $item->tinggi_fundus }} cm</td>
+                                    <td>{{ $item->tfu }} cm</td>
                                     <td>
                                         <a href="{{ url('nakes/ibu_hamil/periksa_rutin/show', $item->id) }}"
                                             class="btn btn-dark btn-sm">Show</a>

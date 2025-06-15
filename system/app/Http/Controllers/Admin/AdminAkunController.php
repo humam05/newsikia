@@ -13,52 +13,52 @@ use App\Models\IbuHamil;
 
 class AdminAkunController extends Controller
 {
-    function dinasIndex()
-    {
-        $data['dinkes'] = Dinkes::all();
-        return view('admin.akun.dinas.index', $data);
-    }
+    // function dinasIndex()
+    // {
+    //     $data['dinkes'] = Dinkes::all();
+    //     return view('admin.akun.dinas.index', $data);
+    // }
 
-    function dinasCreate()
-    {
-        return view('admin.akun.dinas.create');
-    }
+    // function dinasCreate()
+    // {
+    //     return view('admin.akun.dinas.create');
+    // }
 
-    function dinasStore()
-    {
-        $dinkes =  new Dinkes;
-        $dinkes->name = request('name');
-        $dinkes->email = request('email');
-        $dinkes->password = Hash::make(request('password'));
-        $dinkes->save();
-        return redirect('admin/akun/dinas');
-    }
+    // function dinasStore()
+    // {
+    //     $dinkes =  new Dinkes;
+    //     $dinkes->name = request('name');
+    //     $dinkes->email = request('email');
+    //     $dinkes->password = Hash::make(request('password'));
+    //     $dinkes->save();
+    //     return redirect('admin/akun/dinas');
+    // }
 
 
-    function dinasEdit(Dinkes $dinkes)
-    {
-        $data['detail'] = $dinkes;
-        return view('admin.akun.dinas.edit', $data);
-    }
+    // function dinasEdit(Dinkes $dinkes)
+    // {
+    //     $data['detail'] = $dinkes;
+    //     return view('admin.akun.dinas.edit', $data);
+    // }
 
-    function dinasUpdate(Dinkes $dinkes)
-    {
-        $dinkes->name = request('name');
-        $dinkes->email = request('email');
-        $dinkes->password = Hash::make(request('password'));
-        $update = $dinkes->update();
-        if ($update) {
-            return redirect('admin/akun/dinas');
-        } else {
-            return back()->with('error', 'gagal !');
-        }
-    }
+    // function dinasUpdate(Dinkes $dinkes)
+    // {
+    //     $dinkes->name = request('name');
+    //     $dinkes->email = request('email');
+    //     $dinkes->password = Hash::make(request('password'));
+    //     $update = $dinkes->update();
+    //     if ($update) {
+    //         return redirect('admin/akun/dinas');
+    //     } else {
+    //         return back()->with('error', 'gagal !');
+    //     }
+    // }
 
-    function dinasDelete(Dinkes $dinkes)
-    {
-        $dinkes->delete();
-        return redirect('admin/akun/dinas');
-    }
+    // function dinasDelete(Dinkes $dinkes)
+    // {
+    //     $dinkes->delete();
+    //     return redirect('admin/akun/dinas');
+    // }
 
     //FUNCTION UNTUK AKUN NAKES
     function nakesIndex()

@@ -16,9 +16,10 @@
                         $user = Auth::guard('ibuhamil')->user();
                     } elseif (Auth::guard('puskesmas')->check()) {
                         $user = Auth::guard('puskesmas')->user();
-                    } elseif (Auth::guard('dinkes')->check()) {
-                        $user = Auth::guard('dinkes')->user();
                     }
+                    // elseif (Auth::guard('dinkes')->check()) {
+                    //     $user = Auth::guard('dinkes')->user();
+                    // }
                 @endphp
 
                 <span class="pro-user-name ml-1">

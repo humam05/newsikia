@@ -106,7 +106,7 @@
         @csrf
 
         <input type="hidden" name="anak_id" value="{{ $anak->id }}">
-        
+
 
 <div class="form-row">
     <div class="form-col">
@@ -185,6 +185,7 @@
                     <option value="">-- Pilih --</option>
                     <option value="Biru" {{ old('vitamin_a') == 'Biru' ? 'selected' : '' }}>Biru</option>
                     <option value="Merah" {{ old('vitamin_a') == 'Merah' ? 'selected' : '' }}>Merah</option>
+                    <option value="Tidak ada" {{ old('vitamin_a') == 'Tidak ada' ? 'selected' : '' }}>Tidak ada</option>
                 </select>
             </div>
         </div>

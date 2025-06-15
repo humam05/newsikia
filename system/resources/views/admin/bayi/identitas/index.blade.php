@@ -69,6 +69,7 @@
                                 <th>Nama Ibu</th>
                                 <th>NIK Ibu</th>
                                 <th>Nama Anak</th>
+                                <th>Anak Ke-</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -78,7 +79,8 @@
                                     <td>{{ ($anak->currentPage() - 1) * $anak->perPage() + $loop->iteration }}</td>
                                     <td>{{ $item->identitas->ibu_nama ?? '-' }}</td>
                                     <td>{{ $item->identitas->ibu_nik ?? '-' }}</td>
-                                    <td>{{ $item->anak_nama }} ({{ $item->anak_ke ?? '-' }})</td>
+                                    <td>{{ $item->anak_nama }} </td>
+                                    <td>{{$item->anak_ke ?? '-'}}</td>
                                     <td>
                                         <a href="{{ url('admin/bayi/identitas/show', $item->id) }}"
                                             class="btn btn-dark btn-sm">Show</a>

@@ -25,10 +25,10 @@ class AdminIbuHamilController extends Controller
         return view('admin.ibu_hamil.identitas.index', $data);
     }
 
-    function identitasCreate()
-    {
-        return view('admin.ibu_hamil.identitas.create');
-    }
+    // function identitasCreate()
+    // {
+    //     return view('admin.ibu_hamil.identitas.create');
+    // }
 
     function identitasStore(Request $request)
     {
@@ -111,17 +111,17 @@ class AdminIbuHamilController extends Controller
         $identitas->suami_asuransi_lain = $request->suami_asuransi_lain;
         $identitas->suami_asuransi_nomor = $request->suami_asuransi_nomor;
         $identitas->suami_asuransi_berlaku = $request->suami_asuransi_berlaku;
-        $identitas->anak_nama = $request->anak_nama;
-        $identitas->anak_nik = $request->anak_nik;
-        $identitas->anak_jkn = $request->anak_jkn;
-        $identitas->anak_faskes_tk1 = $request->anak_faskes_tk1;
-        $identitas->anak_faskes_rujukan = $request->anak_faskes_rujukan;
-        $identitas->anak_tempat_lahir = $request->anak_tempat_lahir;
-        $identitas->anak_tanggal_lahir = $request->anak_tanggal_lahir;
-        $identitas->anak_alamat = $request->anak_alamat;
-        $identitas->anak_ke = $request->anak_ke;
-        $identitas->anak_akta_kelahiran = $request->anak_akta_kelahiran;
-        $identitas->anak_gol_darah = $request->anak_gol_darah;
+        // $identitas->anak_nama = $request->anak_nama;
+        // $identitas->anak_nik = $request->anak_nik;
+        // $identitas->anak_jkn = $request->anak_jkn;
+        // $identitas->anak_faskes_tk1 = $request->anak_faskes_tk1;
+        // $identitas->anak_faskes_rujukan = $request->anak_faskes_rujukan;
+        // $identitas->anak_tempat_lahir = $request->anak_tempat_lahir;
+        // $identitas->anak_tanggal_lahir = $request->anak_tanggal_lahir;
+        // $identitas->anak_alamat = $request->anak_alamat;
+        // $identitas->anak_ke = $request->anak_ke;
+        // $identitas->anak_akta_kelahiran = $request->anak_akta_kelahiran;
+        // $identitas->anak_gol_darah = $request->anak_gol_darah;
         $identitas->puskesmas = $request->puskesmas;
         $identitas->kohort_ibu = $request->kohort_ibu;
         $identitas->kohort_bayi = $request->kohort_bayi;
@@ -179,17 +179,17 @@ class AdminIbuHamilController extends Controller
         $identitas->suami_asuransi_lain = request('suami_asuransi_lain');
         $identitas->suami_asuransi_nomor = request('suami_asuransi_nomor');
         $identitas->suami_asuransi_berlaku = request('suami_asuransi_berlaku');
-        $identitas->anak_nama = request('anak_nama');
-        $identitas->anak_nik = request('anak_nik');
-        $identitas->anak_jkn = request('anak_jkn');
-        $identitas->anak_faskes_tk1 = request('anak_faskes_tk1');
-        $identitas->anak_faskes_rujukan = request('anak_faskes_rujukan');
-        $identitas->anak_tempat_lahir = request('anak_tempat_lahir');
-        $identitas->anak_tanggal_lahir = request('anak_tanggal_lahir');
-        $identitas->anak_alamat = request('anak_alamat');
-        $identitas->anak_ke = request('anak_ke');
-        $identitas->anak_akta_kelahiran = request('anak_akta_kelahiran');
-        $identitas->anak_gol_darah = request('anak_gol_darah');
+        // $identitas->anak_nama = request('anak_nama');
+        // $identitas->anak_nik = request('anak_nik');
+        // $identitas->anak_jkn = request('anak_jkn');
+        // $identitas->anak_faskes_tk1 = request('anak_faskes_tk1');
+        // $identitas->anak_faskes_rujukan = request('anak_faskes_rujukan');
+        // $identitas->anak_tempat_lahir = request('anak_tempat_lahir');
+        // $identitas->anak_tanggal_lahir = request('anak_tanggal_lahir');
+        // $identitas->anak_alamat = request('anak_alamat');
+        // $identitas->anak_ke = request('anak_ke');
+        // $identitas->anak_akta_kelahiran = request('anak_akta_kelahiran');
+        // $identitas->anak_gol_darah = request('anak_gol_darah');
         $identitas->puskesmas = request('puskesmas');
         $identitas->kohort_ibu = request('kohort_ibu');
         $identitas->kohort_bayi = request('kohort_bayi');

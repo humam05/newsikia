@@ -64,23 +64,23 @@
                 @csrf
                 <div class="mb-4">
                     <label for="nama" class="form-label"><i class="fas fa-clinic-medical"></i> Nama Fasyankes</label>
-                    <input type="text" class="form-control" id="nama" name="nama" value="{{ $detail->nama }}" required>
+                    <input type="text" class="form-control" id="nama" name="nama" value="{{ $detail->nama }}" >
                 </div>
                 <div class="mb-4">
                     <label for="kecamatan" class="form-label"><i class="fas fa-map-marker-alt"></i> Kecamatan</label>
-                    <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="{{ $detail->kecamatan }}" required>
+                    <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="{{ $detail->kecamatan }}" >
                 </div>
                 <div class="mb-4">
                     <label for="kelurahan" class="form-label"><i class="fas fa-map-marker-alt"></i> Kelurahan</label>
-                    <input type="text" class="form-control" id="kelurahan" name="kelurahan" value="{{ $detail->kelurahan }}" required>
+                    <input type="text" class="form-control" id="kelurahan" name="kelurahan" value="{{ $detail->kelurahan }}" >
                 </div>
                 <div class="mb-4">
                     <label for="desa" class="form-label"><i class="fas fa-map-marker-alt"></i> Desa</label>
-                    <input type="text" class="form-control" id="desa" name="desa" value="{{ $detail->desa }}" required>
+                    <input type="text" class="form-control" id="desa" name="desa" value="{{ $detail->desa }}" >
                 </div>
                 <div class="mb-4">
                     <label for="rt_rw" class="form-label"><i class="fas fa-map-marked-alt"></i> RT/RW</label>
-                    <input type="text" class="form-control" id="rt_rw" name="rt_rw" value="{{ $detail->rt_rw }}" required>
+                    <input type="text" class="form-control" id="rt_rw" name="rt_rw" value="{{ $detail->rt_rw }}" >
                 </div>
                 <div class="d-flex mt-3">
                     <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Simpan</button>

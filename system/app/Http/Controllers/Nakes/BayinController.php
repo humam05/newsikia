@@ -190,7 +190,7 @@ class BayinController extends Controller
             $query->whereHas('anak', function ($q) use ($search) {
                 $q->where('anak_nama', 'like', '%' . $search . '%')
                     ->orWhereHas('identitas', function ($q2) use ($search) {
-                        $q2->where('nama', 'like', '%' . $search . '%');
+                        $q2->where('ibu_nama', 'like', '%' . $search . '%');
                     });
             });
         }

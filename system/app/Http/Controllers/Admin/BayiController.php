@@ -247,7 +247,7 @@ class BayiController extends Controller
             'lingkar_kepala'      => 'nullable|string',
             'lingkar_lengan'      => 'nullable|string',
             'imunisasi'           => 'nullable|in:BCG,Hepatitis B,Polio,DPT-HB-Hib 1,DPT-HB-Hib 2,DPT-HB-Hib 3,Campak,Campak-Rubella,Booster DPT,Booster Polio,Tidak Ada',
-            'vitamin_a'           => 'nullable|in:Biru,Merah',
+            'vitamin_a'           => 'nullable|in:Biru,Merah,Tidak ada',
         ]);
 
         // Simpan data pemeriksaan

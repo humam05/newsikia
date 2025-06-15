@@ -288,68 +288,7 @@
 
         {{-- STEP 3: Data Anak & Fasilitas --}}
         <div class="form-step">
-            <h2>Identitas Anak</h2>
-            <div class="form-row">
-                <div class="form-col">
-                    <label>Nama</label>
-                    <input type="text" name="anak_nama" value="{{ $detail->anak_nama }}">
-                </div>
-                <div class="form-col">
-                    <label>NIK</label>
-                    <input type="text" name="anak_nik" maxlength="16" minlength="16" value="{{ $detail->anak_nik }}">
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-col">
-                    <label>No. JKN</label>
-                    <input type="text" name="anak_jkn" value="{{ $detail->anak_jkn }}">
-                </div>
-                <div class="form-col">
-                    <label>Fasilitas Kesehatan TK1</label>
-                    <input type="text" name="anak_faskes_tk1" value="{{ $detail->anak_faskes_tk1 }}">
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-col">
-                    <label>Fasilitas Kesehatan Rujukan</label>
-                    <input type="text" name="anak_faskes_rujukan" value="{{ $detail->anak_faskes_rujukan }}">
-                </div>
-                <div class="form-col">
-                    <label>Tempat Lahir</label>
-                    <input type="text" name="anak_tempat_lahir" value="{{ $detail->anak_tempat_lahir }}">
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-col">
-                    <label>Tanggal Lahir</label>
-                    <input type="date" name="anak_tanggal_lahir" value="{{ $detail->anak_tanggal_lahir }}">
-                </div>
-                <div class="form-col">
-                    <label>Alamat Rumah</label>
-                    <textarea name="anak_alamat">{{ $detail->anak_alamat }}</textarea>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-col">
-                    <label>Anak ke-</label>
-                    <input type="number" name="anak_ke" value="{{ $detail->anak_ke }}">
-                </div>
-                <div class="form-col">
-                    <label>Nomor Akta Kelahiran</label>
-                    <input type="text" name="anak_akta_kelahiran" value="{{ $detail->anak_akta_kelahiran }}">
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-col">
-                    <label>Golongan Darah</label>
-                    <input type="text" name="anak_gol_darah" value="{{ $detail->anak_gol_darah }}">
-                </div>
-            </div>
+            
 
             <h2>Fasilitas Pelayanan Kesehatan</h2>
             <h3>Primer</h3>

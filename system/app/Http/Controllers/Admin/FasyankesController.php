@@ -51,6 +51,7 @@ class FasyankesController extends Controller
 
 
         $fasyankes->nama = request('nama');
+        $fasyankes->kecamatan = request('kecamatan');
         $fasyankes->kelurahan = request('kelurahan');
         $fasyankes->desa = request('desa');
         $fasyankes->rt_rw = request('rt_rw');

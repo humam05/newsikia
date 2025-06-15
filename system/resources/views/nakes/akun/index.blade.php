@@ -41,8 +41,8 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }}</td>
                                     <td>
-                                        <a href="{{ url('admin/akun/ibu_hamil/edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="{{ url('admin/akun/ibu_hamil/delete', $item->id) }}" class="btn btn-danger btn-sm"
+                                        <a href="{{ url('nakes/akun/edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="{{ url('nakes/akun/delete', $item->id) }}" class="btn btn-danger btn-sm"
                                             onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
                                     </td>
                                 </tr>
