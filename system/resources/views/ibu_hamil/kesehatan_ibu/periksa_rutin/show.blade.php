@@ -94,7 +94,7 @@
                 <div class="row">
                     <div class="col-6 detail-group">
                         <label class="detail-label"><i class="fas fa-ruler-vertical"></i> Tinggi Badan</label>
-                        <div class="detail-value">{{ $periksaRutin->tinggi }} cm</div>
+                        <div class="detail-value">{{ $periksaRutin->tinggi_badan }} cm</div>
                     </div>
                     <div class="col-6 detail-group">
                         <label class="detail-label"><i class="fas fa-arrows-alt-h"></i> Lingkar Lengan</label>

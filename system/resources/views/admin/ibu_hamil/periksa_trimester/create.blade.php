@@ -743,6 +743,14 @@
                         <option value="tidak">Tidak</option>
                     </select>
                 </div>
+                <div class="form-col">
+                    <label>Tempat Melahirkan</label>
+                    <select name="tempat_melahirkan" class="form-control">
+                        <option value="">-- Pilih --</option>
+                        <option value="fktp">FKTP</option>
+                        <option value="fkrtl">FKRTL</option>
+                    </select>
+                </div>
             </div>
 
             <!-- Penjelasan -->

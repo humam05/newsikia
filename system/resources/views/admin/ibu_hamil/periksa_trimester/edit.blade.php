@@ -809,6 +809,13 @@
                             <option value="tidak" {{ $periksaTrimester->konseling == 'tidak' ? 'selected' : '' }}>Tidak</option>
                         </select>
                     </div>
+                    <div class="form-col">
+                        <label>Tempat Melahirkan</label>
+                        <select name="tempat_melahirkan" class="form-control">
+                            <option value="ya" {{ $periksaTrimester->tempat_melahirkan == 'fktp' ? 'selected' : '' }}>FKTP</option>
+                            <option value="tidak" {{ $periksaTrimester->tempat_melahirkan == 'fkrtl' ? 'selected' : '' }}>FKRTL</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="form-row">

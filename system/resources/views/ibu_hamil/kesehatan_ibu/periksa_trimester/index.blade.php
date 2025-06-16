@@ -24,7 +24,6 @@
                             <tr>
                                 <th>No.</th>
                                 <th>Trimester</th>
-                                <th>Hari / Tanggal</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -33,8 +32,6 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->trimester }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($item->tanggal_periksa)->translatedFormat('l, d F Y') }}
-                                    </td>
                                     <td>
                                         <a href="{{ url('ibu_hamil/kesehatan_ibu/periksa_trimester/show', $item->id) }}?step=trimester{{ $item->trimester }}"
                                             class="btn btn-dark btn-sm">Show</a>

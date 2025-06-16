@@ -103,7 +103,7 @@
                                             class="btn btn-success btn-sm">Periksa Rutin</a>
                                         <a href="{{ url('nakes/ibu_hamil/periksa_trimester/create', $item->id) }}"
                                             class="btn btn-info btn-sm">Periksa Trimester</a>
-                                             <a href="{{ url('nakes/bayi/identitas/create', $item->id) }}"
+                                        <a href="{{ url('nakes/bayi/identitas/create', $item->id) }}"
                                             class="btn btn-primary btn-sm">+ Data Anak</a>
                                     </td>
                                 </tr>

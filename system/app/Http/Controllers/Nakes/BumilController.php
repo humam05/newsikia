@@ -318,22 +318,23 @@ class BumilController extends Controller
         return redirect('nakes/ibu_hamil/periksa_rutin')->with('success', 'Data berhasil dihapus.');
     }
 
-    function periksaTrimesterIndex(Request $request)
-    {
-        $query = PeriksaTrimester::with('identitas');
+   function periksaTrimesterIndex(Request $request)
+{
+    $query = PeriksaTrimester::with('identitas');
 
-        if ($request->has('search')) {
-            $search = $request->search;
-            $query->whereHas('identitas', function ($q) use ($search) {
-                $q->where('ibu_nik', 'like', '%' . $search . '%');
-            });
-        }
-
-        // Ganti dari get() menjadi paginate(10)
-        $data['periksa_trimester'] = $query->paginate(10);
-
-        return view('nakes.ibu_hamil.periksa_trimester.index', $data);
+    if ($request->has('search')) {
+        $search = $request->search;
+        $query->whereHas('identitas', function ($q) use ($search) {
+            $q->where('ibu_nik', 'like', '%' . $search . '%');
+        });
     }
+
+    // Gunakan paginate agar data lebih ringan dan ada navigasi halaman
+    $data['periksa_trimester'] = $query->paginate(10);
+
+    return view('nakes.ibu_hamil.periksa_trimester.index', $data);
+}
+
 
 
     function periksaTrimesterCreate(Request $request, $identitas)

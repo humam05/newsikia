@@ -385,7 +385,7 @@
                     </div>
                 </div>
                 <div class="row">
-                      <div class="col-12 detail-group">
+                    <div class="col-12 detail-group">
                         <label class="detail-label"><i class="fas fa-calendar-alt"></i> Tanggal Periksa</label>
                         <div class="detail-value">
                             {{ $periksaTrimester->tanggal_periksa_2 ? \Carbon\Carbon::parse($periksaTrimester->tanggal_periksa_2)->translatedFormat('l, d F Y') : '-' }}
@@ -606,37 +606,51 @@
                         <label class="detail-label"><i class="fas fa-child"></i> FL Sesuai(minggu)</label>
                         <div class="detail-value">{{ $periksaTrimester->fl_sesuai ?? '-' }}</div>
                     </div>
-                    <div class="col-4 detail-group">
-                        <label class="detail-label"><i class="fas fa-child"></i> EFW/TBJ(gram)</label>
-                        <div class="detail-value">{{ $periksaTrimester->efw_tbj ?? '-' }}</div>
-                    </div>
+
                     <div class="col-4 detail-group">
                         <label class="detail-label"><i class="fas fa-child"></i> EFW/TBJ Sesuai(minggu)</label>
                         <div class="detail-value">{{ $periksaTrimester->efw_tbj_sesuai ?? '-' }}</div>
                     </div>
                 </div>
-
-                {{-- Temuan Abnormal --}}
-                <div class="detail-group">
-                    <label class="detail-label"><i class="fas fa-exclamation-triangle"></i> Temuan Abnormal</label>
-                    <div class="detail-value">
-                        {{ $periksaTrimester->temuan_abnormal == 'ya' ? 'Ya' : ($periksaTrimester->temuan_abnormal == 'tidak' ? 'Tidak' : '-') }}
+                <div class="row">
+                    <div class="col-12 detail-group">
+                        <label class="detail-label"><i class="fas fa-child"></i> EFW/TBJ(gram)</label>
+                        <div class="detail-value">{{ $periksaTrimester->efw_tbj ?? '-' }}</div>
                     </div>
                 </div>
 
-                @if ($periksaTrimester->temuan_abnormal == 'ya')
-                    <div class="detail-group">
-                        <label class="detail-label"><i class="fas fa-pen"></i> Sebutkan Temuan Abnormal</label>
-                        <div class="detail-value">{{ $periksaTrimester->temuan_abnormal_sebutkan ?? '-' }}</div>
-                    </div>
-                @endif
+                {{-- Temuan Abnormal --}}
+                <div class="row">
 
+
+                    <div class="col-6 detail-group">
+                        <label class="detail-label"><i class="fas fa-exclamation-triangle"></i> Temuan Abnormal</label>
+                        <div class="detail-value">
+                            {{ $periksaTrimester->temuan_abnormal == 'ya' ? 'Ya' : ($periksaTrimester->temuan_abnormal == 'tidak' ? 'Tidak' : '-') }}
+                        </div>
+                    </div>
+
+                    @if ($periksaTrimester->temuan_abnormal == 'ya')
+                        <div class="col-6 detail-group">
+                            <label class="detail-label"><i class="fas fa-pen"></i> Sebutkan Temuan Abnormal</label>
+                            <div class="detail-value">{{ $periksaTrimester->temuan_abnormal_sebutkan ?? '-' }}</div>
+                        </div>
+                    @endif
+                </div>
                 {{-- Pemeriksaan Laboratorium --}}
                 <h5>Pemeriksaan Laboratorium</h5>
                 <div class="row">
                     <div class="col-4 detail-group">
                         <label class="detail-label"><i class="fas fa-tint"></i> Hemoglobin (g/dL)</label>
                         <div class="detail-value">{{ $periksaTrimester->hemoglobin ?? '-' }}</div>
+                    </div>
+                    <div class="col-4 detail-group">
+                        <label class="detail-label"><i class="fas fa-tint"></i> Protein Urin (Mg/dL)</label>
+                        <div class="detail-value">{{ $periksaTrimester->protein_urin ?? '-' }}</div>
+                    </div>
+                    <div class="col-4 detail-group">
+                        <label class="detail-label"><i class="fas fa-tint"></i> Urin Reduksi </label>
+                        <div class="detail-value">{{ $periksaTrimester->urin_reduksi ?? '-' }}</div>
                     </div>
                 </div>
 
@@ -678,6 +692,14 @@
                         <label class="detail-label"><i class="fas fa-file-medical"></i> Konseling</label>
                         <div class="detail-value" style="white-space: pre-wrap;">
                             {{ $periksaTrimester->konseling ?? '-' }}</div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-12 detail-group">
+                        <label class="detail-label"><i class="fas fa-file-medical"></i> Tempat Melahirkan</label>
+                        <div class="detail-value" style="white-space: pre-wrap;">
+                            {{ $periksaTrimester->tempat_melahirkan ?? '-' }}</div>
                     </div>
                 </div>
             </div>
