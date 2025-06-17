@@ -5,6 +5,7 @@ use App\Http\Controllers\Nakes\DashboardnController;
 use App\Http\Controllers\Nakes\AkunController;
 use App\Http\Controllers\Nakes\BumilController;
 use App\Http\Controllers\Nakes\BayinController;
+use App\Http\Controllers\Nakes\PesanController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -56,7 +57,7 @@ Route::prefix('nakes')->group(function () {
     });
     Route::prefix('bayi')->group(function () {
         Route::controller(BayinController::class)->group(function () {
-             Route::get('identitas', 'bayiIdentitasIndex');
+            Route::get('identitas', 'bayiIdentitasIndex');
             Route::get('identitas/create/{anak}', 'bayiIdentitasCreate');
             Route::post('/identitas/store', 'bayiIdentitasStore');
             Route::get('/identitas/show/{anak}', 'bayiIdentitasShow');
@@ -65,7 +66,7 @@ Route::prefix('nakes')->group(function () {
             Route::get('/identitas/delete/{anak}', 'bayiIdentitasDelete');
 
 
-              //Route Periksa Bayi
+            //Route Periksa Bayi
             Route::get('periksa', 'periksaIndex');
             Route::get('periksa/create/{identitas}', 'periksaCreate');
             Route::post('/periksa/store', 'periksaStore');
@@ -73,8 +74,12 @@ Route::prefix('nakes')->group(function () {
             Route::get('/periksa/edit/{periksaBayi}', 'periksaEdit');
             Route::post('/periksa/update/{periksaBayi}', 'periksaUpdate');
             Route::get('/periksa/delete/{periksaBayi}', 'periksaDelete');
-
-
+        });
+    });
+    Route::prefix('pesan')->group(function () {
+        Route::controller(PesanController::class)->group(function () {
+            Route::get('/', 'Index');
+            Route::get('/kirim_pesan/{id}', 'KirimPesan');
         });
     });
 });

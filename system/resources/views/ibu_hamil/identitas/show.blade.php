@@ -105,7 +105,7 @@
                         <div class="detail-value">{{ $identitas->ibu_gol_darah }}</div>
                     </div>
                     <div class="col-6 detail-group">
-                        <label class="detail-label">Telepon</label>
+                        <label class="detail-label">No Wa</label>
                         <div class="detail-value">{{ $identitas->ibu_telepon }}</div>
                     </div>
                 </div>
@@ -208,7 +208,7 @@
                     <div class="detail-value">{{ $identitas->suami_asuransi_berlaku }}</div>
                 </div>
 
-                
+
 
                 <h2>Fasilitas Pelayanan Kesehatan</h2>
                 <h3>Primer</h3>

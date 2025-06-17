@@ -88,7 +88,7 @@
 <div class="left-side-menu">
     <div class="user-box">
         <div class="float-left">
-            <img src="{{ url('public') }}/template/assets/images/users/avatar-1.jpg" alt=""
+            <img src="{{ url('public') }}/template/assets/images/users/user_sikia.png" alt=""
                 class="avatar-md rounded-circle">
         </div>
         @php
@@ -159,9 +159,9 @@
                         <i class="fas fa-stethoscope"></i> Daftar Periksa Bayi Balita
                     </a>
                 </div>
-            <li class="{{ Request::is('nakes/broadcast*') ? 'active' : '' }}">
-                <a href="{{ url('nakes/broadcast') }}">
-                    <i class="fas fa-bullhorn"></i>7
+            <li class="{{ Request::is('nakes/pesan*') ? 'active' : '' }}">
+                <a href="{{ url('nakes/pesan') }}">
+                    <i class="fas fa-bullhorn"></i>
                     <span> Pesan Broadcast </span>
                 </a>
             </li>

@@ -179,7 +179,7 @@
                     <input type="text" name="ibu_gol_darah" value="{{ $detail->ibu_gol_darah }}">
                 </div>
                 <div class="form-col">
-                    <label>Telepon</label>
+                    <label>No Wa</label>
                     <input type="text" name="ibu_telepon" value="{{ $detail->ibu_telepon }}">
                 </div>
             </div>
@@ -288,7 +288,7 @@
 
         {{-- STEP 3: Data Anak & Fasilitas --}}
         <div class="form-step">
-           
+
             <h2>Fasilitas Pelayanan Kesehatan</h2>
             <h3>Primer</h3>
             <div class="form-row">

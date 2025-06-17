@@ -83,7 +83,7 @@
 <div class="left-side-menu">
     <div class="user-box">
         <div class="float-left">
-            <img src="{{ url('public') }}/template/assets/images/users/avatar-1.jpg" alt=""
+            <img src="{{ url('public') }}/template/assets/images/users/user_sikia.png" alt=""
                 class="avatar-md rounded-circle">
         </div>
    @php
