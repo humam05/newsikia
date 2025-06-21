@@ -143,7 +143,7 @@
                     </a>
                 </div>
             </li>
-            <li class="nav-item dropdown" class="{{ Request::is('nakes/bayi*') ? 'active' : '' }}">
+            <li class="nav-item dropdown" {{ Request::is('nakes/bayi*') ? 'active' : '' }}>
                 <a class="nav-link dropdown-toggle" href="#" id="bayiBalitaDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-baby"></i>
@@ -164,7 +164,6 @@
                     <i class="fas fa-bullhorn"></i>
                     <span> Pesan Broadcast </span>
                 </a>
-            </li>
             </li>
         </ul>
     </div>

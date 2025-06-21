@@ -78,8 +78,8 @@ Route::prefix('nakes')->group(function () {
     });
     Route::prefix('pesan')->group(function () {
         Route::controller(PesanController::class)->group(function () {
-            Route::get('/', 'Index');
-            Route::get('/kirim_pesan/{id}', 'KirimPesan');
+            Route::get('/', 'index')->name('nakes.pesan.index');
+            Route::match(['get', 'post'], '/kirim_pesan/{id}', [PesanController::class, 'kirimPesan'])->name('nakes.pesan.kirim');
         });
     });
 });
