@@ -9,12 +9,12 @@
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ url('public') }}/template/assets/images/favicon.ico">
+    <link rel="shortcut icon" href="{{ url('template/assets') }}/images/favicon.ico">
     <!-- App css -->
-    <link href="{{ url('public') }}/template/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"
+    <link href="{{ url('template/assets') }}/css/bootstrap.min.css" rel="stylesheet" type="text/css"
         id="bootstrap-stylesheet" />
-    <link href="{{ url('public') }}/template/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="{{ url('public') }}/template/assets/css/app.min.css" rel="stylesheet" type="text/css"
+    <link href="{{ url('template/assets') }}/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ url('template/assets') }}/css/app.min.css" rel="stylesheet" type="text/css"
         id="app-stylesheet" />
 
 </head>
@@ -90,7 +90,7 @@
                     <strong>Customize </strong> the overall color scheme, layout, etc.
                 </div>
                 <div class="mb-2">
-                    <img src="{{ url('public') }}/template/assets/images/plugins/light.png"
+                    <img src="{{ url('template/assets') }}/images/plugins/light.png"
                         class="img-fluid img-thumbnail" alt="">
                 </div>
                 <div class="custom-control custom-switch mb-3">
@@ -99,23 +99,23 @@
                 </div>
 
                 <div class="mb-2">
-                    <img src="{{ url('public') }}/template/assets/images/plugins/dark.png"
+                    <img src="{{ url('template/assets') }}/images/plugins/dark.png"
                         class="img-fluid img-thumbnail" alt="">
                 </div>
                 <div class="custom-control custom-switch mb-3">
                     <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch"
-                        data-bsStyle="{{ url('public') }}/template/assets/css/bootstrap-dark.min.css"
-                        data-appStyle="{{ url('public') }}/template/assets/css/app-dark.min.css" />
+                        data-bsStyle="{{ url('template/assets') }}/css/bootstrap-dark.min.css"
+                        data-appStyle="{{ url('template/assets') }}/css/app-dark.min.css" />
                     <label class="custom-control-label" for="dark-mode-switch">Dark Mode</label>
                 </div>
 
                 <div class="mb-2">
-                    <img src="{{ url('public') }}/template/assets/images/plugins/rtl.png"
+                    <img src="{{ url('template/assets') }}/images/plugins/rtl.png"
                         class="img-fluid img-thumbnail" alt="">
                 </div>
                 <div class="custom-control custom-switch mb-5">
                     <input type="checkbox" class="custom-control-input theme-choice" id="rtl-mode-switch"
-                        data-appStyle="{{ url('public') }}/template/assets/css/app-rtl.min.css" />
+                        data-appStyle="{{ url('template/assets') }}/css/app-rtl.min.css" />
                     <label class="custom-control-label" for="rtl-mode-switch">RTL Mode</label>
                 </div>
 
@@ -134,15 +134,15 @@
     </a>
 
     <!-- Vendor js -->
-    <script src="{{ url('public') }}/template/assets/js/vendor.min.js"></script>
+    <script src="{{ url('template/assets') }}/js/vendor.min.js"></script>
 
-    <script src="{{ url('public') }}/template/assets/libs/morris-js/morris.min.js"></script>
-    <script src="{{ url('public') }}/template/assets/libs/raphael/raphael.min.js"></script>
+    <script src="{{ url('template/assets') }}/libs/morris-js/morris.min.js"></script>
+    <script src="{{ url('template/assets') }}/libs/raphael/raphael.min.js"></script>
 
-    <script src="{{ url('public') }}/template/assets/js/pages/dashboard.init.js"></script>
+    <script src="{{ url('template/assets') }}/js/pages/dashboard.init.js"></script>
 
     <!-- App js -->
-    <script src="{{ url('public') }}/template/assets/js/app.min.js"></script>
+    <script src="{{ url('template/assets') }}/js/app.min.js"></script>
 
      @yield('scripts')
 </body>

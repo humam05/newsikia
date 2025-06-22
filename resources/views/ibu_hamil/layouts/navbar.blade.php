@@ -5,7 +5,7 @@
                 aria-haspopup="false" aria-expanded="false">
 
                 {{-- Gambar User --}}
-                <img src="{{ url('public') }}/template/assets/images/users/user_sikia.png" alt="user-image"
+                <img src="{{ url('template/assets') }}/images/users/user_sikia.png" alt="user-image"
                     class="rounded-circle" height="40" width="40">
 
                 {{-- Nama User --}}
@@ -49,19 +49,19 @@
     <div class="logo-box">
         <a href="index.html" class="logo text-center logo-dark">
             <span class="logo-lg" style="margin-left: -100px;">
-                <img src="{{ url('public') }}/template/assets/images/plugins/sikia_ketapang.png" alt="" height="65">
+                <img src="{{ url('template/assets') }}/images/plugins/sikia_ketapang.png" alt="" height="65">
             </span><br>
             <span class="logo-sm" style="margin-left: -100px">
-                <img src="{{ url('public') }}/template/assets/images/plugins/sikia_ketapang.png" alt="" height="65">
+                <img src="{{ url('template/assets') }}/images/plugins/sikia_ketapang.png" alt="" height="65">
             </span><br>
         </a>
 
         <a href="index.html" class="logo text-center logo-light">
             <span class="logo-lg">
-                <img src="{{ url('public') }}/template/assets/images/logo-light.png" alt="" height="26">
+                <img src="{{ url('template/assets') }}/images/logo-light.png" alt="" height="26">
             </span>
             <span class="logo-sm">
-                <img src="{{ url('public') }}/template/assets/images/logo-sm.png" alt="" height="22">
+                <img src="{{ url('template/assets') }}/images/logo-sm.png" alt="" height="22">
             </span>
         </a>
     </div>

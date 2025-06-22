@@ -40,7 +40,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="{{ url('public/template/assets') }}/css/login.css">
+    <link rel="stylesheet" href="{{ asset('template/assets/css/login.css') }}">
 </head>
 
 <script>
@@ -60,7 +60,7 @@
 <body>
     <div class="container">
         <div class="left-section">
-            <img src="{{ url('public/template/assets') }}/images/plugins/sikia_ketapang.png" alt="Logo"
+            <img src="{{ url('/template/assets') }}/images/plugins/sikia_ketapang.png" alt="Logo"
                 class="logo">
         </div>
         <div class="right-section">
